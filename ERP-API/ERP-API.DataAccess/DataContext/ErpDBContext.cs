@@ -1,6 +1,8 @@
 ﻿using ERP_API.DataAccess.Entities.Inventory;
 using ERP_API.DataAccess.Entities.InventoryAdjustment;
+using ERP_API.DataAccess.Entities.User;
 using ERP_API.DataAccess.Entities.Warehouse;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace ERP_API.DataAccess.DataContext
 {
-    internal class ErpDBContext: DbContext
+    internal class ErpDBContext : IdentityDbContext<AppUser>
     {
         public ErpDBContext(
            DbContextOptions<ErpDBContext> options) : base(options) { }
@@ -27,10 +29,9 @@ namespace ERP_API.DataAccess.DataContext
 
         public DbSet<InventoryAdjustment> InventoryAdjustments { get; set; }
 
-        // Optional: Categories if you have them
-        //public DbSet<Category> Categories { get; set; }
 
-        // ✅ ADD THIS METHOD
+
+   
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -46,10 +47,7 @@ namespace ERP_API.DataAccess.DataContext
                 .Property(p => p.SalesPrice)
                 .HasColumnType("decimal(18,2)");
 
-            // --- Configure Quantities (18 digits total, 4 after decimal) ---
-            // We use 4 decimal places to be safe for weights (e.g., 0.005 KG)
 
-            // ProductPackage QinP
             modelBuilder.Entity<ProductPackage>()
                 .Property(p => p.QinP)
                 .HasColumnType("decimal(18,4)");

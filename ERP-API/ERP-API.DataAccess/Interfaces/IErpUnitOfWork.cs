@@ -1,6 +1,8 @@
 ﻿using ERP_API.DataAccess.Entities.Inventory;
 using ERP_API.DataAccess.Entities.InventoryAdjustment;
+using ERP_API.DataAccess.Entities.User;
 using ERP_API.DataAccess.Entities.Warehouse;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +25,9 @@ namespace ERP_API.DataAccess.Interfaces
         IBaseRepository<StockTransferLog, int> StockTransferLogs { get; }
 
         IBaseRepository<InventoryAdjustment, int> InventoryAdjustments { get; }
+        UserManager<AppUser> UserManager { get; }
+
+        public ITokenManager TokenManager { get; }
 
         Task SaveChangesAsync();
     }

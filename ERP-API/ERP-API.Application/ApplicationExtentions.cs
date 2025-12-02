@@ -1,6 +1,8 @@
 ﻿using ERP_API.Application.Interfaces;
 using ERP_API.Application.Interfaces.Inventory;
+using ERP_API.Application.Interfaces.User;
 using ERP_API.Application.Services;
+using ERP_API.Application.Services.User;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -17,14 +19,15 @@ namespace ERP_API.Application
             // Register your Services here
             services.AddScoped<IProductService, ProductService>();
 
-            // Add Category/Package services here later if you create them
-            // services.AddScoped<ICategoryService, CategoryService>();
+
 
             services.AddScoped<IPackageTypeService, PackageTypeService>();
 
             services.AddScoped<IWarehouseService, WarehouseService>();
 
             services.AddScoped<IInventoryAdjustmentService, InventoryAdjustmentService>();
+
+            services.AddScoped<IAccountService, AccountService>();
 
             return services;
         }

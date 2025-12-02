@@ -20,9 +20,7 @@ namespace ERP_API.DataAccess.Interfaces
         // Create is now Async because EF Core might need to generate IDs or check constraints
         Task CreateAsync(TEntity entity);
 
-        // Update/Delete are often synchronous in EF Core (just tracking changes), 
-        // but we keep them void or Task for consistency. 
-        // Standard EF Core Update() is actually synchronous, but let's stick to standard patterns.
+     
         void Update(TEntity entity);
 
         // Delete often requires finding the entity first, so Async is useful here if we pass an ID.

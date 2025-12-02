@@ -1,5 +1,37 @@
 [
   {
+    "ContainingType": "ERP_API.API.Controllers.User.AccountController",
+    "Method": "Login",
+    "RelativePath": "api/Account/Login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "user",
+        "Type": "ERP_API.Application.DTOs.User.UserLoginDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ERP_API.API.Controllers.User.AccountController",
+    "Method": "Register",
+    "RelativePath": "api/Account/Register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "user",
+        "Type": "ERP_API.Application.DTOs.User.UserRegisterDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ERP_API.API.Controllers.InventoryAdjustmentController",
     "Method": "CreateAdjustment",
     "RelativePath": "api/InventoryAdjustment/Adjustments",

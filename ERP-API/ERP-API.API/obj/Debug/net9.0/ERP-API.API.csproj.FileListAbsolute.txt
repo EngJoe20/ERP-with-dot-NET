@@ -206,3 +206,9 @@ D:\Courses\DEPI\.NET_Full_stack\Repo\Project\ERP-API\ERP-API.API\obj\Debug\net9.
 D:\Courses\DEPI\.NET_Full_stack\Repo\Project\ERP-API\ERP-API.API\obj\Debug\net9.0\ERP-API.API.genruntimeconfig.cache
 D:\Courses\DEPI\.NET_Full_stack\Repo\Project\ERP-API\ERP-API.API\obj\Debug\net9.0\ref\ERP-API.API.dll
 D:\Courses\DEPI\.NET_Full_stack\Repo\Project\ERP-API\ERP-API.API\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
+D:\Courses\DEPI\.NET_Full_stack\Repo\Project\ERP-API\ERP-API.API\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Courses\DEPI\.NET_Full_stack\Repo\Project\ERP-API\ERP-API.API\bin\Debug\net9.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\Courses\DEPI\.NET_Full_stack\Repo\Project\ERP-API\ERP-API.API\bin\Debug\net9.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\Courses\DEPI\.NET_Full_stack\Repo\Project\ERP-API\ERP-API.API\bin\Debug\net9.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\Courses\DEPI\.NET_Full_stack\Repo\Project\ERP-API\ERP-API.API\bin\Debug\net9.0\Microsoft.Extensions.Identity.Core.dll
+D:\Courses\DEPI\.NET_Full_stack\Repo\Project\ERP-API\ERP-API.API\bin\Debug\net9.0\Microsoft.Extensions.Identity.Stores.dll

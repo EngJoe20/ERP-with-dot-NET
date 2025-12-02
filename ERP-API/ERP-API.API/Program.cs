@@ -1,7 +1,9 @@
-﻿using ERP_API.DataAccess;           // To access AddDataAccessServices
+﻿using ERP_API.API;
 using ERP_API.Application;      // To access AddApplicationServices
-using Swashbuckle.AspNetCore.SwaggerGen;
+using ERP_API.DataAccess;           // To access AddDataAccessServices
+using ERP_API.DataAccess.Identity;
 using Microsoft.AspNetCore.Builder; // Add this using directive
+using Swashbuckle.AspNetCore.SwaggerGen;
 using Swashbuckle.AspNetCore.SwaggerUI; // Add this using directive
 
 namespace ERP_API
@@ -13,34 +15,55 @@ namespace ERP_API
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+
             builder.Services.AddControllers();
-
-            // OpenAPI / Swagger Configuration
+            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen(); // or AddOpenApi() depending on .NET version
+            //builder.Services.AddSwaggerGen();
 
-           
+            builder.Services.AddCustomSwaggerGen()
+                .AddCustomCORS();
+
+
+
+            builder.Services.AddHttpContextAccessor();
+
+
+
+            var JwtSection = builder.Configuration.GetSection(JwtOptions.sectionName);
+
+            builder.Services.Configure<JwtOptions>(JwtSection);
+
             builder.Services
-                .AddDataAccessServices(builder.Configuration) // Wires up UnitOfWork
-                .AddApplicationServices();                    // Wires up ProductService
+                .AddDataAccessServices(builder.Configuration)
+                .AddAuthenticationWithJWT();
+
+            builder.Services.AddAuthorization();
+
+
+            builder.Services.AddApplicationServices();
 
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
-                app.UseSwagger();   // If using standard Swagger
-                app.UseSwaggerUI(); // This requires Microsoft.AspNetCore.Builder
-                // OR app.MapOpenApi(); if using .NET 9 OpenApi
+                app.UseSwagger();
+                app.UseSwaggerUI();
+                _ = app.SeedRoles();
             }
 
             app.UseHttpsRedirection();
 
+
+            app.UseAuthentication();
             app.UseAuthorization();
+
 
             app.MapControllers();
 
             app.Run();
+
         }
     }
 }
