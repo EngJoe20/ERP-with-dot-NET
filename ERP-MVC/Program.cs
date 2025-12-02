@@ -1,7 +1,9 @@
 ﻿using ERP_MVC.Services.Inventory.Package; // For PackageTypeService
 using ERP_MVC.Services.Inventory.Product;  // For ProductService
-using ERP_MVC.Services.Warehouse;        // For WarehouseService   
 using ERP_MVC.Services.InventoryAdjustment;
+using ERP_MVC.Services.User;
+using ERP_MVC.Services.Warehouse;
+using Microsoft.AspNetCore.Authentication.Cookies;        // For WarehouseService   
 
 namespace ERP_MVC
 {
@@ -11,23 +13,36 @@ namespace ERP_MVC
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // ==========================================
-            // 1. Add services to the container.
-            // ==========================================
+            
             builder.Services.AddControllersWithViews();
 
-            // ✅ Register your Client-Side Services (The Bridge to API)
-            // This reads "ApiSettings:BaseUrl" from appsettings.json automatically inside the Service
+        
             builder.Services.AddHttpClient<ProductService>();
             builder.Services.AddHttpClient<PackageTypeService>();
             builder.Services.AddHttpClient<InventoryAdjustmentService>();
             builder.Services.AddHttpClient<WarehouseService>();
+            builder.Services.AddHttpClient<AccountService>();
+
+            builder.Services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            }).AddCookie(options =>
+            {
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+                options.SlidingExpiration = true;
+
+                options.LoginPath = "/Account/login";
+                options.AccessDeniedPath = "/";
+            });
+            builder.Services.AddAuthorization();
+
+
+            builder.Services.AddHttpContextAccessor();
+
 
             var app = builder.Build();
 
-            // ==========================================
-            // 2. Configure the HTTP request pipeline.
-            // ==========================================
+           
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");
@@ -38,6 +53,8 @@ namespace ERP_MVC
             app.UseHttpsRedirection();
             app.UseRouting();
 
+            app.UseAuthentication();
+
             app.UseAuthorization();
 
             // New .NET 9 Static Assets feature
@@ -45,7 +62,7 @@ namespace ERP_MVC
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Product}/{action=Index}/{id?}")
+                pattern: "{controller=Account}/{action=Login}")
                 .WithStaticAssets();
 
             app.Run();
