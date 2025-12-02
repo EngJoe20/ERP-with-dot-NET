@@ -16,5 +16,8 @@ namespace ERP_API.DataAccess.Entities.User
 
         public string? RefreshToken { get; set; }
         public DateTime RefreshTokenExpiryTime { get; set; }
+
+        public ICollection<AppUserPermission> UserPermissions { get; set; } = new List<AppUserPermission>();
+
     }
 }

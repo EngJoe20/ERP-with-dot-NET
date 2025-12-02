@@ -29,9 +29,12 @@ namespace ERP_API.DataAccess.DataContext
 
         public DbSet<InventoryAdjustment> InventoryAdjustments { get; set; }
 
+        public DbSet<AppUser> AppUsers { get; set; }
+
+        public DbSet<AppUserPermission> AppUserPermissions { get; set; }
 
 
-   
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
