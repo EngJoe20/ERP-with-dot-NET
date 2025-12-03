@@ -5498,23 +5498,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\adamm\\.nuget\\packages\\": {},
+    "C:\\Users\\YoussefEbrahimMostaf\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Courses\\DEPI\\.NET_Full_stack\\Repo\\Project\\ERP-MVC\\ERP-MVC.csproj",
+      "projectUniqueName": "E:\\elMa4ro3\\ERP-with-dot-NET\\ERP-MVC\\ERP-MVC.csproj",
       "projectName": "ERP-MVC",
-      "projectPath": "D:\\Courses\\DEPI\\.NET_Full_stack\\Repo\\Project\\ERP-MVC\\ERP-MVC.csproj",
-      "packagesPath": "C:\\Users\\adamm\\.nuget\\packages\\",
-      "outputPath": "D:\\Courses\\DEPI\\.NET_Full_stack\\Repo\\Project\\ERP-MVC\\obj\\",
+      "projectPath": "E:\\elMa4ro3\\ERP-with-dot-NET\\ERP-MVC\\ERP-MVC.csproj",
+      "packagesPath": "C:\\Users\\YoussefEbrahimMostaf\\.nuget\\packages\\",
+      "outputPath": "E:\\elMa4ro3\\ERP-with-dot-NET\\ERP-MVC\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\adamm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\YoussefEbrahimMostaf\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -5541,7 +5541,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "10.0.100"
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net9.0": {
@@ -5571,7 +5571,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

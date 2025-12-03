@@ -31,7 +31,7 @@ namespace ERP_MVC.Controllers.User
                 var result = await _accountService.Register(model);
                 if (result)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Privacy", "Home");
                 }
 
 
@@ -57,9 +57,16 @@ namespace ERP_MVC.Controllers.User
                     var signinResult = await SigninUser(result);
                 }
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Privacy", "Home");
             }
             return View(model);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Index", "Home");
         }
 
 

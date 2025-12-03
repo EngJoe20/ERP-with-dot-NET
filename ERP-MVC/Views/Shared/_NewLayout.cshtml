@@ -1,0 +1,142 @@
+﻿@* Main Layout for MVC Pages (Dashboard style) *@
+@{
+    var title = ViewData["Title"] ?? "MyApp";
+    var appName = "MyApp";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>@appName - MyApp</title>
+
+    <!-- Loader CSS -->
+    <link href="~/assets/css/pace.min.css" rel="stylesheet" />
+    <script src="~/assets/js/pace.min.js"></script>
+
+    <!-- Favicon -->
+    <link rel="icon" href="~/assets/images/favicon.ico" type="image/x-icon" />
+
+    <!-- Plugins CSS -->
+    <link href="~/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
+    
+    <!-- Bootstrap & Custom CSS -->
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/assets/css/animate.css" rel="stylesheet" />
+    <link href="~/assets/css/icons.css" rel="stylesheet" />
+    <link href="~/assets/css/sidebar-menu.css" rel="stylesheet" />
+    <link href="~/assets/css/app-style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body class="bg-theme bg-theme2">
+
+    <!-- Topbar -->
+    <header class="topbar-nav">
+        <nav class="navbar navbar-expand fixed-top">
+            <ul class="navbar-nav mr-auto align-items-center">
+                <li class="nav-item">
+                    <a class="nav-link toggle-menu" href="javascript:void();">
+                        <i class="icon-menu menu-icon"></i>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav align-items-center right-nav-link">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown" href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="32" height="32" fill="#fff">
+                            <path d="M320 312C386.3 312 440 258.3 440 192C440 125.7 386.3 72 320 72C253.7 72 200 125.7 200 192C200 258.3 253.7 312 320 312zM290.3 368C191.8 368 112 447.8 112 546.3C112 562.7 125.3 576 141.7 576L498.3 576C514.7 576 528 562.7 528 546.3C528 447.8 448.2 368 349.7 368L290.3 368z" />
+                        </svg>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li class="dropdown-item">
+                            <a asp-controller="Account" asp-action="Login">
+                                <i class="zmdi zmdi-account mr-2"></i> Login
+                            </a>
+                        </li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-item">
+                            <a asp-controller="Account" asp-action="about">
+                                <i class="icon-power mr-2"></i> about
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-5">
+        <div class="container">
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index">@appName</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="Privacy">Customers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Account" asp-action="Login">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <main class="container my-5">
+        <div class="card shadow">
+            <div class="card-body">
+                @RenderBody()
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container text-center">
+            <p>&copy; @DateTime.Now.Year @appName. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="~/assets/js/jquery.min.js"></script>
+    <script src="~/assets/js/popper.min.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <script src="~/assets/plugins/simplebar/js/simplebar.js"></script>
+    <script src="~/assets/js/sidebar-menu.js"></script>
+    <script src="~/assets/js/app-script.js"></script>
+
+    <script>
+        // Sidebar menu arrow toggle
+        (function ($) {
+            $(function () {
+                $('.sidebar-menu ul.submenu-angle').hide().attr('aria-expanded', 'false');
+                $('.sidebar-menu li').removeClass('open');
+
+                $('.sidebar-menu').on('click', 'a.has-arrow', function (e) {
+                    e.preventDefault();
+                    var $anchor = $(this);
+                    var $submenu = $anchor.next('ul.submenu-angle');
+                    if (!$submenu.length) return;
+                    $('.sidebar-menu ul.submenu-angle').not($submenu).slideUp(400).attr('aria-expanded', 'false');
+                    $('.sidebar-menu li').not($anchor.parent()).removeClass('open');
+                    $submenu.slideToggle(400);
+                    $anchor.parent().toggleClass('open');
+                    $submenu.attr('aria-expanded', $anchor.parent().hasClass('open'));
+                });
+            });
+        })(jQuery);
+    </script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

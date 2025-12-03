@@ -46,6 +46,7 @@ namespace ERP_API
 
 
             var app = builder.Build();
+            app.UseCors("mvc.app");
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

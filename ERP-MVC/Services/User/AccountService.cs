@@ -11,7 +11,7 @@ namespace ERP_MVC.Services.User
         {
             _httpClient = httpClient;
 
-            _httpClient.BaseAddress = new Uri("http://apiserver/api/Account/");
+            _httpClient.BaseAddress = new Uri("https://localhost:7052/api/Account/");
 
         }
 

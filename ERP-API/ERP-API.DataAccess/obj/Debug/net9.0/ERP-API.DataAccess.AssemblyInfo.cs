@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ERP-API.DataAccess")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d2653031718e332aa974806322f76263b1dbcb66")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+827ee12ed9ab314030bdb84e1298d327319ad026")]
 [assembly: System.Reflection.AssemblyProductAttribute("ERP-API.DataAccess")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ERP-API.DataAccess")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

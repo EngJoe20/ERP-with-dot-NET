@@ -22,6 +22,21 @@ namespace ERP_API.DataAccess.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("AppUserAppUserPermission", b =>
+                {
+                    b.Property<int>("UserPermissionsId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UsersId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("UserPermissionsId", "UsersId");
+
+                    b.HasIndex("UsersId");
+
+                    b.ToTable("AppUserAppUserPermission");
+                });
+
             modelBuilder.Entity("ERP_API.DataAccess.Entities.Inventory.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -284,6 +299,23 @@ namespace ERP_API.DataAccess.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("ERP_API.DataAccess.Entities.User.AppUserPermission", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("PermissionName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AppUserPermissions");
+                });
+
             modelBuilder.Entity("ERP_API.DataAccess.Entities.Warehouse.StockTransferLog", b =>
                 {
                     b.Property<int>("Id")
@@ -501,6 +533,21 @@ namespace ERP_API.DataAccess.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("AppUserAppUserPermission", b =>
+                {
+                    b.HasOne("ERP_API.DataAccess.Entities.User.AppUserPermission", null)
+                        .WithMany()
+                        .HasForeignKey("UserPermissionsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ERP_API.DataAccess.Entities.User.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("UsersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ERP_API.DataAccess.Entities.Inventory.Product", b =>

@@ -16,12 +16,28 @@ namespace ERP_MVC
             
             builder.Services.AddControllersWithViews();
 
-        
-            builder.Services.AddHttpClient<ProductService>();
-            builder.Services.AddHttpClient<PackageTypeService>();
-            builder.Services.AddHttpClient<InventoryAdjustmentService>();
-            builder.Services.AddHttpClient<WarehouseService>();
-            builder.Services.AddHttpClient<AccountService>();
+            var apiBaseUrl = builder.Configuration["ApiSettings:BaseUrl"];
+
+            builder.Services.AddHttpClient<ProductService>(client =>
+            {
+                client.BaseAddress = new Uri(apiBaseUrl);
+            });
+            builder.Services.AddHttpClient<PackageTypeService>(client =>
+            {
+                client.BaseAddress = new Uri(apiBaseUrl);
+            });
+            builder.Services.AddHttpClient<InventoryAdjustmentService>(client =>
+            {
+                client.BaseAddress = new Uri(apiBaseUrl);
+            });
+            builder.Services.AddHttpClient<WarehouseService>(client =>
+            {
+                client.BaseAddress = new Uri(apiBaseUrl);
+            });
+            builder.Services.AddHttpClient<AccountService>(client =>
+            {
+                client.BaseAddress = new Uri(apiBaseUrl);
+            });
 
             builder.Services.AddAuthentication(options =>
             {
@@ -62,7 +78,7 @@ namespace ERP_MVC
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Account}/{action=Login}")
+                pattern: "{controller=Home}/{action=Index}")
                 .WithStaticAssets();
 
             app.Run();
