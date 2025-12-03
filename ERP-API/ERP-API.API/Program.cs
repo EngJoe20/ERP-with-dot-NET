@@ -1,24 +1,72 @@
-using Microsoft.EntityFrameworkCore;
-using ERP_API.DataAccess.DataContext;
-using ERP_API.DataAccess.Interfaces;
-using ERP_API.DataAccess.Repositories;
+﻿using ERP_API.API;
+using ERP_API.Application;      // To access AddApplicationServices
+using ERP_API.DataAccess;           // To access AddDataAccessServices
+using ERP_API.DataAccess.Identity;
+using Microsoft.AspNetCore.Builder; // Add this using directive
+using Swashbuckle.AspNetCore.SwaggerGen;
+using Swashbuckle.AspNetCore.SwaggerUI; // Add this using directive
 
-var builder = WebApplication.CreateBuilder(args);
+namespace ERP_API
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            var builder = WebApplication.CreateBuilder(args);
 
-//Add services to the container
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
+            // Add services to the container.
 
-//Database Configuration
-builder.Services.AddDbContext<ErpDBContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            builder.Services.AddControllers();
+            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            builder.Services.AddEndpointsApiExplorer();
+            //builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<IErpUnitOfWork, ErpUnitOfWork>();
+            builder.Services.AddCustomSwaggerGen()
+                .AddCustomCORS();
 
-var app = builder.Build();
 
-app.UseHttpsRedirection();
-app.UseAuthorization();
-app.MapControllers();
 
-app.Run();
+            builder.Services.AddHttpContextAccessor();
+
+
+
+            var JwtSection = builder.Configuration.GetSection(JwtOptions.sectionName);
+
+            builder.Services.Configure<JwtOptions>(JwtSection);
+
+            builder.Services
+                .AddDataAccessServices(builder.Configuration)
+                .AddAuthenticationWithJWT();
+
+            builder.Services.AddAuthorization();
+
+
+            builder.Services.AddApplicationServices();
+
+
+
+            var app = builder.Build();
+            app.UseCors("mvc.app");
+
+            // Configure the HTTP request pipeline.
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseSwagger();
+                app.UseSwaggerUI();
+                _ = app.SeedRoles();
+            }
+
+            app.UseHttpsRedirection();
+
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+
+            app.MapControllers();
+
+            app.Run();
+
+        }
+    }
+}
