@@ -1,5 +1,9 @@
-﻿using ERP_API.DataAccess.Entities.Inventory;
+﻿
+using ERP_API.DataAccess.Entities.Customers;
+using ERP_API.DataAccess.Entities.Finance;
+using ERP_API.DataAccess.Entities.Inventory;
 using ERP_API.DataAccess.Entities.InventoryAdjustment;
+using ERP_API.DataAccess.Entities.Suppliers;
 using ERP_API.DataAccess.Entities.User;
 using ERP_API.DataAccess.Entities.Warehouse;
 using ERP_API.DataAccess.Interfaces;
@@ -34,6 +38,19 @@ namespace ERP_API.DataAccess.DataContext
             private readonly Lazy<IBaseRepository<StockTransferLog, int>> _stockTransferLogs;
             private readonly Lazy<IBaseRepository<InventoryAdjustment, int>> _inventoryAdjustments;
 
+
+
+            // EngJoe
+            private readonly Lazy<IBaseRepository<MainSafe, int>> _mainSafes;
+            private readonly Lazy<IBaseRepository<MainSafeLedgerEntry, int>> _mainSafeLedgerEntries;
+            private readonly Lazy<IBaseRepository<Expense, int>> _expenses;
+            private readonly Lazy<IBaseRepository<ProfitSource, int>> _profitSources;
+            private readonly Lazy<IBaseRepository<Customer, int>> _customers;
+            private readonly Lazy<IBaseRepository<CustomerTransaction, int>> _customerTransactions;
+            private readonly Lazy<IBaseRepository<Supplier, int>> _suppliers;
+            private readonly Lazy<IBaseRepository<SupplierTransaction, int>> _supplierTransactions;
+
+
             // 2. Constructor: Inject Context and Initialize Lazies
             public ErpUnitOfWork(ErpDBContext context, UserManager<AppUser> userManager, ITokenManager tokenManager)
             {
@@ -67,6 +84,29 @@ namespace ERP_API.DataAccess.DataContext
 
                 _inventoryAdjustments = new Lazy<IBaseRepository<InventoryAdjustment, int>>(() =>
                     new BaseRepository<InventoryAdjustment, int>(_context));
+
+                // EngJoe
+                _mainSafes = new Lazy<IBaseRepository<MainSafe, int>>(() =>
+                    new BaseRepository<MainSafe, int>(_context));
+                _mainSafeLedgerEntries = new Lazy<IBaseRepository<MainSafeLedgerEntry, int>>(() =>
+                    new BaseRepository<MainSafeLedgerEntry, int>(_context));
+                _expenses = new Lazy<IBaseRepository<Expense, int>>(() =>
+                    new BaseRepository<Expense, int>(_context));
+                _profitSources = new Lazy<IBaseRepository<ProfitSource, int>>(() =>
+                    new BaseRepository<ProfitSource, int>(_context));
+                _customers = new Lazy<IBaseRepository<Customer, int>>(() =>
+                    new BaseRepository<Customer, int>(_context));
+                _customerTransactions = new Lazy<IBaseRepository<CustomerTransaction, int>>(() =>
+                new BaseRepository<CustomerTransaction, int>(_context));
+                _suppliers = new Lazy<IBaseRepository<Supplier, int>>(() =>
+                    new BaseRepository<Supplier, int>(_context));
+                _supplierTransactions = new Lazy<IBaseRepository<SupplierTransaction, int>>(() =>
+                    new BaseRepository<SupplierTransaction, int>(_context));
+
+
+
+
+
             }
 
             // 3. Public Properties return the .Value
@@ -80,10 +120,23 @@ namespace ERP_API.DataAccess.DataContext
             public IBaseRepository<InventoryAdjustment, int> InventoryAdjustments => _inventoryAdjustments.Value;
 
 
+            // EngJoe
+            public IBaseRepository<MainSafe, int> MainSafes => _mainSafes.Value;
+            public IBaseRepository<MainSafeLedgerEntry, int> MainSafeLedgerEntry => _mainSafeLedgerEntries.Value;
+            public IBaseRepository<Expense, int> Expenses => _expenses.Value;
+            public IBaseRepository<ProfitSource, int> ProfitSources => _profitSources.Value;
+
+            public IBaseRepository<Customer, int> Customers => _customers.Value;
+            public IBaseRepository<CustomerTransaction, int> CustomerTransactions => _customerTransactions.Value;
+            public IBaseRepository<Supplier, int> Suppliers => _suppliers.Value;
+            public IBaseRepository<SupplierTransaction, int> SupplierTransactions => _supplierTransactions.Value;
+
+
+
+
             public UserManager<AppUser> UserManager => _userManager;
 
             public ITokenManager TokenManager => _tokenManager;
-
 
 
             public async Task SaveChangesAsync()
@@ -92,33 +145,5 @@ namespace ERP_API.DataAccess.DataContext
             }
         }
     }
-    //public class ErpUnitOfWork : IErpUnitOfWork
-    //{
-    //    public ErpUnitOfWork()
-    //    {
-    //        // Initialize Product Repositories
-    //        Products = new MockBaseRepository<Product, int>();
-    //        ProductVariations = new MockBaseRepository<ProductVariation, int>();
-    //        ProductPackages = new MockBaseRepository<ProductPackage, int>();
-    //        PackageTypes = new MockBaseRepository<PackageType, int>();
 
-    //        Warehouses = new MockBaseRepository<Warehouse, int>();
-    //        WarehouseStocks = new MockBaseRepository<WarehouseStock, int>();
-    //    }
-
-    //    // Product Properties
-    //    public IBaseRepository<Product, int> Products { get; private set; }
-    //    public IBaseRepository<ProductVariation, int> ProductVariations { get; private set; }
-    //    public IBaseRepository<ProductPackage, int> ProductPackages { get; private set; }
-    //    public IBaseRepository<PackageType, int> PackageTypes { get; private set; }
-
-
-    //    public IBaseRepository<Warehouse, int> Warehouses { get; private set; }
-    //    public IBaseRepository<WarehouseStock, int> WarehouseStocks { get; private set; }
-
-    //    public void SaveChanges()
-    //    {
-    //        // Mock mode - do nothing
-    //    }
-    //}
 }

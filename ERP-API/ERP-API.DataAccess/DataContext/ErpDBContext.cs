@@ -1,5 +1,8 @@
-﻿using ERP_API.DataAccess.Entities.Inventory;
+﻿using ERP_API.DataAccess.Entities.Customers;
+using ERP_API.DataAccess.Entities.Finance;
+using ERP_API.DataAccess.Entities.Inventory;
 using ERP_API.DataAccess.Entities.InventoryAdjustment;
+using ERP_API.DataAccess.Entities.Suppliers;
 using ERP_API.DataAccess.Entities.User;
 using ERP_API.DataAccess.Entities.Warehouse;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -32,6 +35,18 @@ namespace ERP_API.DataAccess.DataContext
         public DbSet<AppUser> AppUsers { get; set; }
 
         public DbSet<AppUserPermission> AppUserPermissions { get; set; }
+
+
+        //EngJoe
+        public DbSet<MainSafe> MainSafes { get; set; }
+        public DbSet<MainSafeLedgerEntry> MainSafeLedgerEntries { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<CustomerTransaction> CustomerTransactions { get; set; }
+        public DbSet<Supplier> Suppliers { get; set; }
+        public DbSet<SupplierTransaction> SupplierTransactions { get; set; }
+        public DbSet<Expense> Expenses { get; set; }
+        public DbSet<ProfitSource> ProfitSources { get; set; }
+
 
 
 

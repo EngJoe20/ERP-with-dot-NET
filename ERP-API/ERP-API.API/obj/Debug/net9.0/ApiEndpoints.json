@@ -32,6 +32,32 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ERP_API.API.Controllers.Customers.CustomerController",
+    "Method": "GetAll",
+    "RelativePath": "api/Customer",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ERP_API.API.Controllers.Customers.CustomerController",
+    "Method": "GetById",
+    "RelativePath": "api/Customer/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ERP_API.API.Controllers.InventoryAdjustmentController",
     "Method": "CreateAdjustment",
     "RelativePath": "api/InventoryAdjustment/Adjustments",
@@ -51,6 +77,95 @@
     "ContainingType": "ERP_API.API.Controllers.InventoryAdjustmentController",
     "Method": "GetAdjustmentLogs",
     "RelativePath": "api/InventoryAdjustment/Adjustments",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ERP_API.API.Controllers.MainSafeController",
+    "Method": "GetAll",
+    "RelativePath": "api/MainSafe",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ERP_API.API.Controllers.MainSafeController",
+    "Method": "Create",
+    "RelativePath": "api/MainSafe",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createDto",
+        "Type": "ERP_API.Application.DTOs.Finance.CreateMainSafeDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ERP_API.API.Controllers.MainSafeController",
+    "Method": "GetById",
+    "RelativePath": "api/MainSafe/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ERP_API.API.Controllers.MainSafeController",
+    "Method": "Update",
+    "RelativePath": "api/MainSafe/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updateDto",
+        "Type": "ERP_API.Application.DTOs.Finance.UpdateMainSafeDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ERP_API.API.Controllers.MainSafeController",
+    "Method": "Delete",
+    "RelativePath": "api/MainSafe/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ERP_API.API.Controllers.MainSafeController",
+    "Method": "GetStatement",
+    "RelativePath": "api/MainSafe/statement",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -97,6 +212,42 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ERP_API.API.Controllers.PaymentOrderController",
+    "Method": "GetAll",
+    "RelativePath": "api/PaymentOrder",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ERP_API.API.Controllers.PaymentOrderController",
+    "Method": "Create",
+    "RelativePath": "api/PaymentOrder",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createDto",
+        "Type": "ERP_API.Application.DTOs.Finance.CreatePaymentOrderDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ERP_API.API.Controllers.PaymentOrderController",
+    "Method": "GetCreateData",
+    "RelativePath": "api/PaymentOrder/create-data",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -178,6 +329,68 @@
       {
         "Name": "dto",
         "Type": "ERP_API.Application.DTOs.Inventory.Product.PackageLinkInsertDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ERP_API.API.Controllers.ReceiptOrderController",
+    "Method": "GetAll",
+    "RelativePath": "api/ReceiptOrder",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ERP_API.API.Controllers.ReceiptOrderController",
+    "Method": "Create",
+    "RelativePath": "api/ReceiptOrder",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createDto",
+        "Type": "ERP_API.Application.DTOs.Finance.CreateReceiptOrderDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ERP_API.API.Controllers.ReceiptOrderController",
+    "Method": "GetCreateData",
+    "RelativePath": "api/ReceiptOrder/create-data",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ERP_API.API.Controllers.Suppliers.SupplierController",
+    "Method": "GetAll",
+    "RelativePath": "api/Supplier",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ERP_API.API.Controllers.Suppliers.SupplierController",
+    "Method": "GetById",
+    "RelativePath": "api/Supplier/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],

@@ -1,7 +1,11 @@
-﻿using ERP_API.DataAccess.Entities.Inventory;
+﻿
+using ERP_API.DataAccess.Entities.Finance;
+using ERP_API.DataAccess.Entities.Inventory;
 using ERP_API.DataAccess.Entities.InventoryAdjustment;
 using ERP_API.DataAccess.Entities.User;
 using ERP_API.DataAccess.Entities.Warehouse;
+using ERP_API.DataAccess.Entities.Customers;
+using ERP_API.DataAccess.Entities.Suppliers;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
@@ -26,6 +30,20 @@ namespace ERP_API.DataAccess.Interfaces
 
         IBaseRepository<InventoryAdjustment, int> InventoryAdjustments { get; }
         UserManager<AppUser> UserManager { get; }
+
+
+
+        IBaseRepository<MainSafe, int> MainSafes { get; }
+        IBaseRepository<MainSafeLedgerEntry, int> MainSafeLedgerEntry { get; }
+        IBaseRepository<Expense, int> Expenses { get; }
+        IBaseRepository<ProfitSource, int> ProfitSources { get; }
+        IBaseRepository<Customer, int> Customers { get; }
+        IBaseRepository<CustomerTransaction, int> CustomerTransactions { get; }
+        IBaseRepository<Supplier, int> Suppliers { get; }
+        IBaseRepository<SupplierTransaction, int> SupplierTransactions { get; }
+
+
+
 
         public ITokenManager TokenManager { get; }
 
