@@ -184,6 +184,302 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ERP_API.API.Controllers.Purchasing.PurchaseInvoicesController",
+    "Method": "GetAll",
+    "RelativePath": "api/PurchaseInvoices",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ERP_API.API.Controllers.Purchasing.PurchaseInvoicesController",
+    "Method": "Create",
+    "RelativePath": "api/PurchaseInvoices",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "ERP_API.Application.DTOs.Purchasing.PurchaseInvoice.CreatePurchaseInvoiceDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ERP_API.API.Controllers.Purchasing.PurchaseInvoicesController",
+    "Method": "GetById",
+    "RelativePath": "api/PurchaseInvoices/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ERP_API.API.Controllers.Purchasing.PurchaseInvoicesController",
+    "Method": "Delete",
+    "RelativePath": "api/PurchaseInvoices/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ERP_API.API.Controllers.Purchasing.PurchaseInvoicesController",
+    "Method": "GetBySupplier",
+    "RelativePath": "api/PurchaseInvoices/supplier/{supplierId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "supplierId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ERP_API.API.Controllers.Purchasing.PurchaseReturnsController",
+    "Method": "GetAll",
+    "RelativePath": "api/PurchaseReturns",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ERP_API.API.Controllers.Purchasing.PurchaseReturnsController",
+    "Method": "Create",
+    "RelativePath": "api/PurchaseReturns",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "ERP_API.Application.DTOs.Purchasing.PurchaseReturn.CreatePurchaseReturnDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ERP_API.API.Controllers.Purchasing.PurchaseReturnsController",
+    "Method": "GetById",
+    "RelativePath": "api/PurchaseReturns/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ERP_API.API.Controllers.Purchasing.PurchaseReturnsController",
+    "Method": "Delete",
+    "RelativePath": "api/PurchaseReturns/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ERP_API.API.Controllers.Purchasing.PurchaseReturnsController",
+    "Method": "GetBySupplier",
+    "RelativePath": "api/PurchaseReturns/supplier/{supplierId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "supplierId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ERP_API.API.Controllers.Sales.SalesInvoicesController",
+    "Method": "GetAll",
+    "RelativePath": "api/SalesInvoices",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ERP_API.API.Controllers.Sales.SalesInvoicesController",
+    "Method": "Create",
+    "RelativePath": "api/SalesInvoices",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "ERP_API.Application.DTOs.Sales.SalesInvoice.CreateSalesInvoiceDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ERP_API.API.Controllers.Sales.SalesInvoicesController",
+    "Method": "GetById",
+    "RelativePath": "api/SalesInvoices/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ERP_API.API.Controllers.Sales.SalesInvoicesController",
+    "Method": "Delete",
+    "RelativePath": "api/SalesInvoices/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ERP_API.API.Controllers.Sales.SalesInvoicesController",
+    "Method": "GetByCustomer",
+    "RelativePath": "api/SalesInvoices/customer/{customerId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "customerId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ERP_API.API.Controllers.Sales.SalesReturnsController",
+    "Method": "GetAll",
+    "RelativePath": "api/SalesReturns",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ERP_API.API.Controllers.Sales.SalesReturnsController",
+    "Method": "Create",
+    "RelativePath": "api/SalesReturns",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "ERP_API.Application.DTOs.Sales.SalesReturn.CreateSalesReturnDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ERP_API.API.Controllers.Sales.SalesReturnsController",
+    "Method": "GetById",
+    "RelativePath": "api/SalesReturns/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ERP_API.API.Controllers.Sales.SalesReturnsController",
+    "Method": "Delete",
+    "RelativePath": "api/SalesReturns/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ERP_API.API.Controllers.Sales.SalesReturnsController",
+    "Method": "GetByCustomer",
+    "RelativePath": "api/SalesReturns/customer/{customerId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "customerId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ERP_API.API.Controllers.WarehousesController",
     "Method": "GetAll",
     "RelativePath": "api/Warehouses",

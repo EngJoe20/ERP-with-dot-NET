@@ -10,11 +10,11 @@ namespace ERP_API.Application.DTOs.InventoryAdjustment
     {
         public int Id { get; set; }
         public DateTime Date { get; set; }
-        public string WarehouseName { get; set; }
-        public string ProductName { get; set; } // Full name (Tiger - Chili - Carton)
+        public required string WarehouseName { get; set; }
+        public required string ProductName { get; set; } // Full name (Tiger - Chili - Carton)
 
-        public string Type { get; set; } // "Increase" or "Decrease"
-        public string Reason { get; set; }
+        public required string Type { get; set; } // "Increase" or "Decrease"
+        public required string Reason { get; set; }
 
         public decimal Difference { get; set; } // +100 or -50
     }

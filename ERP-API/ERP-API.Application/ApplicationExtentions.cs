@@ -1,7 +1,11 @@
 ﻿using ERP_API.Application.Interfaces;
 using ERP_API.Application.Interfaces.Inventory;
+using ERP_API.Application.Interfaces.Purchasing;
+using ERP_API.Application.Interfaces.Sales;
 using ERP_API.Application.Interfaces.User;
 using ERP_API.Application.Services;
+using ERP_API.Application.Services.Purchasing;
+using ERP_API.Application.Services.Sales;
 using ERP_API.Application.Services.User;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -28,6 +32,13 @@ namespace ERP_API.Application
             services.AddScoped<IInventoryAdjustmentService, InventoryAdjustmentService>();
 
             services.AddScoped<IAccountService, AccountService>();
+
+
+
+            services.AddScoped<IPurchaseInvoiceService, PurchaseInvoiceService>();
+            services.AddScoped<IPurchaseReturnService, PurchaseReturnService>();
+            services.AddScoped<ISalesInvoiceService, SalesInvoiceService>();
+            services.AddScoped<ISalesReturnService, SalesReturnService>();
 
             return services;
         }

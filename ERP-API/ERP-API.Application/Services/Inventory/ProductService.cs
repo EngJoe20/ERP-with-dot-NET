@@ -79,7 +79,7 @@ namespace ERP_API.Application.Services
             {
                 Id = product.Id,
                 Name = product.Name,
-                Description = product.Description,
+                Description = product.Description ?? string.Empty, 
                 CategoryName = "General",
                 Variations = new List<VariationResponseDto>
                 {
@@ -87,7 +87,7 @@ namespace ERP_API.Application.Services
                     {
                         Id = variation.Id,
                         Name = variation.Name,
-                        Flavor = variation.Flavor,
+                        Flavor = variation.Flavor ?? string.Empty,
                         SKU = variation.SKU,
                         Packages = new List<PackageResponseDto>
                         {
@@ -146,7 +146,7 @@ namespace ERP_API.Application.Services
             {
                 Id = variation.Id,
                 Name = variation.Name,
-                Flavor = variation.Flavor,
+                Flavor = variation.Flavor ?? string.Empty, // Ensure non-null assignment
                 SKU = variation.SKU,
                 Packages = new List<PackageResponseDto>
                 {
@@ -221,13 +221,13 @@ namespace ERP_API.Application.Services
                 {
                     Id = p.Id,
                     Name = p.Name,
-                    Description = p.Description,
+                    Description = p.Description ?? string.Empty,
                     CategoryName = p.Category != null ? p.Category.Name : "Uncategorized",
                     Variations = p.Variations.Select(v => new VariationResponseDto
                     {
                         Id = v.Id,
                         Name = v.Name,
-                        Flavor = v.Flavor,
+                        Flavor = v.Flavor ?? string.Empty,
                         SKU = v.SKU,
                         Packages = v.ProductPackages.Select(pkg => new PackageResponseDto
                         {

@@ -10,11 +10,11 @@ namespace ERP_API.Application.DTOs.Warehouse
     {
         // Header Info
         public int Id { get; set; }
-        public string Name { get; set; }
+        public required string Name { get; set; }
         public string? Location { get; set; }
         public bool IsMainWarehouse { get; set; }
 
         // The Inventory Table
-        public IEnumerable<WarehouseStockDto> StockItems { get; set; }
+        public required IEnumerable<WarehouseStockDto> StockItems { get; set; }
     }
 }

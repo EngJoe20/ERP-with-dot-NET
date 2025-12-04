@@ -9,7 +9,7 @@ namespace ERP_API.Application.DTOs.Inventory.Product
     public class ProductSummaryDto
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public required string Name { get; set; }
 
         // ✅ NEW: The count
         public int VariationCount { get; set; }

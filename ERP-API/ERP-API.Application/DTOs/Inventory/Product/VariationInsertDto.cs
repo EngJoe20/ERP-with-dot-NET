@@ -9,7 +9,7 @@ namespace ERP_API.Application.DTOs.Inventory.Product
     public class VariationInsertDto
     {
         // Variation Details
-        public string VariationName { get; set; } // e.g., "Cheese"
+        public required string VariationName { get; set; } // e.g., "Cheese"
         public string? Flavor { get; set; }
         public string? Size { get; set; }
 

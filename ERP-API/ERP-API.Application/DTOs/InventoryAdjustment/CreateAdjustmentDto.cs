@@ -20,7 +20,7 @@ namespace ERP_API.Application.DTOs.InventoryAdjustment
         public decimal NewQuantity { get; set; } // "Type the new quantity"
 
         [Required]
-        public string Reason { get; set; } // "Stolen", "Expired"
+        public required string Reason { get; set; } // "Stolen", "Expired"
 
         // public int? UserId { get; set; } // We will handle this later
     }

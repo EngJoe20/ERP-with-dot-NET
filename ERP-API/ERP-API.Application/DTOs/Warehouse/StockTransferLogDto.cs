@@ -12,13 +12,13 @@ namespace ERP_API.Application.DTOs.Warehouse
         public DateTime Date { get; set; }
 
         // Readable Names instead of IDs
-        public string FromWarehouse { get; set; }
-        public string ToWarehouse { get; set; }
+        public required string FromWarehouse { get; set; }
+        public required string ToWarehouse { get; set; }
 
         // Product Details combined
-        public string ProductName { get; set; }
-        public string VariationName { get; set; }
-        public string PackageType { get; set; }
+        public required string ProductName { get; set; }
+        public required string VariationName { get; set; }
+        public required string PackageType { get; set; }
 
         public decimal Quantity { get; set; }
     }

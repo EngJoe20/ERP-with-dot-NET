@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ERP_API.DataAccess.Migrations
 {
     [DbContext(typeof(ErpDBContext))]
-    [Migration("20251204003836_InitialCreate2")]
-    partial class InitialCreate2
+    [Migration("20251204144441_InitialCreate3")]
+    partial class InitialCreate3
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

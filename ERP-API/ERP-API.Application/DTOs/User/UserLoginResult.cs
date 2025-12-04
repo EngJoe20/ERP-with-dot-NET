@@ -17,6 +17,9 @@ namespace ERP_API.Application.DTOs.User
                 Token = string.Empty,
                 RefreshToken = string.Empty
             };
+            Claims = new List<AppClaim>();
+            Roles = Array.Empty<string>();
+            UserName = string.Empty;
         }
 
         public string UserName { get; set; }

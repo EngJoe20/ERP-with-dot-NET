@@ -9,12 +9,12 @@ namespace ERP_API.Application.DTOs.Inventory.Product
     public class ProductInsertDto
     {
         // Product Info
-        public string Name { get; set; }
+        public required string Name { get; set; }
         public string? Description { get; set; }
         public int? CategoryId { get; set; }
 
         // Variation Info
-        public string VariationName { get; set; }
+        public required string VariationName { get; set; }
         public string? Flavor { get; set; }
         public string? Size { get; set; }
 
