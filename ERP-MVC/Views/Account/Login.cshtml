@@ -24,7 +24,15 @@
                     <img src="~/assets/images/logo-icon.png" alt="logo icon">
                 </div>
                 <div class="card-title text-uppercase text-center py-3">Welcome Back!<br>Login</div>
-
+                @if (!ViewData.ModelState.IsValid)
+                {
+                    <div class="alert alert-danger">
+                        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                        {
+                            <div>@error.ErrorMessage</div>
+                        }
+                    </div>
+                }
                 <form asp-controller="Account" asp-action="login" method="post">
                     <div class="form-group">
                         <label for="Username" class="sr-only">Username</label>

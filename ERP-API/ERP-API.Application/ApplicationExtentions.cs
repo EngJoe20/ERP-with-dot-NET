@@ -23,6 +23,7 @@ namespace ERP_API.Application
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
+            services.AddScoped<IAccountService, AccountService>();
             // Register your Services here
             services.AddScoped<IProductService, ProductService>();
 
@@ -39,6 +40,9 @@ namespace ERP_API.Application
             services.AddScoped<IReceiptOrderService, ReceiptOrderService>();
             services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<ISupplierService, SupplierService>();
+
+            services.AddScoped<IUserManagementService, UserManagementService>();
+
 
 
 

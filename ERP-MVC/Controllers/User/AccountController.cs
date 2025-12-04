@@ -17,50 +17,47 @@ namespace ERP_MVC.Controllers.User
             _accountService = accountService;
         }
 
-        public IActionResult Register()
-        {
-            return View();
-        }
+        public IActionResult Register() => View();
 
         [HttpPost]
         public async Task<IActionResult> Register(UserRegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
-                // Register Through the API
                 var result = await _accountService.Register(model);
-                if (result)
-                {
-                    return RedirectToAction("Privacy", "Home");
-                }
-
-
+                if (result) return RedirectToAction("Privacy", "Home");
             }
             return View(model);
         }
 
-        public IActionResult Login()
-        {
-            return View();
-        }
+        public IActionResult Login() => View();
 
         [HttpPost]
         public async Task<IActionResult> login(UserLoginViewModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
+                return View(model);
+
+            try
             {
-                // Login Through the API
                 var result = await _accountService.Login(model);
 
                 if (result != null)
                 {
                     var signinResult = await SigninUser(result);
+                    if (signinResult)
+                        return RedirectToAction("Privacy", "Home");
                 }
-
-                return RedirectToAction("Privacy", "Home");
             }
+            catch (Exception ex)
+            {
+                // الرسالة القادمة من الـ API تظهر مباشرة
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
+
             return View(model);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
@@ -69,39 +66,25 @@ namespace ERP_MVC.Controllers.User
             return RedirectToAction("Index", "Home");
         }
 
-
         private async Task<bool> SigninUser(LoginResult loginResult)
         {
             try
             {
-                //List<Claim> claims = new List<Claim>() {
-                //    new Claim(ClaimTypes.Name,loginResult.UserName),
-                //    new Claim("jwt",loginResult.TokenResult.Token)
-                //};
-
                 var claims = loginResult.Claims.Select(c => new Claim(c.Type, c.Value)).ToList();
-
                 claims.Add(new Claim("jwt", loginResult.TokenResult.Token));
 
                 var scheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, scheme);
+                var claimsIdentity = new ClaimsIdentity(claims, scheme);
 
-                AuthenticationProperties properties = new AuthenticationProperties
-                {
-                    IsPersistent = true,
-                };
-
+                var properties = new AuthenticationProperties { IsPersistent = true };
                 await HttpContext.SignInAsync(scheme, new ClaimsPrincipal(claimsIdentity), properties);
+
                 return true;
             }
             catch
             {
                 return false;
             }
-
-
         }
-
-
     }
 }

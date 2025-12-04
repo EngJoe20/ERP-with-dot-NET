@@ -12,9 +12,6 @@ namespace ERP_MVC.Models.ViewModels.User
         [Display(Name = "User Name")]
         public string UserName { get; set; }
 
-        [Display(Name = "Remember Me.")]
-        public bool RememberMe { get; set; }
-
 
     }
 }
