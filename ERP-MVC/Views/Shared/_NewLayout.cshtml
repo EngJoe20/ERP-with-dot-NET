@@ -1,138 +1,164 @@
-﻿@* Main Layout for MVC Pages (Dashboard style) *@
-@{
-    var title = ViewData["Title"] ?? "MyApp";
-    var appName = "MyApp";
+﻿@{
+    var title = ViewData["Title"] ?? "Axis One";
 }
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>@appName - MyApp</title>
 
-    <!-- Loader CSS -->
+    <title>@title</title>
+
+    <!-- loader-->
     <link href="~/assets/css/pace.min.css" rel="stylesheet" />
     <script src="~/assets/js/pace.min.js"></script>
 
-    <!-- Favicon -->
+    <!--favicon-->
     <link rel="icon" href="~/assets/images/favicon.ico" type="image/x-icon" />
 
-    <!-- Plugins CSS -->
+    <!-- Vector CSS -->
+    <link href="~/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+
+    <!-- simplebar CSS-->
     <link href="~/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
-    
-    <!-- Bootstrap & Custom CSS -->
+
+    <!-- Bootstrap core CSS-->
     <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- animate CSS-->
     <link href="~/assets/css/animate.css" rel="stylesheet" />
+
+    <!-- Icons CSS-->
     <link href="~/assets/css/icons.css" rel="stylesheet" />
+
+    <!-- Sidebar CSS-->
     <link href="~/assets/css/sidebar-menu.css" rel="stylesheet" />
+
+    <!-- Custom Style-->
     <link href="~/assets/css/app-style.css" rel="stylesheet" />
+
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    @RenderSection("Styles", required: false)
 </head>
-<body class="bg-theme bg-theme2">
 
-    <!-- Topbar -->
-    <header class="topbar-nav">
-        <nav class="navbar navbar-expand fixed-top">
-            <ul class="navbar-nav mr-auto align-items-center">
-                <li class="nav-item">
-                    <a class="nav-link toggle-menu" href="javascript:void();">
-                        <i class="icon-menu menu-icon"></i>
-                    </a>
-                </li>
-            </ul>
+<body class="bg-theme bg-theme1">
 
-            <ul class="navbar-nav align-items-center right-nav-link">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="32" height="32" fill="#fff">
-                            <path d="M320 312C386.3 312 440 258.3 440 192C440 125.7 386.3 72 320 72C253.7 72 200 125.7 200 192C200 258.3 253.7 312 320 312zM290.3 368C191.8 368 112 447.8 112 546.3C112 562.7 125.3 576 141.7 576L498.3 576C514.7 576 528 562.7 528 546.3C528 447.8 448.2 368 349.7 368L290.3 368z" />
-                        </svg>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-right">
-                        <li class="dropdown-item">
-                            <a asp-controller="Account" asp-action="Login">
-                                <i class="zmdi zmdi-account mr-2"></i> Login
+    <div id="wrapper">
+
+        <!--Start topbar header-->
+        <header class="topbar-nav">
+            <nav class="navbar navbar-expand fixed-top d-flex justify-content-between align-items-center">
+
+                <!-- Logo (Right) -->
+                <div class="row g-2 header-home">
+                    <div class="logo-home">
+                        <div class="brand-logo">
+                            <a href="/">
+                                <img src="/assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
+                                <h5 class="logo-text">Axis One</h5>
                             </a>
-                        </li>
-                        <li class="dropdown-divider"></li>
-                        <li class="dropdown-item">
-                            <a asp-controller="Account" asp-action="about">
-                                <i class="icon-power mr-2"></i> about
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-    </header>
+                        </div>
+                    </div>
+                </div>
 
-    <!-- Main Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-5">
+                <!-- Login Button (Left) -->
+                <div class="login ms-auto">
+                    <a href="/Account/Login">
+                        <button type="button" class="btn btn-light px-5 login-button d-flex align-items-center gap-2">
+                            <span>Login</span>
+                            <i class="bi bi-box-arrow-in-right"></i>
+                        </button>
+                    </a>
+                </div>
+
+
+            </nav>
+        </header>
+
+        <!--End topbar header-->
+
+        <div class="container-fluid home-container">
+            @RenderBody()
+        </div>
+
+    </div>
+
+    <!--Start footer-->
+    <footer class="footer">
         <div class="container">
-            <a class="navbar-brand" asp-controller="Home" asp-action="Index">@appName</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Home" asp-action="Privacy">Customers</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Account" asp-action="Login">Login</a>
-                    </li>
-                </ul>
-            </div>
+            <div class="text-center"></div>
         </div>
-    </nav>
+    </footer>
+    <!--End footer-->
 
-    <!-- Main content -->
-    <main class="container my-5">
-        <div class="card shadow">
-            <div class="card-body">
-                @RenderBody()
-            </div>
+    <!--start color switcher-->
+    <div class="right-sidebar">
+        <div class="switcher-icon">
+            <i class="zmdi zmdi-settings zmdi-hc-spin"></i>
         </div>
-    </main>
+        <div class="right-sidebar-content">
 
-    <!-- Footer -->
+            <p class="mb-0">Gaussion Texture</p>
+            <hr>
 
+            <ul class="switcher">
+                <li id="theme1"></li>
+                <li id="theme2"></li>
+                <li id="theme3"></li>
+                <li id="theme4"></li>
+                <li id="theme5"></li>
+                <li id="theme6"></li>
+            </ul>
 
-    <!-- Scripts -->
+            <p class="mb-0">Gradient Background</p>
+            <hr>
+
+            <ul class="switcher">
+                <li id="theme7"></li>
+                <li id="theme8"></li>
+                <li id="theme9"></li>
+                <li id="theme10"></li>
+                <li id="theme11"></li>
+                <li id="theme12"></li>
+                <li id="theme13"></li>
+                <li id="theme14"></li>
+                <li id="theme15"></li>
+            </ul>
+
+        </div>
+    </div>
+    <!--end color switcher-->
+
+    <!-- JS -->
     <script src="~/assets/js/jquery.min.js"></script>
     <script src="~/assets/js/popper.min.js"></script>
     <script src="~/assets/js/bootstrap.min.js"></script>
+
     <script src="~/assets/plugins/simplebar/js/simplebar.js"></script>
     <script src="~/assets/js/sidebar-menu.js"></script>
+    <script src="~/assets/js/jquery.loading-indicator.js"></script>
     <script src="~/assets/js/app-script.js"></script>
+    <script src="~/assets/plugins/Chart.js/Chart.min.js"></script>
+    <script src="~/assets/js/index.js"></script>
 
     <script>
-        // Sidebar menu arrow toggle
-        (function ($) {
-            $(function () {
-                $('.sidebar-menu ul.submenu-angle').hide().attr('aria-expanded', 'false');
-                $('.sidebar-menu li').removeClass('open');
-
-                $('.sidebar-menu').on('click', 'a.has-arrow', function (e) {
-                    e.preventDefault();
-                    var $anchor = $(this);
-                    var $submenu = $anchor.next('ul.submenu-angle');
-                    if (!$submenu.length) return;
-                    $('.sidebar-menu ul.submenu-angle').not($submenu).slideUp(400).attr('aria-expanded', 'false');
-                    $('.sidebar-menu li').not($anchor.parent()).removeClass('open');
-                    $submenu.slideToggle(400);
-                    $anchor.parent().toggleClass('open');
-                    $submenu.attr('aria-expanded', $anchor.parent().hasClass('open'));
-                });
-            });
-        })(jQuery);
+        document.addEventListener("DOMContentLoaded", function () {
+            document.body.className = document.body.className.replace(/bg-theme\d+/g, "");
+            document.body.classList.add("bg-theme2");
+        });
     </script>
 
     @RenderSection("Scripts", required: false)
+
 </body>
 </html>
