@@ -11,5 +11,11 @@ namespace ERP_API.Application.Interfaces.Customers
     {
         Task<IEnumerable<CustomerDto>> GetAllCustomersAsync();
         Task<CustomerDto?> GetCustomerAsync(int id);
+        Task<CustomerDetailsDto?> GetCustomerDetailsAsync(int id);
+        Task<IEnumerable<CustomerTransactionDto>> GetCustomerTransactionsAsync(int customerId);
+
+        Task<CustomerDto> CreateCustomerAsync(CreateCustomerDto dto);
+        Task<CustomerDto?> UpdateCustomerAsync(int id, UpdateCustomerDto dto);
+        Task<bool> DeleteCustomerAsync(int id);
     }
 }

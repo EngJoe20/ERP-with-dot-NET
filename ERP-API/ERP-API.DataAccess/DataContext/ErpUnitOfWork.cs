@@ -1,5 +1,4 @@
-﻿
-using ERP_API.DataAccess.Entities.Customers;
+﻿using ERP_API.DataAccess.Entities.Customers;
 using ERP_API.DataAccess.Entities.Finance;
 using ERP_API.DataAccess.Entities.Inventory;
 using ERP_API.DataAccess.Entities.InventoryAdjustment;
@@ -7,7 +6,10 @@ using ERP_API.DataAccess.Entities.Suppliers;
 using ERP_API.DataAccess.Entities.User;
 using ERP_API.DataAccess.Entities.Warehouse;
 using ERP_API.DataAccess.Interfaces;
+using ERP_API.DataAccess.Interfaces.Customers;
+using ERP_API.DataAccess.Interfaces.Suppliers;
 using ERP_API.DataAccess.Repositories;
+using ERP_API.DataAccess.Repositories.Customers;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
@@ -45,10 +47,13 @@ namespace ERP_API.DataAccess.DataContext
             private readonly Lazy<IBaseRepository<MainSafeLedgerEntry, int>> _mainSafeLedgerEntries;
             private readonly Lazy<IBaseRepository<Expense, int>> _expenses;
             private readonly Lazy<IBaseRepository<ProfitSource, int>> _profitSources;
-            private readonly Lazy<IBaseRepository<Customer, int>> _customers;
             private readonly Lazy<IBaseRepository<CustomerTransaction, int>> _customerTransactions;
-            private readonly Lazy<IBaseRepository<Supplier, int>> _suppliers;
+
             private readonly Lazy<IBaseRepository<SupplierTransaction, int>> _supplierTransactions;
+
+            private readonly Lazy<ICustomerRepository> _customers;
+            private readonly Lazy<ISupplierRepository> _suppliers;
+    
 
 
             // 2. Constructor: Inject Context and Initialize Lazies
@@ -94,14 +99,21 @@ namespace ERP_API.DataAccess.DataContext
                     new BaseRepository<Expense, int>(_context));
                 _profitSources = new Lazy<IBaseRepository<ProfitSource, int>>(() =>
                     new BaseRepository<ProfitSource, int>(_context));
-                _customers = new Lazy<IBaseRepository<Customer, int>>(() =>
-                    new BaseRepository<Customer, int>(_context));
                 _customerTransactions = new Lazy<IBaseRepository<CustomerTransaction, int>>(() =>
                 new BaseRepository<CustomerTransaction, int>(_context));
-                _suppliers = new Lazy<IBaseRepository<Supplier, int>>(() =>
-                    new BaseRepository<Supplier, int>(_context));
+     
                 _supplierTransactions = new Lazy<IBaseRepository<SupplierTransaction, int>>(() =>
                     new BaseRepository<SupplierTransaction, int>(_context));
+
+
+                _customers = new Lazy<ICustomerRepository>(() =>
+                    new CustomerRepository(_context));
+
+                _suppliers = new Lazy<ISupplierRepository>(() =>
+                   new SupplierRepository(_context));
+
+
+
 
 
 
@@ -126,9 +138,10 @@ namespace ERP_API.DataAccess.DataContext
             public IBaseRepository<Expense, int> Expenses => _expenses.Value;
             public IBaseRepository<ProfitSource, int> ProfitSources => _profitSources.Value;
 
-            public IBaseRepository<Customer, int> Customers => _customers.Value;
+            public ICustomerRepository Customers => _customers.Value;
+            public ISupplierRepository Suppliers => _suppliers.Value;
+
             public IBaseRepository<CustomerTransaction, int> CustomerTransactions => _customerTransactions.Value;
-            public IBaseRepository<Supplier, int> Suppliers => _suppliers.Value;
             public IBaseRepository<SupplierTransaction, int> SupplierTransactions => _supplierTransactions.Value;
 
 

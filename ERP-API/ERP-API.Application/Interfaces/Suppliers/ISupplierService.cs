@@ -11,5 +11,11 @@ namespace ERP_API.Application.Interfaces.Suppliers
     {
         Task<IEnumerable<SupplierDto>> GetAllSuppliersAsync();
         Task<SupplierDto?> GetSupplierAsync(int id);
+        Task<SupplierDetailsDto?> GetSupplierDetailsAsync(int id);
+        Task<IEnumerable<SupplierTransactionDto>> GetSupplierTransactionsAsync(int supplierId);
+
+        Task<SupplierDto> CreateSupplierAsync(CreateSupplierDto dto);
+        Task<SupplierDto?> UpdateSupplierAsync(int id, UpdateSupplierDto dto);
+        Task<bool> DeleteSupplierAsync(int id);
     }
 }
