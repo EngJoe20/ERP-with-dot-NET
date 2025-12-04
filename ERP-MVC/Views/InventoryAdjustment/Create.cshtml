@@ -1,0 +1,140 @@
+﻿@using ERP_MVC.Models.DTOs.InventoryAdjustment
+@model CreateAdjustmentDto
+
+@{
+    ViewData["Title"] = "New Adjustment";
+}
+
+<div class="row mt-4">
+    <div class="col-lg-8 mx-auto">
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-4">
+
+                <div class="d-flex align-items-center mb-4">
+                    <div class="bg-warning bg-opacity-10 p-3 rounded-circle me-3">
+                        <i class="fa-solid fa-clipboard-check text-warning fa-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="card-title fw-bold mb-0">Adjust Inventory</h4>
+                        <p class="text-muted small mb-0">Correct stock levels based on physical counts</p>
+                    </div>
+                </div>
+
+                <form asp-action="Create" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                    <div class="bg-light p-3 rounded-3 mb-4 border">
+                        <div class="row g-3">
+
+                            <div class="col-md-6">
+                                <label asp-for="WarehouseId" class="form-label fw-bold">Warehouse</label>
+                                <select asp-for="WarehouseId" id="ddlWarehouse" class="form-select" asp-items="ViewBag.WarehouseList">
+                                    <option value="" disabled selected>-- Select Warehouse --</option>
+                                </select>
+                                <span asp-validation-for="WarehouseId" class="text-danger small"></span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label asp-for="ProductPackageId" class="form-label fw-bold">Product</label>
+                                <select asp-for="ProductPackageId" id="ddlProduct" class="form-select" disabled>
+                                    <option value="" selected>-- Select Warehouse First --</option>
+                                </select>
+                                <span asp-validation-for="ProductPackageId" class="text-danger small"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mb-4">
+
+                        <div class="col-md-4">
+                            <label class="form-label fw-bold text-muted">Current System Stock</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0"><i class="fa-solid fa-database text-secondary"></i></span>
+                                <input type="text" id="txtCurrentStock" class="form-control bg-light text-secondary fw-bold" value="-" readonly>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label asp-for="NewQuantity" class="form-label fw-bold">New Physical Count</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-white border-end-0"><i class="fa-solid fa-pen-to-square text-primary"></i></span>
+                                <input asp-for="NewQuantity" type="number" step="0.01" class="form-control ps-0 fw-bold text-dark" placeholder="0.00">
+                            </div>
+                            <span asp-validation-for="NewQuantity" class="text-danger small"></span>
+                        </div>
+
+                        <div class="col-12">
+                            <label asp-for="Reason" class="form-label fw-bold">Adjustment Reason</label>
+                            <textarea asp-for="Reason" class="form-control" rows="2" placeholder="e.g., Damaged goods, Stocktake correction, Theft"></textarea>
+                            <span asp-validation-for="Reason" class="text-danger small"></span>
+                        </div>
+                    </div>
+
+                    <hr class="my-4 opacity-10">
+
+                    <div class="d-flex justify-content-end gap-2">
+                        <a asp-action="Index" class="btn btn-outline-secondary btn-round px-4">Cancel</a>
+                        <button type="submit" class="btn btn-warning btn-round px-5 fw-bold text-dark">
+                            <i class="fa-solid fa-check me-2"></i> Confirm Adjustment
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const warehouseSelect = document.getElementById("ddlWarehouse");
+            const productSelect = document.getElementById("ddlProduct");
+            const currentStockInput = document.getElementById("txtCurrentStock");
+
+            // 1. Listen for Warehouse Changes
+            warehouseSelect.addEventListener("change", function () {
+                const warehouseId = this.value;
+
+                // Reset UI
+                productSelect.innerHTML = '<option value="">Loading...</option>';
+                productSelect.disabled = true;
+                currentStockInput.value = "-";
+
+                // Fetch Products via AJAX Helper
+                fetch(`/InventoryAdjustment/GetProductsByWarehouse?warehouseId=${warehouseId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        productSelect.innerHTML = '<option value="" selected disabled>-- Select Product --</option>';
+
+                        if (data.length === 0) {
+                            productSelect.innerHTML += '<option disabled>No items in this warehouse</option>';
+                        } else {
+                            data.forEach(item => {
+                                let option = document.createElement("option");
+                                option.value = item.id;
+                                option.text = item.displayText;
+                                // Store the raw current quantity in a data attribute
+                                option.setAttribute("data-current", item.currentQty);
+                                productSelect.appendChild(option);
+                            });
+                            productSelect.disabled = false;
+                        }
+                    })
+                    .catch(err => console.error(err));
+            });
+
+            // 2. Listen for Product Changes to update "Current Stock" display
+            productSelect.addEventListener("change", function () {
+                const selectedOption = this.options[this.selectedIndex];
+                const currentQty = selectedOption.getAttribute("data-current");
+
+                if (currentQty) {
+                    currentStockInput.value = parseFloat(currentQty).toFixed(2);
+                } else {
+                    currentStockInput.value = "-";
+                }
+            });
+        });
+    </script>
+}

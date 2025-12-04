@@ -71,7 +71,7 @@
 
                         <li>
                             <a asp-controller="Product" asp-action="Create">
-                                Add New Item
+                                Add New Product
                             </a>
                         </li>
 
@@ -85,17 +85,37 @@
                                 Add New Package
                             </a>
                         </li>
+                        <li>
+                            <a asp-controller="Warehouse" asp-action="Index">Warehouses List</a>
+                        </li>
+                        <li>
+                            <a asp-controller="Warehouse" asp-action="Create">Add Warehouse</a>
+                        </li>
+                        <li>
+                            <a asp-controller="Warehouse" asp-action="Transfer">Transfer Stock</a>
+                        </li>
+                        <li>
+                            <a asp-controller="Warehouse" asp-action="Logs">Transfer Logs</a>
+                        </li>
                     </ul>
                 </li>
 
                 <!-- Inventory Adjustments -->
                 <li>
                     <a href="javascript:void();" class="has-arrow">
-                        <i class="zmdi zmdi-home"></i> <span>Warehouse Adjustments</span>
+                        <i class="zmdi zmdi-edit"></i> <span>Warehouse Adjustments</span>
                     </a>
                     <ul class="submenu-angle">
-                        <li><a href="adjustments-list.html">Adjustments List</a></li>
-                        <li><a href="add-adjustment.html">Add Adjustment</a></li>
+                        <li>
+                            <a asp-controller="InventoryAdjustment" asp-action="Index">
+                                Adjustments List
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-controller="InventoryAdjustment" asp-action="Create">
+                                Add Adjustment
+                            </a>
+                        </li>
                     </ul>
                 </li>
 
@@ -235,44 +255,6 @@
                 <span class="text-white">© 2025 MyApp. All Rights Reserved.</span>
             </div>
         </footer>
-
-        <!--start color switcher-->
-        <div class="right-sidebar">
-            <div class="switcher-icon">
-                <i class="zmdi zmdi-settings zmdi-hc-spin"></i>
-            </div>
-            <div class="right-sidebar-content">
-
-                <p class="mb-0">Gaussion Texture</p>
-                <hr>
-
-                <ul class="switcher">
-                    <li id="theme1"></li>
-                    <li id="theme2"></li>
-                    <li id="theme3"></li>
-                    <li id="theme4"></li>
-                    <li id="theme5"></li>
-                    <li id="theme6"></li>
-                </ul>
-
-                <p class="mb-0">Gradient Background</p>
-                <hr>
-
-                <ul class="switcher">
-                    <li id="theme7"></li>
-                    <li id="theme8"></li>
-                    <li id="theme9"></li>
-                    <li id="theme10"></li>
-                    <li id="theme11"></li>
-                    <li id="theme12"></li>
-                    <li id="theme13"></li>
-                    <li id="theme14"></li>
-                    <li id="theme15"></li>
-                </ul>
-
-            </div>
-        </div>
-        <!--end color switcher-->
 
     </div>
 

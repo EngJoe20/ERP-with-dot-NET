@@ -1,0 +1,96 @@
+﻿@using ERP_MVC.Models.DTOs.Warehouse
+@model IEnumerable<WarehouseItemDto>
+
+@{
+    ViewData["Title"] = "Warehouses List";
+}
+
+<div class="col-12">
+    <div class="card shadow-sm border-0 bg-transparent">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h3 class="text-white fw-bold mb-0">Warehouses</h3>
+                <p class="text-white-50 mb-0 small">Manage physical and virtual storage locations</p>
+            </div>
+
+            <a asp-controller="Warehouse" asp-action="Create" class="btn btn-light rounded-pill px-4 py-2 fw-semibold">
+                <i class="fa-solid fa-plus me-2"></i> Add Warehouse
+            </a>
+        </div>
+
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle" style="background-color: rgba(255, 255, 255, 0.05); color: #fff; border-radius: 8px; overflow: hidden;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <th scope="col" class="py-3 ps-4 text-secondary text-uppercase text-xs font-weight-bolder opacity-7" style="width: 50px;">#</th>
+                            <th scope="col" class="py-3 text-secondary text-uppercase text-xs font-weight-bolder opacity-7">Warehouse Name</th>
+                            <th scope="col" class="py-3 text-secondary text-uppercase text-xs font-weight-bolder opacity-7">Location</th>
+                            <th scope="col" class="py-3 text-secondary text-uppercase text-xs font-weight-bolder opacity-7">Type</th>
+                            <th scope="col" class="py-3 pe-4 text-secondary text-uppercase text-xs font-weight-bolder opacity-7 text-end">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            int rowNo = 1;
+                            foreach (var item in Model)
+                            {
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                    <th scope="row" class="ps-4 text-white">@rowNo</th>
+
+                                    <td class="fw-bold text-white">
+                                        <i class="fa-solid fa-warehouse me-2 text-secondary"></i>
+                                        @item.Name
+                                    </td>
+
+                                    <td class="text-white-50">
+                                        <i class="fa-solid fa-location-dot me-1 small"></i>
+                                        @(string.IsNullOrEmpty(item.Location) ? "N/A" : item.Location)
+                                    </td>
+
+                                    <td class="text-white-50">
+                                        @if (item.IsMainWarehouse)
+                                        {
+                                            <i class="fa-solid fa-cloud me-1 small"></i>
+                                            @:Virtual Main
+                                        }
+                                        else
+                                        {
+                                            <i class="fa-solid fa-building me-1 small"></i>
+                                            @:Physical Branch
+                                        }
+                                    </td>
+                                    <td class="text-end pe-4">
+                                        <div class="d-flex justify-content-end gap-3">
+                                            <a asp-controller="Warehouse" asp-action="Details" asp-route-id="@item.Id" title="View Stock">
+                                                <i class="fa-solid fa-boxes-stacked" style="color: #a78bfa; cursor: pointer;"></i>
+                                            </a>
+                                            <span class="text-muted small fst-italic">View Details</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                rowNo++;
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="5" class="text-center py-5 text-muted">
+                                    No warehouses found.
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .table-hover tbody tr:hover {
+        background-color: rgba(255, 255, 255, 0.1) !important;
+    }
+</style>

@@ -1,0 +1,96 @@
+﻿@using ERP_MVC.Models.DTOs.InventoryAdjustment
+@model IEnumerable<AdjustmentLogDto>
+
+@{
+    ViewData["Title"] = "Inventory Adjustments";
+}
+
+<div class="col-12 mx-auto">
+    <div class="card shadow-sm border-0 bg-transparent">
+        <div class="card-body">
+
+            <div class="d-flex align-items-center justify-content-between mb-4">
+                <div>
+                    <h5 class="card-title fw-bold mb-1 text-white">
+                        <i class="fa-solid fa-scale-balanced text-warning me-2"></i>Adjustment History
+                    </h5>
+                    <p class="text-white-50 small mb-0">Record of manual stock corrections and counts</p>
+                </div>
+
+                <a asp-action="Create" class="btn btn-warning btn-round fw-bold text-dark px-4">
+                    <i class="fa-solid fa-plus me-2"></i> New Adjustment
+                </a>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table align-middle" style="background-color: transparent;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.2);">
+                            <th scope="col" class="text-white text-uppercase text-xs fw-bold ps-3">Date</th>
+                            <th scope="col" class="text-white text-uppercase text-xs fw-bold">Warehouse</th>
+                            <th scope="col" class="text-white text-uppercase text-xs fw-bold">Product</th>
+                            <th scope="col" class="text-white text-uppercase text-xs fw-bold text-center">Type</th>
+                            <th scope="col" class="text-white text-uppercase text-xs fw-bold">Reason</th>
+                            <th scope="col" class="text-white text-uppercase text-xs fw-bold text-end pe-4">Change</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            foreach (var item in Model)
+                            {
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+
+                                    <td class="ps-3 text-white">
+                                        <div class="d-flex flex-column">
+                                            <span class="fw-bold">@item.Date.ToString("MMM dd, yyyy")</span>
+                                            <span class="small text-white-50">@item.Date.ToString("hh:mm tt")</span>
+                                        </div>
+                                    </td>
+
+                                    <td class="text-white">
+                                        <i class="fa-solid fa-warehouse text-secondary me-2 small"></i>@item.WarehouseName
+                                    </td>
+
+                                    <td class="text-white">
+                                        <span class="fw-bold">@item.ProductName</span>
+                                    </td>
+
+                                    <td class="text-center text-white">
+                                        @item.Type
+                                    </td>
+
+                                    <td class="text-white">
+                                        @item.Reason
+                                    </td>
+
+                                    <td class="text-end pe-4">
+                                        @if (item.Difference > 0)
+                                        {
+                                            <span class="fw-bold text-success">+@item.Difference.ToString("N2")</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="fw-bold text-danger">@item.Difference.ToString("N2")</span>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="6" class="text-center py-5 text-white-50">
+                                    <div class="d-flex flex-column align-items-center">
+                                        <i class="fa-solid fa-clipboard-check fa-2x mb-2 opacity-50"></i>
+                                        <p class="mb-0">No adjustments found.</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
