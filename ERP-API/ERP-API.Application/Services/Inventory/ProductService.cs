@@ -222,24 +222,33 @@ namespace ERP_API.Application.Services
                     Name = p.Name,
                     Description = p.Description,
                     CategoryName = p.Category != null ? p.Category.Name : "Uncategorized",
+
                     Variations = p.Variations.Select(v => new VariationResponseDto
                     {
                         Id = v.Id,
                         Name = v.Name,
                         Flavor = v.Flavor,
                         SKU = v.SKU,
+
                         Packages = v.ProductPackages.Select(pkg => new PackageResponseDto
                         {
                             Id = pkg.Id,
                             PackageTypeName = pkg.PackageType.Name,
+                            Barcode = pkg.Barcode,
+
                             QinP = pkg.QinP,
                             SalesPrice = pkg.SalesPrice,
-                            Barcode = pkg.Barcode
+
+                            
+                            PurchasePrice = pkg.PurchasePrice,
+
+                           
+                            CurrentStock = pkg.WarehouseStocks.Sum(ws => ws.Quantity)
                         }).ToList()
                     }).ToList()
                 });
 
-            return await query.FirstOrDefaultAsync(); // ✅ Async Execution
+            return await query.FirstOrDefaultAsync();
         }
 
         // ==========================================================

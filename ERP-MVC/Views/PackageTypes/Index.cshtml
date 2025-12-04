@@ -1,28 +1,28 @@
-﻿@using ERP_MVC.Models.DTOs.Inventory.Product
-@model IEnumerable<ProductSummaryDto>
+﻿@using ERP_MVC.Models.DTOs.Inventory.Packages
+@model IEnumerable<PackageTypeItemDto>
 
 @{
-    ViewData["Title"] = "Products List";
+    ViewData["Title"] = "Packages List";
 }
 
 <div class="col-lg-8 mx-auto products-list">
     <div class="card">
         <div class="card-body">
             <div class="row g-2 add-item-button">
-                <h5 class="card-title product-list-title">Products List</h5>
-
-                <a asp-controller="Products" asp-action="Create" class="add-pro btn btn-light px-5">
-                    <i class="fa-solid fa-plus"></i> Add Product
+                <h5 class="card-title product-list-title">Packages List</h5>
+                <a asp-controller="PackageTypes" asp-action="Create" class="add-pro">
+                    <button type="submit" class="btn btn-light px-5">
+                        <i class="fa-solid fa-plus"></i> Add Package
+                    </button>
                 </a>
             </div>
-
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Variations Count</th>
+                            <th scope="col">#</th>
+                            <th scope="col">Packaging Type</th>
+                            <th scope="col">Unit of Measure</th>
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
@@ -35,23 +35,17 @@
                                     <th scope="row">@item.Id</th>
                                     <td>@item.Name</td>
                                     <td>
-                                        <span class="badge bg-secondary">
-                                            @item.VariationCount Types
+                                        <span class="badge bg-info text-dark">
+                                            @item.UnitOfMeasurement
                                         </span>
                                     </td>
                                     <td>
-                                        <div class="product-actions">
-                                            <a asp-controller="Product" asp-action="ProductDetails" asp-route-id="@item.Id" title="View Details">
+                                        <div class="package-actions">
+                                            <a asp-controller="PackageTypes" asp-action="Details" asp-route-id="@item.Id" title="View Usage">
                                                 <i class="fa-solid fa-eye text-primary"></i>
                                             </a>
-
-                                            <a href="#" class="mx-2" title="Delete">
-                                                <i class="fa-solid fa-trash text-danger"></i>
-                                            </a>
-
-                                            <a href="#" title="Edit">
-                                                <i class="fa-solid fa-pen-to-square text-warning"></i>
-                                            </a>
+                                            <a href="#" class="mx-2"><i class="fa-solid fa-pen-to-square text-warning"></i></a>
+                                            <a href="#"><i class="fa-solid fa-trash text-danger"></i></a>
                                         </div>
                                     </td>
                                 </tr>
@@ -60,7 +54,7 @@
                         else
                         {
                             <tr>
-                                <td colspan="4" class="text-center">No products found.</td>
+                                <td colspan="4" class="text-center text-muted">No packages found.</td>
                             </tr>
                         }
                     </tbody>

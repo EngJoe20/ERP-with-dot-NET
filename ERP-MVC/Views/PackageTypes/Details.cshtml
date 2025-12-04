@@ -1,0 +1,66 @@
+﻿@using ERP_MVC.Models.DTOs.Inventory.Packages
+@model PackageDetailsDto
+
+@{
+    ViewData["Title"] = "Package Details";
+}
+
+<div class="col-lg-8 mx-auto products-list">
+    <div class="card">
+        <div class="card-body">
+            <div class="row g-2 add-item-button align-items-center mb-3">
+                <div class="col">
+                    <h5 class="card-title product-list-title mb-0">
+                        @Model.PackageTypeName
+                        <span class="badge bg-info text-dark ms-2" style="font-size: 0.7rem;">@Model.UnitOfMeasurement</span>
+                    </h5>
+                    <small class="text-muted">List of products using this package</small>
+                </div>
+
+                <div class="col-auto">
+                    <a asp-action="Index" class="add-pro">
+                        <button type="button" class="btn btn-light px-4">
+                            <i class="fa-solid fa-arrow-left"></i> Back
+                        </button>
+                    </a>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="width: 50px;">#</th>
+                            <th scope="col">Product Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.ProductsUsingThis != null && Model.ProductsUsingThis.Any())
+                        {
+                            int rowNo = 1;
+                            foreach (var productName in Model.ProductsUsingThis)
+                            {
+                                <tr>
+                                    <th scope="row">@rowNo</th>
+                                    <td>
+                                        <i class="fa-solid fa-box text-secondary me-2"></i>
+                                        @productName
+                                    </td>
+                                </tr>
+                                rowNo++;
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="2" class="text-center py-4 text-muted">
+                                    No products are currently linked to this package type.
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

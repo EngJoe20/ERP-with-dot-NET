@@ -1,0 +1,265 @@
+﻿@using ERP_MVC.Models.DTOs.Inventory.Product
+@model PackageLinkInsertDto
+
+@{
+    ViewData["Title"] = "Add Package";
+    int variationId = ViewBag.VariationId;
+    int productId = ViewBag.ProductId;
+}
+
+<div class="col-lg-9 col-xl-8 mx-auto">
+    <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+        <div class="card-header bg-gradient-primary text-white py-4">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h4 class="m-0 fw-bold mb-1">
+                        <i class="fa-solid fa-box-circle-check me-2"></i> Add New Package Option
+                    </h4>
+                    <p class="m-0 opacity-75 small">Product Variation Configuration</p>
+                </div>
+                <a asp-action="ProductDetails" asp-route-id="@productId" class="btn btn-sm btn-light text-primary fw-semibold px-3 py-2 rounded-3">
+                    <i class="fa-solid fa-xmark me-2"></i> Cancel
+                </a>
+            </div>
+        </div>
+
+        <div class="card-body p-5">
+            <form asp-action="AddPackage" asp-route-variationId="@variationId" asp-route-productId="@productId" method="post">
+
+                <!-- Package Details Section -->
+                <div class="section-card mb-5">
+                    <div class="section-header mb-4">
+                        <div class="d-flex align-items-center mb-2">
+                            <div class="icon-wrapper bg-primary-soft rounded-circle p-2 me-3">
+                                <i class="fa-solid fa-box text-primary fs-5"></i>
+                            </div>
+                            <h5 class="m-0 fw-bold text-dark">Package Details</h5>
+                        </div>
+                        <div class="border-bottom pb-3"></div>
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="PackageTypeId" class="form-label fw-semibold text-dark mb-2">
+                                    Package Type <span class="text-danger ms-1">*</span>
+                                </label>
+                                <select asp-for="PackageTypeId"
+                                        asp-items="@(ViewBag.PackageTypeOptions as IEnumerable<SelectListItem>)"
+                                        class="form-select form-select-lg border-2 border-primary-subtle rounded-3 py-3"
+                                        required>
+                                    <option value="" class="text-muted">-- Select Package Type --</option>
+                                </select>
+                                <span asp-validation-for="PackageTypeId" class="text-danger small mt-2 d-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="QinP" class="form-label fw-semibold text-dark mb-2">
+                                    Units Per Package <span class="text-danger ms-1">*</span>
+                                </label>
+                                <div class="input-group input-group-lg shadow-sm">
+                                    <span class="input-group-text bg-primary text-white border-primary border-end-0 rounded-start-3 px-4">
+                                        <i class="fa-solid fa-layer-group"></i>
+                                    </span>
+                                    <input asp-for="QinP" type="number" step="0.01"
+                                           class="form-control border-primary border-start-0 border-2 rounded-end-3 py-3"
+                                           placeholder="e.g. 24" required />
+                                </div>
+                                <div class="mt-2">
+                                    <small class="text-muted">
+                                        <i class="fa-solid fa-circle-question me-1"></i> How many individual items are in this package?
+                                    </small>
+                                </div>
+                                <span asp-validation-for="QinP" class="text-danger small mt-2 d-block"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pricing Information Section -->
+                <div class="section-card mb-5">
+                    <div class="section-header mb-4">
+                        <div class="d-flex align-items-center mb-2">
+                            <div class="icon-wrapper bg-success-soft rounded-circle p-2 me-3">
+                                <i class="fa-solid fa-money-bill-wave text-success fs-5"></i>
+                            </div>
+                            <h5 class="m-0 fw-bold text-dark">Pricing Information</h5>
+                        </div>
+                        <div class="border-bottom pb-3"></div>
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="PurchasePrice" class="form-label fw-semibold text-dark mb-2">
+                                    Cost Price <span class="text-danger ms-1">*</span>
+                                </label>
+                                <div class="input-group input-group-lg shadow-sm">
+                                    <span class="input-group-text bg-danger text-white border-danger border-end-0 rounded-start-3 px-4 fw-bold">
+                                        $
+                                    </span>
+                                    <input asp-for="PurchasePrice" type="number" step="0.01"
+                                           class="form-control border-danger border-start-0 border-2 rounded-end-3 py-3"
+                                           placeholder="0.00" required />
+                                </div>
+                                <span asp-validation-for="PurchasePrice" class="text-danger small mt-2 d-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="SalesPrice" class="form-label fw-semibold text-dark mb-2">
+                                    Sales Price <span class="text-danger ms-1">*</span>
+                                </label>
+                                <div class="input-group input-group-lg shadow-sm">
+                                    <span class="input-group-text bg-success text-white border-success border-end-0 rounded-start-3 px-4 fw-bold">
+                                        $
+                                    </span>
+                                    <input asp-for="SalesPrice" type="number" step="0.01"
+                                           class="form-control border-success border-start-0 border-2 rounded-end-3 py-3"
+                                           placeholder="0.00" required />
+                                </div>
+                                <span asp-validation-for="SalesPrice" class="text-danger small mt-2 d-block"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Initial Stock Section -->
+                <div class="section-card mb-5">
+                    <div class="section-header mb-4">
+                        <div class="d-flex align-items-center mb-2">
+                            <div class="icon-wrapper bg-warning-soft rounded-circle p-3 me-3">
+                                <i class="fa-solid fa-warehouse text-warning fs-4"></i>
+                            </div>
+                            <div>
+                                <h5 class="m-0 fw-bold text-dark">Initial Stock</h5>
+                                <p class="m-0 text-muted small mt-1">Optional configuration for initial inventory</p>
+                            </div>
+                        </div>
+                        <div class="border-bottom pb-3"></div>
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label asp-for="InitialQuantity" class="form-label fw-semibold text-dark mb-2">
+                                    Starting Inventory
+                                </label>
+                                <div class="input-group input-group-lg shadow-sm">
+                                    <input asp-for="InitialQuantity" type="number" step="1"
+                                           class="form-control border-2 border-warning-subtle rounded-start-3 py-3"
+                                           placeholder="0" value="0" />
+                                    <span class="input-group-text bg-white border-warning-subtle border-start-0 border-2 rounded-end-3 fw-semibold px-4">
+                                        Packages
+                                    </span>
+                                </div>
+                                <div class="mt-3">
+                                    <div class="d-flex align-items-center text-muted">
+                                        <i class="fa-solid fa-circle-info text-warning me-2"></i>
+                                        <small>
+                                            This quantity will be automatically added to the <strong>Main Virtual Warehouse</strong> upon creation.
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="mt-5 pt-4 border-top">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <a asp-action="ProductDetails" asp-route-id="@productId"
+                           class="btn btn-outline-secondary border-2 px-5 py-3 fw-semibold rounded-3">
+                            <i class="fa-solid fa-arrow-left me-2"></i> Back
+                        </a>
+                        <button type="submit" class="btn btn-success px-5 py-3 fw-bold shadow-lg rounded-3 btn-hover-effect">
+                            <i class="fa-solid fa-floppy-disk me-2"></i> Save Package
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    .bg-gradient-primary {
+        background: linear-gradient(135deg, #4e73df 0%, #224abe 100%) !important;
+    }
+
+    .bg-primary-soft {
+        background-color: rgba(78, 115, 223, 0.1) !important;
+    }
+
+    .bg-success-soft {
+        background-color: rgba(40, 167, 69, 0.1) !important;
+    }
+
+    .bg-warning-soft {
+        background-color: rgba(255, 193, 7, 0.1) !important;
+    }
+
+    .section-card {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 1rem;
+        border: 1px solid #e9ecef;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+        border-color: #4e73df;
+        box-shadow: 0 0 0 0.25rem rgba(78, 115, 223, 0.15);
+        transform: translateY(-1px);
+        transition: all 0.2s ease;
+    }
+
+    .form-control,
+    .form-select {
+        transition: all 0.2s ease;
+    }
+
+    .input-group-text {
+        min-width: 50px;
+        justify-content: center;
+        transition: all 0.2s ease;
+    }
+
+    .btn-hover-effect:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
+        transition: all 0.3s ease;
+    }
+
+    .shadow-lg {
+        box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.08) !important;
+    }
+
+    .rounded-4 {
+        border-radius: 1rem !important;
+    }
+
+    .border-primary-subtle {
+        border-color: #d4ddf8 !important;
+    }
+
+    .border-warning-subtle {
+        border-color: #ffeeba !important;
+    }
+
+    .icon-wrapper {
+        width: 56px;
+        height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
