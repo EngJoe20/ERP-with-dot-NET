@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\elMa4ro3\\ERP-with-dot-NET\\ERP-API\\ERP-API.Application\\ERP-API.Application.csproj": {}
+    "D:\\Courses\\DEPI\\.NET_Full_stack\\ANA we ENG-JOE\\ERP-with-dot-NET\\ERP-API\\ERP-API.Application\\ERP-API.Application.csproj": {}
   },
   "projects": {
-    "E:\\elMa4ro3\\ERP-with-dot-NET\\ERP-API\\ERP-API.Application\\ERP-API.Application.csproj": {
+    "D:\\Courses\\DEPI\\.NET_Full_stack\\ANA we ENG-JOE\\ERP-with-dot-NET\\ERP-API\\ERP-API.Application\\ERP-API.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\elMa4ro3\\ERP-with-dot-NET\\ERP-API\\ERP-API.Application\\ERP-API.Application.csproj",
+        "projectUniqueName": "D:\\Courses\\DEPI\\.NET_Full_stack\\ANA we ENG-JOE\\ERP-with-dot-NET\\ERP-API\\ERP-API.Application\\ERP-API.Application.csproj",
         "projectName": "ERP-API.Application",
-        "projectPath": "E:\\elMa4ro3\\ERP-with-dot-NET\\ERP-API\\ERP-API.Application\\ERP-API.Application.csproj",
-        "packagesPath": "C:\\Users\\YoussefEbrahimMostaf\\.nuget\\packages\\",
-        "outputPath": "E:\\elMa4ro3\\ERP-with-dot-NET\\ERP-API\\ERP-API.Application\\obj\\",
+        "projectPath": "D:\\Courses\\DEPI\\.NET_Full_stack\\ANA we ENG-JOE\\ERP-with-dot-NET\\ERP-API\\ERP-API.Application\\ERP-API.Application.csproj",
+        "packagesPath": "C:\\Users\\adamm\\.nuget\\packages\\",
+        "outputPath": "D:\\Courses\\DEPI\\.NET_Full_stack\\ANA we ENG-JOE\\ERP-with-dot-NET\\ERP-API\\ERP-API.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\YoussefEbrahimMostaf\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\adamm\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -32,8 +32,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "E:\\elMa4ro3\\ERP-with-dot-NET\\ERP-API\\ERP-API.DataAccess\\ERP-API.DataAccess.csproj": {
-                "projectPath": "E:\\elMa4ro3\\ERP-with-dot-NET\\ERP-API\\ERP-API.DataAccess\\ERP-API.DataAccess.csproj"
+              "D:\\Courses\\DEPI\\.NET_Full_stack\\ANA we ENG-JOE\\ERP-with-dot-NET\\ERP-API\\ERP-API.DataAccess\\ERP-API.DataAccess.csproj": {
+                "projectPath": "D:\\Courses\\DEPI\\.NET_Full_stack\\ANA we ENG-JOE\\ERP-with-dot-NET\\ERP-API\\ERP-API.DataAccess\\ERP-API.DataAccess.csproj"
               }
             }
           }
@@ -48,7 +48,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net9.0": {
@@ -69,24 +69,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\elMa4ro3\\ERP-with-dot-NET\\ERP-API\\ERP-API.DataAccess\\ERP-API.DataAccess.csproj": {
+    "D:\\Courses\\DEPI\\.NET_Full_stack\\ANA we ENG-JOE\\ERP-with-dot-NET\\ERP-API\\ERP-API.DataAccess\\ERP-API.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\elMa4ro3\\ERP-with-dot-NET\\ERP-API\\ERP-API.DataAccess\\ERP-API.DataAccess.csproj",
+        "projectUniqueName": "D:\\Courses\\DEPI\\.NET_Full_stack\\ANA we ENG-JOE\\ERP-with-dot-NET\\ERP-API\\ERP-API.DataAccess\\ERP-API.DataAccess.csproj",
         "projectName": "ERP-API.DataAccess",
-        "projectPath": "E:\\elMa4ro3\\ERP-with-dot-NET\\ERP-API\\ERP-API.DataAccess\\ERP-API.DataAccess.csproj",
-        "packagesPath": "C:\\Users\\YoussefEbrahimMostaf\\.nuget\\packages\\",
-        "outputPath": "E:\\elMa4ro3\\ERP-with-dot-NET\\ERP-API\\ERP-API.DataAccess\\obj\\",
+        "projectPath": "D:\\Courses\\DEPI\\.NET_Full_stack\\ANA we ENG-JOE\\ERP-with-dot-NET\\ERP-API\\ERP-API.DataAccess\\ERP-API.DataAccess.csproj",
+        "packagesPath": "C:\\Users\\adamm\\.nuget\\packages\\",
+        "outputPath": "D:\\Courses\\DEPI\\.NET_Full_stack\\ANA we ENG-JOE\\ERP-with-dot-NET\\ERP-API\\ERP-API.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\YoussefEbrahimMostaf\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\adamm\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -113,7 +113,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net9.0": {
@@ -162,7 +162,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -15,183 +15,201 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.TargetFrameworkIdentifier = .NETCoreApp
+build_property.TargetFrameworkVersion = v9.0
 build_property.RootNamespace = ERP_MVC
 build_property.RootNamespace = ERP_MVC
-build_property.ProjectDir = E:\elMa4ro3\ERP-with-dot-NET\ERP-MVC\
+build_property.ProjectDir = D:\Courses\DEPI\.NET_Full_stack\ANA we ENG-JOE\ERP-with-dot-NET\ERP-MVC\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 9.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = E:\elMa4ro3\ERP-with-dot-NET\ERP-MVC
+build_property.MSBuildProjectDirectory = D:\Courses\DEPI\.NET_Full_stack\ANA we ENG-JOE\ERP-with-dot-NET\ERP-MVC
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/Account/Login.cshtml]
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/Customers/AddCustomer.cshtml]
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/Customers/AddCustomer.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJzXEFkZEN1c3RvbWVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/Customers/CustomersList.cshtml]
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/Customers/CustomersList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJzXEN1c3RvbWVyc0xpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/Finance/AddDismissalNotice.cshtml]
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/Finance/AddDismissalNotice.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmluYW5jZVxBZGREaXNtaXNzYWxOb3RpY2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/Finance/AddReceipt.cshtml]
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/Finance/AddReceipt.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmluYW5jZVxBZGRSZWNlaXB0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/Finance/PaymentVouchers.cshtml]
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/Finance/PaymentVouchers.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmluYW5jZVxQYXltZW50Vm91Y2hlcnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/Finance/ReceivingVouchers.cshtml]
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/Finance/ReceivingVouchers.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmluYW5jZVxSZWNlaXZpbmdWb3VjaGVycy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/Home/CustomersList.cshtml]
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/Home/CustomersList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDdXN0b21lcnNMaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/Home/Index.cshtml]
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/Home/Privacy.cshtml]
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/InventoryAdjustments/AddAdjustment.cshtml]
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/InventoryAdjustments/AddAdjustment.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5QWRqdXN0bWVudHNcQWRkQWRqdXN0bWVudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/InventoryAdjustments/AdjustmentsList.cshtml]
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/InventoryAdjustments/AdjustmentsList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5QWRqdXN0bWVudHNcQWRqdXN0bWVudHNMaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/Inventory/Product/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XFByb2R1Y3RcSW5kZXguY3NodG1s
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/PackageTypes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFja2FnZVR5cGVzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/Package/AddPackage.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFja2FnZVxBZGRQYWNrYWdlLmNzaHRtbA==
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/PackageTypes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFja2FnZVR5cGVzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/Package/PackageList.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFja2FnZVxQYWNrYWdlTGlzdC5jc2h0bWw=
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/PackageTypes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFja2FnZVR5cGVzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/Product/AddProduct.cshtml]
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/Product/AddPackage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxBZGRQYWNrYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/Product/AddProduct.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxBZGRQcm9kdWN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/Product/Index.cshtml]
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/Product/AddVariation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxBZGRWYXJpYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/Product/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/Product/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/Product/ProductsList.cshtml]
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/Product/ProductDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxQcm9kdWN0RGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/Product/ProductsList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxQcm9kdWN0c0xpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/Purchasing/AddPurchaseInvoice.cshtml]
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/Purchasing/AddPurchaseInvoice.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHVyY2hhc2luZ1xBZGRQdXJjaGFzZUludm9pY2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/Purchasing/AddPurchaseReturn.cshtml]
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/Purchasing/AddPurchaseReturn.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHVyY2hhc2luZ1xBZGRQdXJjaGFzZVJldHVybi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/Purchasing/PurchaseInvoicesList.cshtml]
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/Purchasing/PurchaseInvoicesList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHVyY2hhc2luZ1xQdXJjaGFzZUludm9pY2VzTGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/Purchasing/PurchaseReturnList.cshtml]
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/Purchasing/PurchaseReturnList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHVyY2hhc2luZ1xQdXJjaGFzZVJldHVybkxpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/Reports/CustomerReport.cshtml]
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/Reports/CustomerReport.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0c1xDdXN0b21lclJlcG9ydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/Reports/CustomersSummaryReport.cshtml]
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/Reports/CustomersSummaryReport.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0c1xDdXN0b21lcnNTdW1tYXJ5UmVwb3J0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/Reports/InvoicesReport.cshtml]
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/Reports/InvoicesReport.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0c1xJbnZvaWNlc1JlcG9ydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/Reports/ProductsReport.cshtml]
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/Reports/ProductsReport.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0c1xQcm9kdWN0c1JlcG9ydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/Reports/SuppliersSummaryReport.cshtml]
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/Reports/SuppliersSummaryReport.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0c1xTdXBwbGllcnNTdW1tYXJ5UmVwb3J0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/Sales/AddSalesInvoice.cshtml]
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/Sales/AddSalesInvoice.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZXNcQWRkU2FsZXNJbnZvaWNlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/Sales/AddSalesReturn.cshtml]
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/Sales/AddSalesReturn.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZXNcQWRkU2FsZXNSZXR1cm4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/Sales/SalesInvoicesList.cshtml]
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/Sales/SalesInvoicesList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZXNcU2FsZXNJbnZvaWNlc0xpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/Sales/SalesReturnList.cshtml]
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/Sales/SalesReturnList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZXNcU2FsZXNSZXR1cm5MaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/Shared/Error.cshtml]
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/Shared/_NewLayout - Copy.cshtml]
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/Shared/_NewLayout - Copy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9OZXdMYXlvdXQgLSBDb3B5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/Shared/_NewLayout.cshtml]
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/Shared/_NewLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9OZXdMYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/Suppliers/AddSupplier.cshtml]
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/Suppliers/AddSupplier.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwcGxpZXJzXEFkZFN1cHBsaWVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/Suppliers/SuppliersList.cshtml]
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/Suppliers/SuppliersList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwcGxpZXJzXFN1cHBsaWVyc0xpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/User/Profile.cshtml]
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/User/Profile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxQcm9maWxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/Warehouse/Transactions.cshtml]
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/Warehouse/Transactions.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2FyZWhvdXNlXFRyYW5zYWN0aW9ucy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/_ViewImports.cshtml]
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/_ViewStart.cshtml]
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/elMa4ro3/ERP-with-dot-NET/ERP-MVC/Views/Shared/_Layout.cshtml]
+[D:/Courses/DEPI/.NET_Full_stack/ANA we ENG-JOE/ERP-with-dot-NET/ERP-MVC/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-zo2hmqnkco

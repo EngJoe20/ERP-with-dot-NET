@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ERP_API.Application.DTOs.Inventory.Product
+namespace ERP_MVC.Models.DTOs.Inventory.Product
 {
     public class ProductListItemDto
     {
