@@ -11,7 +11,7 @@ namespace ERP_API.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize]
+    //[Authorize]
     public class PaymentOrderController : ControllerBase
     {
         private readonly IPaymentOrderService _paymentOrderService;

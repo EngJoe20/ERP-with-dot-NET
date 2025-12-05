@@ -150,9 +150,16 @@
                         <i class="zmdi zmdi-accounts"></i> <span>Customers</span>
                     </a>
                     <ul class="submenu-angle">
-                        <li><a href="customers-list.html">Customers List</a></li>
-                        <li><a href="add-customer.html">Add Customer</a></li>
-                        <li><a href="customers-summary-report.html">Summary Report</a></li>
+                        <li>
+                            <a asp-controller="Customer" asp-action="Index">
+                                Customers List
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-controller="Customer" asp-action="Create">
+                                Add Customer
+                            </a>
+                        </li>
                     </ul>
                 </li>
 

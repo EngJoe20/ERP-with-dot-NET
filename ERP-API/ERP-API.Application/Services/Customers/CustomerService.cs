@@ -14,6 +14,9 @@ namespace ERP_API.Application.Services.Customers
             _unitOfWork = unitOfWork;
         }
 
+        // ============================================================
+        // 1. Get All Customers
+        // ============================================================
         public async Task<IEnumerable<CustomerDto>> GetAllCustomersAsync()
         {
             var customers = await _unitOfWork.Customers.GetAllAsync();
@@ -22,6 +25,10 @@ namespace ERP_API.Application.Services.Customers
             {
                 Id = c.Id,
                 CustomerName = c.CustomerName,
+                TaxNumber = c.TaxNumber,
+                Email = c.Email,
+                Phone = c.Phone,
+                OpeningBalance = c.OpeningBalance,
                 TotalBalance = c.TotalBalance,
                 Description = c.Description,
                 CreatedAt = c.CreatedAt,
@@ -29,17 +36,22 @@ namespace ERP_API.Application.Services.Customers
             });
         }
 
+        // ============================================================
+        // 2. Get Customer By ID
+        // ============================================================
         public async Task<CustomerDto?> GetCustomerAsync(int id)
         {
             var customer = await _unitOfWork.Customers.FindByIdAsync(id);
-
-            if (customer == null)
-                return null;
+            if (customer == null) return null;
 
             return new CustomerDto
             {
                 Id = customer.Id,
                 CustomerName = customer.CustomerName,
+                TaxNumber = customer.TaxNumber,
+                Email = customer.Email,
+                Phone = customer.Phone,
+                OpeningBalance = customer.OpeningBalance,
                 TotalBalance = customer.TotalBalance,
                 Description = customer.Description,
                 CreatedAt = customer.CreatedAt,
@@ -47,16 +59,22 @@ namespace ERP_API.Application.Services.Customers
             };
         }
 
+        // ============================================================
+        // 3. Get Customer With Transactions
+        // ============================================================
         public async Task<CustomerDetailsDto?> GetCustomerDetailsAsync(int id)
         {
             var customer = await _unitOfWork.Customers.GetCustomerWithTransactionsAsync(id);
-            if (customer == null)
-                return null;
+            if (customer == null) return null;
 
             return new CustomerDetailsDto
             {
                 Id = customer.Id,
                 CustomerName = customer.CustomerName,
+                TaxNumber = customer.TaxNumber,
+                Email = customer.Email,
+                Phone = customer.Phone,
+                OpeningBalance = customer.OpeningBalance,
                 TotalBalance = customer.TotalBalance,
                 Description = customer.Description,
                 CreatedAt = customer.CreatedAt,
@@ -64,7 +82,7 @@ namespace ERP_API.Application.Services.Customers
                 Transactions = customer.Transactions.Select(t => new CustomerTransactionDto
                 {
                     Id = t.Id,
-                    TransactionType = t.TransactionType,
+                    TransactionType = t.CustomerTransactionType,
                     TransactionDate = t.TransactionDate,
                     Amount = t.Amount,
                     Direction = t.Direction,
@@ -73,30 +91,44 @@ namespace ERP_API.Application.Services.Customers
             };
         }
 
+        // ============================================================
+        // 4. Get Customer Transactions Only
+        // ============================================================
         public async Task<IEnumerable<CustomerTransactionDto>> GetCustomerTransactionsAsync(int customerId)
         {
             var customer = await _unitOfWork.Customers.GetCustomerWithTransactionsAsync(customerId);
             if (customer == null)
                 return Enumerable.Empty<CustomerTransactionDto>();
 
-            return customer.Transactions.Select(t => new CustomerTransactionDto
-            {
-                Id = t.Id,
-                TransactionType = t.TransactionType,
-                TransactionDate = t.TransactionDate,
-                Amount = t.Amount,
-                Direction = t.Direction,
-                Description = t.Description
-            });
+            return customer.Transactions
+                .OrderByDescending(t => t.TransactionDate)
+                .Select(t => new CustomerTransactionDto
+                {
+                    Id = t.Id,
+                    TransactionType = t.CustomerTransactionType,
+                    TransactionDate = t.TransactionDate,
+                    Amount = t.Amount,
+                    Direction = t.Direction,
+                    Description = t.Description
+                });
         }
 
+        // ============================================================
+        // 5. Create Customer
+        // ============================================================
         public async Task<CustomerDto> CreateCustomerAsync(CreateCustomerDto dto)
         {
             var entity = new Customer
             {
                 CustomerName = dto.CustomerName,
+                TaxNumber = dto.TaxNumber,
+                Email = dto.Email,
+                Phone = dto.Phone,
+                OpeningBalance = dto.OpeningBalance,
                 TotalBalance = dto.TotalBalance,
-                Description = dto.Description
+                Description = dto.Description,
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = DateTime.UtcNow
             };
 
             await _unitOfWork.Customers.CreateAsync(entity);
@@ -106,6 +138,10 @@ namespace ERP_API.Application.Services.Customers
             {
                 Id = entity.Id,
                 CustomerName = entity.CustomerName,
+                TaxNumber = entity.TaxNumber,
+                Email = entity.Email,
+                Phone = entity.Phone,
+                OpeningBalance = entity.OpeningBalance,
                 TotalBalance = entity.TotalBalance,
                 Description = entity.Description,
                 CreatedAt = entity.CreatedAt,
@@ -113,39 +149,76 @@ namespace ERP_API.Application.Services.Customers
             };
         }
 
+        // ============================================================
+        // 6. Update Customer
+        // ============================================================
         public async Task<CustomerDto?> UpdateCustomerAsync(int id, UpdateCustomerDto dto)
         {
-            var customer = await _unitOfWork.Customers.FindByIdAsync(id);
-            if (customer == null)
-                return null;
+            var c = await _unitOfWork.Customers.FindByIdAsync(id);
+            if (c == null) return null;
 
-            customer.CustomerName = dto.CustomerName;
-            customer.TotalBalance = dto.TotalBalance;
-            customer.Description = dto.Description;
-            customer.UpdatedAt = DateTime.UtcNow;
+            c.CustomerName = dto.CustomerName;
+            c.TaxNumber = dto.TaxNumber;
+            c.Email = dto.Email;
+            c.Phone = dto.Phone;
+            c.OpeningBalance = dto.OpeningBalance;
+            c.TotalBalance = dto.TotalBalance;
+            c.Description = dto.Description;
+            c.UpdatedAt = DateTime.UtcNow;
 
-            _unitOfWork.Customers.Update(customer);
+            _unitOfWork.Customers.Update(c);
             await _unitOfWork.SaveChangesAsync();
 
             return new CustomerDto
             {
-                Id = customer.Id,
-                CustomerName = customer.CustomerName,
-                TotalBalance = customer.TotalBalance,
-                Description = customer.Description,
-                CreatedAt = customer.CreatedAt,
-                UpdatedAt = customer.UpdatedAt
+                Id = c.Id,
+                CustomerName = c.CustomerName,
+                TaxNumber = c.TaxNumber,
+                Email = c.Email,
+                Phone = c.Phone,
+                OpeningBalance = c.OpeningBalance,
+                TotalBalance = c.TotalBalance,
+                Description = c.Description,
+                CreatedAt = c.CreatedAt,
+                UpdatedAt = c.UpdatedAt
             };
         }
 
+        // ============================================================
+        // 7. Delete Customer
+        // ============================================================
         public async Task<bool> DeleteCustomerAsync(int id)
         {
             var deleted = await _unitOfWork.Customers.DeleteAsync(id);
-            if (deleted == null)
-                return false;
+            if (deleted == null) return false;
 
             await _unitOfWork.SaveChangesAsync();
             return true;
+        }
+
+        // ============================================================
+        // 8. Recalculate Balance
+        // ============================================================
+        public async Task RecalculateCustomerBalanceAsync(int customerId)
+        {
+            var customer = await _unitOfWork.Customers.GetCustomerWithTransactionsAsync(customerId);
+            if (customer == null) return;
+
+            decimal balance = customer.OpeningBalance; 
+
+            foreach (var t in customer.Transactions.OrderBy(t => t.TransactionDate))
+            {
+                if (t.Direction == TransactionDirection.In)
+                    balance += t.Amount;
+                else
+                    balance -= t.Amount;
+            }
+
+            customer.TotalBalance = balance;
+            customer.UpdatedAt = DateTime.UtcNow;
+
+            _unitOfWork.Customers.Update(customer);
+            await _unitOfWork.SaveChangesAsync();
         }
     }
 }

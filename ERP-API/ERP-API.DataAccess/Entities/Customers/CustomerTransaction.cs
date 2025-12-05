@@ -3,9 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ERP_API.DataAccess.Entities.Customers
 {
@@ -20,18 +17,16 @@ namespace ERP_API.DataAccess.Entities.Customers
         public int CustomerId { get; set; }
 
         [Required]
-        [StringLength(50)]
-        public string TransactionType { get; set; } = string.Empty; // 'payment' or 'receipt'
+        public CustomerTransactionType CustomerTransactionType { get; set; } // Enum type
 
         [Required]
         public DateTime TransactionDate { get; set; } = DateTime.UtcNow;
 
+        [Required]
+        public TransactionDirection Direction { get; set; } // Enum type
+
         [Column(TypeName = "decimal(18,2)")]
         public decimal Amount { get; set; }
-
-        [Required]
-        [StringLength(10)]
-        public string Direction { get; set; } = string.Empty; // 'in' or 'out'
 
         [StringLength(500)]
         public string? Description { get; set; }
@@ -45,5 +40,19 @@ namespace ERP_API.DataAccess.Entities.Customers
         public virtual Customer Customer { get; set; } = null!;
 
         public virtual ICollection<MainSafeLedgerEntry> LedgerEntries { get; set; } = new List<MainSafeLedgerEntry>();
+    }
+
+    public enum CustomerTransactionType
+    {
+        Payment,
+        Receipt,
+        Sale,
+        Purchase
+    }
+
+    public enum TransactionDirection
+    {
+        In,
+        Out
     }
 }

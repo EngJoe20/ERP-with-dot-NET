@@ -1,0 +1,61 @@
+﻿@model ERP_MVC.Models.DTOs.Customers.CreateCustomerDto
+@{
+    ViewData["Title"] = "Add Customer";
+}
+
+<div class="row mt-3">
+    <div class="col-lg-8 mx-auto">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">Add New Customer</div>
+                <hr />
+                <form asp-controller="Customer" asp-action="Create" method="post">
+                    @Html.AntiForgeryToken()
+
+       
+
+                    <div class="form-group">
+                        <label for="CustomerName">Customer Name</label>
+                        <input asp-for="CustomerName" type="text" class="form-control form-control-rounded" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="TaxNumber">Tax Number</label>
+                        <input asp-for="TaxNumber" type="text" class="form-control form-control-rounded" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Email">Email</label>
+                        <input asp-for="Email" type="email" class="form-control form-control-rounded" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Phone">Phone</label>
+                        <input asp-for="Phone" type="text" class="form-control form-control-rounded" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="OpeningBalance">Opening Balance</label>
+                        <input asp-for="OpeningBalance" type="number" step="0.01" class="form-control form-control-rounded" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="TotalBalance">Total Balance</label>
+                        <input asp-for="TotalBalance" type="number" step="0.01" class="form-control form-control-rounded" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Description">Description</label>
+                        <textarea asp-for="Description" class="form-control form-control-rounded" rows="3"></textarea>
+                    </div>
+
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-light btn-round px-5">Add</button>
+                        <a asp-action="Index" class="btn btn-secondary btn-round px-5">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

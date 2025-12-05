@@ -70,10 +70,10 @@ namespace ERP_API.Application.Services.Finance
                     var customerTransaction = new CustomerTransaction
                     {
                         CustomerId = createDto.CustomerId.Value,
-                        TransactionType = "receipt",
+                        CustomerTransactionType = CustomerTransactionType.Receipt,
                         TransactionDate = date,
                         Amount = createDto.Amount,
-                        Direction = "in",
+                        Direction = TransactionDirection.In,
                         Description = createDto.Description,
                         CreatedAt = date,
                         UpdatedAt = date

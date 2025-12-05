@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using ERP_API.DataAccess.Entities.Customers;
 
-namespace ERP_API.Application.DTOs.Customers
+namespace ERP_MVC.Models.DTOs.Customers
 {
     public class CustomerDto
     {
@@ -44,10 +43,10 @@ namespace ERP_API.Application.DTOs.Customers
     public class CustomerTransactionDto
     {
         public int Id { get; set; }
-        public CustomerTransactionType TransactionType { get; set; }
+        public string TransactionType { get; set; } = string.Empty; // 'Payment', 'Receipt', etc.
         public DateTime TransactionDate { get; set; }
         public decimal Amount { get; set; }
-        public TransactionDirection Direction { get; set; }
+        public string Direction { get; set; } = string.Empty; // 'In' or 'Out'
         public string? Description { get; set; }
     }
 

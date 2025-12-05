@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ERP_API.DataAccess.Entities.Customers
 {
@@ -18,6 +15,20 @@ namespace ERP_API.DataAccess.Entities.Customers
         [Required]
         [StringLength(200)]
         public string CustomerName { get; set; } = string.Empty;
+
+        [StringLength(50)]
+        public string? TaxNumber { get; set; }
+
+        [StringLength(100)]
+        [EmailAddress]
+        public string? Email { get; set; }
+
+        [StringLength(20)]
+        [Phone]
+        public string? Phone { get; set; }
+
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal OpeningBalance { get; set; }
 
         [Column(TypeName = "decimal(18,2)")]
         public decimal TotalBalance { get; set; }

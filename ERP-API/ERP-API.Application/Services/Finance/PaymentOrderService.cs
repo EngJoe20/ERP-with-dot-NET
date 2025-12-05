@@ -69,10 +69,10 @@ namespace ERP_API.Application.Services
                     var customerTransaction = new CustomerTransaction
                     {
                         CustomerId = createDto.CustomerId.Value,
-                        TransactionType = "payment",
+                        CustomerTransactionType = CustomerTransactionType.Payment,
                         TransactionDate = date,
                         Amount = createDto.Amount,
-                        Direction = "out",
+                        Direction = TransactionDirection.Out,
                         Description = createDto.Description,
                         CreatedAt = date,
                         UpdatedAt = date

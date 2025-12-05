@@ -9,7 +9,7 @@ namespace ERP_API.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize]
+    //[Authorize]
     public class MainSafeController : ControllerBase
     {
         private readonly IMainSafeService _mainSafeService;
