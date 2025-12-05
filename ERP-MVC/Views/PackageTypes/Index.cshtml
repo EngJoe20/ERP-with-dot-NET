@@ -1,0 +1,63 @@
+﻿@using ERP_MVC.Models.DTOs.Inventory.Packages
+@model IEnumerable<PackageTypeItemDto>
+
+@{
+    ViewData["Title"] = "Packages List";
+}
+
+<div class="col-lg-8 mx-auto products-list">
+    <div class="card">
+        <div class="card-body">
+            <div class="row g-2 add-item-button">
+                <h5 class="card-title product-list-title">Packages List</h5>
+                <a asp-controller="PackageTypes" asp-action="Create" class="add-pro">
+                    <button type="submit" class="btn btn-light px-5">
+                        <i class="fa-solid fa-plus"></i> Add Package
+                    </button>
+                </a>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Packaging Type</th>
+                            <th scope="col">Unit of Measure</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <th scope="row">@item.Id</th>
+                                    <td>@item.Name</td>
+                                    <td>
+                                        <span class="badge bg-info text-dark">
+                                            @item.UnitOfMeasurement
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="package-actions">
+                                            <a asp-controller="PackageTypes" asp-action="Details" asp-route-id="@item.Id" title="View Usage">
+                                                <i class="fa-solid fa-eye text-primary"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="4" class="text-center text-muted">No packages found.</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

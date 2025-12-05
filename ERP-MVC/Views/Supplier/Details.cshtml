@@ -1,0 +1,89 @@
+﻿@model ERP_MVC.Models.DTOs.Suppliers.SupplierDetailsDto
+@{
+    ViewData["Title"] = "Supplier Details";
+}
+
+<div class="row mt-3">
+    <div class="col-lg-10 mx-auto">
+
+        <div class="card mb-3">
+            <div class="card-body d-flex justify-content-between align-items-center">
+                <h5 class="card-title mb-0">Supplier Information</h5>
+                <div>
+                    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning btn-sm">
+                        <i class="fa-solid fa-pen-to-square"></i> Edit
+                    </a>
+                    <a asp-action="Index" class="btn btn-secondary btn-sm">
+                        <i class="fa-solid fa-arrow-left"></i> Back to List
+                    </a>
+                </div>
+            </div>
+            <hr />
+            <dl class="row mb-0">
+                <dt class="col-sm-4">Name:</dt>
+                <dd class="col-sm-8">@Model.SupplierName</dd>
+                <dt class="col-sm-4">Opening Balance:</dt>
+                <dd class="col-sm-8">
+                    <span class="badge @(Model.TotalBalance >= 0 ? "badge-success" : "badge-danger")">
+                        @(Model.OpeningBalance.ToString("N2") )
+                    </span>
+                </dd>
+
+                <dt class="col-sm-4">Total Balance:</dt>
+                <dd class="col-sm-8">
+                    <span class="badge @(Model.TotalBalance >= 0 ? "badge-success" : "badge-danger")">
+                        @( (Model.TotalBalance + Model.OpeningBalance).ToString("N2") )
+                    </span>
+                </dd>
+
+
+
+                <dt class="col-sm-4">Description:</dt>
+                <dd class="col-sm-8">@Model.Description ?? "N/A"</dd>
+            </dl>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Transaction History</h5>
+                <hr />
+                @if (Model.Transactions != null && Model.Transactions.Any())
+                {
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                    <th>Amount</th>
+                                    <th>Direction</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var t in Model.Transactions.OrderByDescending(x => x.TransactionDate))
+                                {
+                                    <tr>
+                                        <td>@t.TransactionDate.ToString("yyyy-MM-dd")</td>
+                                        <td>@t.TransactionType</td>
+                                        <td>@t.Description</td>
+                                        <td>@t.Amount.ToString("N2")</td>
+                                        <td>
+                                            <span class="@(t.Amount >= 0 ? "text-success" : "text-danger")">
+                                                @(t.Amount >= 0 ? "Credit" : "Debit")
+                                            </span>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <p class="text-center">No transactions found.</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>

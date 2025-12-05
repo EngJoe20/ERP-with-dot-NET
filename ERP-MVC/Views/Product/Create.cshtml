@@ -1,0 +1,203 @@
+﻿@using ERP_MVC.Models.DTOs.Inventory.Product
+@model ProductInsertDto
+
+@{
+    ViewData["Title"] = "Add New Product";
+}
+
+<div class="container-fluid">
+    <div class="row mt-3">
+        <div class="col-lg-10 mx-auto">
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-4">
+                    <div class="card-title d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0 text-primary font-weight-bold">Add New Product</h5>
+                        <a asp-action="Index" class="btn btn-sm btn-outline-secondary">Cancel</a>
+                    </div>
+                    <hr>
+
+                    <form asp-action="Create" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <h6 class="text-uppercase text-body text-xs font-weight-bolder mb-3">Basic Information</h6>
+                        <div class="row">
+                            <div class="col-md-6 form-group mb-3">
+                                <label asp-for="Name" class="form-label fw-bold">Product Name <span class="text-danger">*</span></label>
+                                <input asp-for="Name" class="form-control form-control-rounded" placeholder="Enter Product Name" />
+                                <span asp-validation-for="Name" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-6 form-group mb-3">
+                                <label asp-for="Description" class="form-label">Description</label>
+                                <input asp-for="Description" class="form-control form-control-rounded" placeholder="Enter Description" />
+                            </div>
+                        </div>
+
+                        <h6 class="text-uppercase text-body text-xs font-weight-bolder mb-3 mt-4">First Variation Details</h6>
+                        <div class="row">
+                            <div class="col-md-4 form-group mb-3">
+                                <label asp-for="VariationName" class="form-label fw-bold">Variation Name <span class="text-danger">*</span></label>
+                                <input asp-for="VariationName" class="form-control form-control-rounded" placeholder="e.g. Spicy / Red" />
+                                <span asp-validation-for="VariationName" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-4 form-group mb-3">
+                                <label asp-for="Flavor" class="form-label">Flavor (Optional)</label>
+                                <input asp-for="Flavor" class="form-control form-control-rounded" placeholder="e.g. Chili" />
+                            </div>
+                            <div class="col-md-4 form-group mb-3">
+                                <label asp-for="Size" class="form-label">Size (Optional)</label>
+                                <input asp-for="Size" class="form-control form-control-rounded" placeholder="e.g. Large / 500g" />
+                            </div>
+                        </div>
+
+                        <h6 class="text-uppercase text-body text-xs font-weight-bolder mb-3 mt-4">Packaging & Pricing</h6>
+                        <div class="row">
+                            <div class="col-md-6 form-group mb-3">
+                                <label asp-for="PackageTypeId" class="form-label fw-bold">Package Type <span class="text-danger">*</span></label>
+                                <div class="select-wrapper position-relative">
+                                    @{
+                                        var packageList = ViewBag.PackageList as IEnumerable<SelectListItem>;
+                                    }
+                                    <select asp-for="PackageTypeId" class="form-control form-control-rounded custom-select package-select" style="font-weight: 500;">
+                                        <option value="">-- Select Package --</option>
+                                        @if (packageList != null)
+                                        {
+                                            foreach (var item in packageList)
+                                            {
+                                                <option value="@item.Value" selected="@item.Selected">@item.Text</option>
+                                            }
+                                        }
+                                    </select>
+                                    <span asp-validation-for="PackageTypeId" class="text-danger small"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 form-group mb-3">
+                                <label asp-for="QinP" class="form-label fw-bold">Quantity In Package <span class="text-danger">*</span></label>
+                                <input asp-for="QinP" type="number" step="0.01" class="form-control form-control-rounded" placeholder="e.g. 12 (Items per box)" />
+                                <span asp-validation-for="QinP" class="text-danger small"></span>
+                            </div>
+
+                            <div class="col-md-4 form-group mb-3">
+                                <label asp-for="PurchasePrice" class="form-label fw-bold">Cost Price <span class="text-danger">*</span></label>
+                                <input asp-for="PurchasePrice" type="number" step="0.01" class="form-control form-control-rounded" />
+                                <span asp-validation-for="PurchasePrice" class="text-danger small"></span>
+                            </div>
+
+                            <div class="col-md-4 form-group mb-3">
+                                <label asp-for="SalesPrice" class="form-label fw-bold">Sales Price <span class="text-danger">*</span></label>
+                                <input asp-for="SalesPrice" type="number" step="0.01" class="form-control form-control-rounded" />
+                                <span asp-validation-for="SalesPrice" class="text-danger small"></span>
+                            </div>
+
+                            <div class="col-md-4 form-group mb-3">
+                                <label asp-for="InitialQuantity" class="form-label text-success fw-bold">Initial Stock</label>
+                                <input asp-for="InitialQuantity" type="number" step="1" class="form-control form-control-rounded bg-light" placeholder="0" />
+                                <small class="text-muted" style="font-size: 0.75rem">Adds to Main Warehouse</small>
+                            </div>
+                        </div>
+
+                        <div class="form-group mt-4 text-end">
+                            <button type="submit" class="btn btn-light btn-round px-5 add-item-submit shadow-sm">
+                                <i class="fa-solid fa-check me-2"></i> Submit Product
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Reset all conflicting styles first */
+    select.package-select,
+    select.package-select:focus,
+    select.package-select:active {
+        color: #495057 !important;
+        background-color: #fff !important;
+        border: 1px solid #ced4da !important;
+        outline: none !important;
+        box-shadow: none !important;
+        -webkit-appearance: menulist !important;
+        -moz-appearance: menulist !important;
+        appearance: menulist !important;
+    }
+
+        /* Remove default browser styling */
+        select.package-select::-ms-expand {
+            display: block !important;
+        }
+
+    /* Custom dropdown arrow - only for visual, not functional */
+    .select-wrapper::after {
+        content: "▼";
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+        color: #495057;
+        font-size: 12px;
+    }
+
+    /* Ensure selected option is visible */
+    select.package-select option {
+        color: #000 !important;
+        background-color: #fff !important;
+        padding: 10px;
+    }
+
+        select.package-select option:checked {
+            color: #fff !important;
+            background-color: #0d6efd !important;
+        }
+
+    /* Style for the select when it has a value */
+    select.package-select.has-value {
+        color: #0d6efd !important;
+        font-weight: 600 !important;
+        border-color: #0d6efd !important;
+        background-color: #f8f9fa !important;
+    }
+
+    /* Placeholder style */
+    select.package-select option[value=""] {
+        color: #6c757d !important;
+        font-style: italic;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const packageSelect = document.querySelector('.package-select');
+
+        if (packageSelect) {
+            // Function to update visual state
+            function updateSelectStyle() {
+                if (packageSelect.value && packageSelect.value.trim() !== '') {
+                    packageSelect.classList.add('has-value');
+                    // Force display update
+                    packageSelect.style.color = '#0d6efd';
+                    packageSelect.style.fontWeight = '600';
+                } else {
+                    packageSelect.classList.remove('has-value');
+                    packageSelect.style.color = '';
+                    packageSelect.style.fontWeight = '';
+                }
+
+                // Debug: Log the current value
+                console.log('Select value:', packageSelect.value);
+                console.log('Selected option:', packageSelect.options[packageSelect.selectedIndex]?.text);
+            }
+
+            // Update on change
+            packageSelect.addEventListener('change', updateSelectStyle);
+
+            // Update on page load
+            updateSelectStyle();
+
+            // Force refresh after a short delay (in case of async loading)
+            setTimeout(updateSelectStyle, 100);
+        }
+    });
+</script>

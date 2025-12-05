@@ -1,0 +1,100 @@
+﻿@using ERP_MVC.Models.DTOs.Warehouse
+@model WarehouseDetailsDto
+
+@{
+    ViewData["Title"] = $"Stock: {Model.Name}";
+}
+
+<div class="col-12 mx-auto products-list">
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+
+            <div class="row g-2 add-item-button align-items-center mb-4">
+                <div class="col-md-6">
+                    <h5 class="card-title product-list-title fw-bold mb-1">
+                        <i class="fa-solid fa-warehouse text-secondary me-2"></i>@Model.Name
+                    </h5>
+                    <p class="text-muted small mb-0 ms-4">
+                        <i class="fa-solid fa-location-dot me-1"></i> @Model.Location
+                    </p>
+                </div>
+
+                <div class="col-md-6 text-end">
+                    <a asp-action="Index" class="btn btn-outline-secondary">
+                        <i class="fa-solid fa-arrow-left me-2"></i> Back
+                    </a>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-striped align-middle">
+                    <thead class="bg-light">
+                        <tr>
+                            <th scope="col" class="text-secondary text-uppercase text-xs font-weight-bolder opacity-7">#</th>
+                            <th scope="col" class="text-secondary text-uppercase text-xs font-weight-bolder opacity-7">Product</th>
+                            <th scope="col" class="text-secondary text-uppercase text-xs font-weight-bolder opacity-7">Variation</th>
+                            <th scope="col" class="text-secondary text-uppercase text-xs font-weight-bolder opacity-7">Package</th>
+                            <th scope="col" class="text-secondary text-uppercase text-xs font-weight-bolder opacity-7">Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.StockItems != null && Model.StockItems.Any())
+                        {
+                            int rowCount = 1;
+                            foreach (var item in Model.StockItems)
+                            {
+                                <tr>
+                                    <th scope="row" class="ps-3 text-muted">@rowCount</th>
+
+                                    <td class="fw-bold text-dark">
+                                        <i class="fa-solid fa-box-open text-warning me-2"></i> @item.ProductName
+                                    </td>
+
+                                    <td>
+                                        @if (!string.IsNullOrEmpty(item.VariationName))
+                                        {
+                                            <i class="fa-solid fa-tags text-secondary me-1 small"></i> 
+                                            @item.VariationName
+                                        }
+                                        else
+                                        {
+                                            <span class="text-muted small">-</span>
+                                        }
+                                    </td>
+
+                                    <td>
+                                        <i class="fa-solid fa-cubes-stacked text-info me-1 small"></i> @item.PackageName
+                                    </td>
+
+                                    <td>
+                                        @if (item.Quantity > 0)
+                                        {
+                                            // "N2" formats to 50.00
+                                            <span class="fw-bold text-success">@item.Quantity.ToString("N2")</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="fw-bold text-danger">0.00</span>
+                                        }
+                                    </td>
+                                </tr>
+                                rowCount++;
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="5" class="text-center py-5 text-muted">
+                                    <div class="d-flex flex-column align-items-center">
+                                        <i class="fa-solid fa-box-open fa-2x mb-2 opacity-50"></i>
+                                        <p class="mb-0">This warehouse is currently empty.</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

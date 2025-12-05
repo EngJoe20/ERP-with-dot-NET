@@ -1,0 +1,115 @@
+﻿@using ERP_MVC.Models.DTOs.Warehouse
+@model StockTransferDto
+
+@{
+    ViewData["Title"] = "Transfer Stock";
+}
+
+<div class="row mt-4">
+    <div class="col-lg-8 mx-auto">
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-4">
+
+                <h4 class="card-title fw-bold mb-4">Transfer Stock</h4>
+
+                <form asp-action="Transfer" method="post">
+
+                    <div class="bg-light p-3 rounded-3 mb-4 border">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label asp-for="FromWarehouseId" class="form-label fw-bold">From Warehouse</label>
+                                <select asp-for="FromWarehouseId" id="ddlFromWarehouse" class="form-select" asp-items="ViewBag.WarehouseList">
+                                    <option value="" disabled selected>-- Select Source --</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label asp-for="ToWarehouseId" class="form-label fw-bold">To Warehouse</label>
+                                <select asp-for="ToWarehouseId" class="form-select" asp-items="ViewBag.WarehouseList">
+                                    <option value="" disabled selected>-- Select Destination --</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-8">
+                            <label asp-for="ProductPackageId" class="form-label fw-bold">Product</label>
+
+                            <select asp-for="ProductPackageId" id="ddlProduct" class="form-select" disabled>
+                                <option value="" selected>-- Select Source Warehouse First --</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label asp-for="Quantity" class="form-label fw-bold">
+                                Quantity
+                                <span id="lblMaxStock" class="badge bg-secondary ms-2" style="display:none">Max: 0</span>
+                            </label>
+                            <input asp-for="Quantity" id="txtQuantity" type="number" step="0.01" class="form-control" placeholder="0.00">
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-end gap-2">
+                        <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+                        <button type="submit" class="btn btn-primary px-4">Transfer</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const fromWarehouse = document.getElementById("ddlFromWarehouse");
+            const productDropdown = document.getElementById("ddlProduct");
+            const maxStockLabel = document.getElementById("lblMaxStock");
+
+            // Event Listener: When "From Warehouse" changes
+            fromWarehouse.addEventListener("change", function () {
+                const warehouseId = this.value;
+
+                // 1. Reset Dropdown
+                productDropdown.innerHTML = '<option value="">Loading...</option>';
+                productDropdown.disabled = true;
+                maxStockLabel.style.display = 'none';
+
+                // 2. Call our MVC Controller (Not the external API)
+                fetch(`/Warehouse/GetStockByWarehouse?warehouseId=${warehouseId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        productDropdown.innerHTML = '<option value="" selected disabled>-- Select Product --</option>';
+
+                        if (data.length === 0) {
+                            productDropdown.innerHTML += '<option disabled>No stock available here</option>';
+                        } else {
+                            // 3. Populate List
+                            data.forEach(item => {
+                                let option = document.createElement("option");
+                                option.value = item.id;
+                                option.text = item.displayText; // The formatted name from C#
+                                option.setAttribute("data-max", item.quantity); // Store quantity for the badge
+                                productDropdown.appendChild(option);
+                            });
+                            productDropdown.disabled = false;
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+            });
+
+            // Event Listener: When Product changes, show Max Quantity
+            productDropdown.addEventListener("change", function () {
+                const selectedOption = this.options[this.selectedIndex];
+                const maxQty = selectedOption.getAttribute("data-max");
+
+                if (maxQty) {
+                    maxStockLabel.style.display = 'inline-block';
+                    maxStockLabel.innerText = `Max: ${parseFloat(maxQty).toFixed(2)}`;
+                }
+            });
+        });
+    </script>
+}

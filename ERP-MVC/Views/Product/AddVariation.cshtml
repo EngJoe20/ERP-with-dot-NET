@@ -1,0 +1,97 @@
+﻿@using ERP_MVC.Models.DTOs.Inventory.Product
+@model VariationInsertDto
+
+@{
+    ViewData["Title"] = "Add Variation";
+    int productId = ViewBag.ProductId; // Capture ID for the Cancel button
+}
+
+<div class="col-lg-8 mx-auto">
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-white py-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <h5 class="m-0 font-weight-bold text-primary">Add New Variation</h5>
+
+                <a asp-action="ProductDetails" asp-route-id="@productId" class="btn btn-sm btn-outline-secondary">
+                    <i class="fa-solid fa-xmark me-1"></i> Cancel
+                </a>
+            </div>
+        </div>
+
+        <div class="card-body p-4">
+            <form asp-action="AddVariation" asp-route-productId="@productId" method="post">
+
+                <h6 class="text-secondary text-uppercase text-xs font-weight-bolder opacity-7 mb-3">
+                    <i class="fa-solid fa-tag me-1"></i> Variation Info
+                </h6>
+
+                <div class="row g-3 mb-4">
+                    <div class="col-md-12">
+                        <label asp-for="VariationName" class="form-label fw-bold">Name <span class="text-danger">*</span></label>
+                        <input asp-for="VariationName" class="form-control" placeholder="e.g. Cheese Flavor" required />
+                        <span asp-validation-for="VariationName" class="text-danger small"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Flavor" class="form-label">Flavor</label>
+                        <input asp-for="Flavor" class="form-control" placeholder="e.g. Cheese" />
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Size" class="form-label">Size</label>
+                        <input asp-for="Size" class="form-control" placeholder="e.g. Large" />
+                    </div>
+                </div>
+
+                <hr class="my-4" />
+
+                <h6 class="text-secondary text-uppercase text-xs font-weight-bolder opacity-7 mb-3">
+                    <i class="fa-solid fa-box-open me-1"></i> Initial Package Setup
+                </h6>
+
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label asp-for="PackageTypeId" class="form-label fw-bold">Package Type <span class="text-danger">*</span></label>
+
+                        <select asp-for="PackageTypeId"
+                                asp-items="@(ViewBag.PackageTypeOptions as IEnumerable<SelectListItem>)"
+                                class="form-select" required>
+                            <option value="">-- Select Package --</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="QinP" class="form-label fw-bold">Quantity In Package <span class="text-danger">*</span></label>
+                        <input asp-for="QinP" type="number" step="0.01" class="form-control" placeholder="e.g. 24" required />
+                    </div>
+
+                    <div class="col-md-4">
+                        <label asp-for="PurchasePrice" class="form-label fw-bold">Cost Price <span class="text-danger">*</span></label>
+                        <div class="input-group">
+                            <span class="input-group-text">$</span>
+                            <input asp-for="PurchasePrice" type="number" step="0.01" class="form-control" required />
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label asp-for="SalesPrice" class="form-label fw-bold">Sales Price <span class="text-danger">*</span></label>
+                        <div class="input-group">
+                            <span class="input-group-text">$</span>
+                            <input asp-for="SalesPrice" type="number" step="0.01" class="form-control" required />
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label asp-for="InitialQuantity" class="form-label">Initial Stock</label>
+                        <input asp-for="InitialQuantity" type="number" step="1" class="form-control bg-light" placeholder="0" />
+                        <small class="text-muted d-block mt-1" style="font-size: 0.75rem;">Adds to Main Warehouse</small>
+                    </div>
+                </div>
+
+                <div class="mt-5 d-flex justify-content-end gap-2">
+                    <a asp-action="ProductDetails" asp-route-id="@productId" class="btn btn-light border">Cancel</a>
+                    <button type="submit" class="btn btn-primary px-5 py-2 fw-semibold">
+                        <i class="fa-solid fa-check me-2"></i> Save Variation
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

@@ -1,0 +1,140 @@
+﻿@model IEnumerable<ERP_MVC.Models.DTOs.Customers.CustomerDto>
+@{
+    ViewData["Title"] = "Customers List";
+}
+
+<div class="row mt-3">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row g-2 mb-3">
+                    <div class="col-md-6">
+                        <h5 class="card-title">Customers List</h5>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <a asp-controller="Customer" asp-action="Create" class="btn btn-light px-4">
+                            <i class="fa-solid fa-plus"></i> Add Customer
+                        </a>
+                    </div>
+                </div>
+
+                @if (TempData["SuccessMessage"] != null)
+                {
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        @TempData["SuccessMessage"]
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    </div>
+                }
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Total Balance</th>
+                <th scope="col">Description</th>
+                <th scope="col">Created At</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                int i = 1;
+                foreach (var customer in Model)
+                {
+                    <tr>
+                        <th scope="row">@i</th>
+                        <td>@customer.CustomerName</td>
+                        <td>@( (customer.TotalBalance + customer.OpeningBalance).ToString("N2") )</td>
+                        <td>@(customer.Description ?? "—")</td>
+                        <td>@customer.CreatedAt.ToString("yyyy-MM-dd")</td>
+                        <td>
+                            <div class="product-actions">
+                                <a asp-action="Details" asp-route-id="@customer.Id">
+                                    <i class="fa-solid fa-eye"></i>
+                                </a>
+                                <a asp-action="Edit" asp-route-id="@customer.Id">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </a>
+                                <button type="button" onclick="confirmDelete(@customer.Id, '@customer.CustomerName')" class="btn btn-link p-0">
+                                    <i class="fa-solid fa-trash text-danger"></i>
+                                </button>
+
+                            </div>
+                          </td>
+                    </tr>
+                    i++;
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="6" class="text-center">No customers found</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Modal -->
+@* <div class="modal fade" id="deleteModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>Confirm Delete</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete customer <strong id="customerName"></strong>?
+            </div>
+            <div class="modal-footer">
+                <form id="deleteForm" method="post">
+                    @Html.AntiForgeryToken()
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> *@
+<div class="modal fade" id="deleteModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark text-white border-0 shadow-sm">
+            <div class="modal-header border-0">
+                <h5 class="modal-title">Confirm Delete</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete customer
+                <strong id="customerName" class="text-warning"></strong>?
+            </div>
+            <div class="modal-footer border-0">
+                <form id="deleteForm" method="post" class="d-inline">
+                    @Html.AntiForgeryToken()
+                    <button type="button" class="btn btn-light text-white" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function confirmDelete(id, name) {
+            document.getElementById("customerName").innerText = name;
+            document.getElementById("deleteForm").action = "/Customer/Delete/" + id;
+            $("#deleteModal").modal("show");
+        }
+    </script>
+}

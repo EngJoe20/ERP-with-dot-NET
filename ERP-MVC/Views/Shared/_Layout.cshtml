@@ -1,50 +1,329 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var title = ViewData["Title"] ?? "MyApp";
+}
+
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ERP_MVC</title>
-    <script type="importmap"></script>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/ERP_MVC.styles.css" asp-append-version="true" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>@title - MyApp</title>
+
+    <!-- Loader -->
+    <link href="~/assets/css/pace.min.css" rel="stylesheet" />
+    <script src="~/assets/js/pace.min.js"></script>
+
+    <!-- Favicon -->
+    <link rel="icon" href="~/assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- Vector CSS -->
+    <link href="~/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+
+    <!-- simplebar CSS-->
+    <link href="~/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
+
+    <!-- Bootstrap core CSS-->
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- animate CSS-->
+    <link href="~/assets/css/animate.css" rel="stylesheet" type="text/css" />
+
+    <!-- Icons CSS-->
+    <link href="~/assets/css/icons.css" rel="stylesheet" type="text/css" />
+
+    <!-- Sidebar CSS-->
+    <link href="~/assets/css/sidebar-menu.css" rel="stylesheet" />
+
+    <!-- Custom Style-->
+    <link href="~/assets/css/app-style.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ERP_MVC</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+
+<body class="bg-theme bg-theme2">
+
+    <!-- Sidebar Wrapper -->
+    <div id="wrapper">
+
+        <div id="sidebar-wrapper" data-simplebar data-simplebar-auto-hide="true">
+            <div class="brand-logo">
+                <a href="/">
+                    <img src="~/assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
+                    <h5 class="logo-text">Axis One</h5>
+                </a>
+            </div>
+
+            <ul class="sidebar-menu do-nicescrol mt-4">
+
+                <!-- Warehouses -->
+                <li>
+                    <a href="javascript:void();" class="has-arrow">
+                        <i class="zmdi zmdi-storage"></i> <span>Warehouses</span>
+                    </a>
+                    <ul class="submenu-angle">
+                        <li>
+                            <a asp-controller="Product" asp-action="Index">
+                                Products List
+                            </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+
+                        <li>
+                            <a asp-controller="Product" asp-action="Create">
+                                Add New Product
+                            </a>
+                        </li>
+
+                        <li>
+                            <a asp-controller="PackageTypes" asp-action="Index">
+                                Packages List
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-controller="PackageTypes" asp-action="Create">
+                                Add New Package
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-controller="Warehouse" asp-action="Index">Warehouses List</a>
+                        </li>
+                        <li>
+                            <a asp-controller="Warehouse" asp-action="Create">Add Warehouse</a>
+                        </li>
+                        <li>
+                            <a asp-controller="Warehouse" asp-action="Transfer">Transfer Stock</a>
+                        </li>
+                        <li>
+                            <a asp-controller="Warehouse" asp-action="Logs">Transfer Logs</a>
                         </li>
                     </ul>
-                </div>
+                </li>
+
+                <!-- Inventory Adjustments -->
+                <li>
+                    <a href="javascript:void();" class="has-arrow">
+                        <i class="zmdi zmdi-edit"></i> <span>Warehouse Adjustments</span>
+                    </a>
+                    <ul class="submenu-angle">
+                        <li>
+                            <a asp-controller="InventoryAdjustment" asp-action="Index">
+                                Adjustments List
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-controller="InventoryAdjustment" asp-action="Create">
+                                Add Adjustment
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Report Management -->
+                <li>
+                    <a href="javascript:void();" class="has-arrow">
+                        <i class="zmdi zmdi-chart"></i> <span>Report<br> Management</span>
+                    </a>
+                    <ul class="submenu-angle">
+                        <li><a href="invoice-report.html">By Invoice</a></li>
+                        <li><a href="customer-report.html">By Customers</a></li>
+                        <li><a href="product-report.html">By Products</a></li>
+                        <li><a href="inventory-transactions.html">Warehouse Transactions</a></li>
+                    </ul>
+                </li>
+
+                <!-- Customers -->
+                <li>
+                    <a href="javascript:void();" class="has-arrow">
+                        <i class="zmdi zmdi-accounts"></i> <span>Customers</span>
+                    </a>
+                    <ul class="submenu-angle">
+                        <li>
+                            <a asp-controller="Customer" asp-action="Index">
+                                Customers List
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-controller="Customer" asp-action="Create">
+                                Add Customer
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Suppliers -->
+                <li>
+                    <a href="javascript:void();" class="has-arrow">
+                        <i class="zmdi zmdi-accounts-alt"></i> <span>Suppliers</span>
+                    </a>
+                    <ul class="submenu-angle">
+                        <li>
+                            <a asp-controller="Supplier" asp-action="Index">
+                                Suppliers List
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-controller="Supplier" asp-action="Create">
+                                Add Supplier
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Procurement -->
+                <li>
+                    <a href="javascript:void();" class="has-arrow">
+                        <i class="fa-solid fa-cart-shopping"></i> <span>Procurement</span>
+                    </a>
+                    <ul class="submenu-angle">
+                        <li><a href="purchase-invoices-list.html">Purchase Orders</a></li>
+                        <li><a href="add-purchase-invoice.html">New Purchase</a></li>
+                        <li><a href="create-purchase-return.html">Purchase Return</a></li>
+                        <li><a href="purchase-return-list.html">Purchase Return List</a></li>
+                    </ul>
+                </li>
+
+                <!-- Sales Department -->
+                <li>
+                    <a href="javascript:void();" class="has-arrow">
+                        <i class="zmdi zmdi-trending-up"></i> <span>Sales Department</span>
+                    </a>
+                    <ul class="submenu-angle">
+                        <li><a href="sales-invoices-list.html">Sales Orders</a></li>
+                        <li><a href="add-sales-invoice.html">New Sale</a></li>
+                        <li><a href="create-sales-return.html">Sales Return</a></li>
+                        <li><a href="sales-return-list.html">Sales Return List</a></li>
+                    </ul>
+                </li>
+
+                <!-- Finances -->
+                <li>
+                    <a href="javascript:void();" class="has-arrow">
+                        <i class="zmdi zmdi-balance-wallet"></i> <span>Finances</span>
+                    </a>
+                    <ul class="submenu-angle">
+                        <li><a href="dismissal-notice.html">Dismissal notice</a></li>
+                        <li><a href="receipt.html">Receipt</a></li>
+                        <li><a href="cash-ledger.html">Secure Account Statement</a></li>
+                        <li><a href="payment-vouchers.html">Dismissal Notice List</a></li>
+                        <li><a href="receiving-vouchers.html">Receipt List</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Topbar -->
+        <header class="topbar-nav">
+            <nav class="navbar navbar-expand fixed-top">
+                <ul class="navbar-nav mr-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link toggle-menu" href="javascript:void();">
+                            <i class="icon-menu menu-icon"></i>
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav align-items-center right-nav-link">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown" href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#fff"
+                                viewBox="0 0 640 640">
+                                <path
+                                    d="M320 312C386.3 312 440 258.3 440 192C440 125.7 386.3 72 320 72C253.7 72 200 125.7 200 192C200 258.3 253.7 312 320 312zM290.3 368C191.8 368 112 447.8 112 546.3C112 562.7 125.3 576 141.7 576L498.3 576C514.7 576 528 562.7 528 546.3C528 447.8 448.2 368 349.7 368L290.3 368z" />
+                            </svg>
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li class="dropdown-item">
+                                <a href="profile.html">
+                                    <i class="zmdi zmdi-account mr-2"></i>
+                                    Profile
+                                </a>
+                            </li>
+                            <li class="dropdown-divider"></li>
+                            <li class="dropdown-item">
+                                <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline">
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit" class="btn btn-link p-0 m-0"
+                                        style="color: inherit; text-decoration: none;">
+                                        <i class="icon-power mr-2"></i> Logout
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Main content -->
+        <div class="content-wrapper mt-5 pt-4">
+            <div class="container">
+                @RenderBody()
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container text-center">
+                <span class="text-white">© 2025 MyApp. All Rights Reserved.</span>
+            </div>
+        </footer>
+
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - ERP_MVC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    <!-- Scripts -->
+
+    <script src="~/assets/js/jquery.min.js"></script>
+    <script src="~/assets/js/popper.min.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+
+    <script src="~/assets/plugins/simplebar/js/simplebar.js"></script>
+    <script src="~/assets/js/sidebar-menu.js"></script>
+    <script src="~/assets/js/app-script.js"></script>
+
+    <!-- Auto-close submenus + arrow rotate -->
+    <script>
+        (function ($) {
+            $(function () {
+
+                var style = document.createElement('style');
+                style.textContent = `
+                    .sidebar-menu a.has-arrow .fa-arrow-right {
+                        transition: transform 0.5s ease;
+                        display: inline-block;
+                    }
+                    .sidebar-menu li.open a.has-arrow .fa-arrow-right {
+                        transform: rotate(90deg);
+                    }
+                `;
+                document.head.appendChild(style);
+
+                $('.sidebar-menu ul.submenu-angle').hide().attr('aria-expanded', 'false');
+                $('.sidebar-menu li').removeClass('open');
+
+                $('.sidebar-menu').on('click', 'a.has-arrow', function (e) {
+                    e.preventDefault();
+                    var $anchor = $(this);
+                    var $submenu = $anchor.next('ul.submenu-angle');
+
+                    if (!$submenu.length) return;
+
+                    $('.sidebar-menu ul.submenu-angle').not($submenu).slideUp(400).attr('aria-expanded', 'false');
+                    $('.sidebar-menu li').not($anchor.parent()).removeClass('open');
+
+                    $submenu.slideToggle(400);
+                    $anchor.parent().toggleClass('open');
+
+                    var expanded = $anchor.parent().hasClass('open');
+                    $submenu.attr('aria-expanded', expanded);
+                });
+            });
+        })(jQuery);
+    </script>
+
+    @RenderSection("Scripts", required: false)
+
 </body>
+
 </html>

@@ -1,0 +1,413 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Dashtreme Admin - Free Dashboard for Bootstrap 4 by Codervent</title>
+    <!-- loader-->
+    <link href="~/assets/css/pace.min.css" rel="stylesheet" />
+    <script src="~/assets/js/pace.min.js"></script>
+    <!--favicon-->
+    <link rel="icon" href="~/assets/images/favicon.ico" type="image/x-icon">
+    <!-- simplebar CSS-->
+    <link href="~/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
+    <!-- Bootstrap core CSS-->
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/assets/css/bootstrap.css" rel="stylesheet" />
+
+    <!-- animate CSS-->
+    <link href="~/assets/css/animate.css" rel="stylesheet" type="text/css" />
+    <!-- Icons CSS-->
+    <link href="~/assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <!-- Sidebar CSS-->
+    <link href="~/assets/css/sidebar-menu.css" rel="stylesheet" />
+    <!-- Custom Style-->
+    <link href="~/assets/css/app-style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <style>
+        /* Fix for select placeholder visibility */
+        select.form-control {
+          color: #495057 !important;
+        }
+
+        select.form-control option:disabled {
+          color: #6c757d !important;
+        }
+
+        select.form-control option:not(:disabled) {
+          color: #212529 !important;
+        }
+
+        /* Ensure placeholder option is visible */
+        select.form-control option[value=""] {
+          color: #6c757d !important;
+        }
+    </style>
+
+</head>
+
+<body class="bg-theme bg-theme1">
+
+    <!-- start loader -->
+    <div id="pageloader-overlay" class="visible incoming"><div class="loader-wrapper-outer"><div class="loader-wrapper-inner"><div class="loader"></div></div></div></div>
+    <!-- end loader -->
+    <!-- Start wrapper-->
+    <div id="wrapper">
+
+        <!--Start sidebar-wrapper-->
+        <div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true">
+            <div class="brand-logo">
+                <a href="index.html">
+                    <img src="assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
+                    <h5 class="logo-text">Axis One</h5>
+                </a>
+            </div>
+
+            <ul class="sidebar-menu do-nicescrol mt-4">
+
+                <!-- Warehouses -->
+                <li>
+                    <a href="javascript:void();" class="has-arrow">
+                        <i class="zmdi zmdi-storage"></i> <span>Warehouses</span>
+                    </a>
+                    <ul class="submenu-angle">
+                        <li><a href="products-list.html">Products List</a></li>
+                        <li><a href="add-item.html">Add New Item</a></li>
+                        <li><a href="packages-list.html">Packages List</a></li>
+                        <li><a href="add-package.html">Add New Package</a></li>
+                    </ul>
+                </li>
+
+                <!-- Inventory Adjustments -->
+                <li>
+                    <a href="javascript:void();" class="has-arrow">
+                        <i class="zmdi zmdi-home"></i> <span>Warehouse Adjustments</span>
+                    </a>
+                    <ul class="submenu-angle">
+                        <li><a href="adjustments-list.html">Adjustments List</a></li>
+                        <li><a href="add-adjustment.html">Add Adjustment</a></li>
+                    </ul>
+                </li>
+
+                <!-- Report Management -->
+                <li>
+                    <a href="javascript:void();" class="has-arrow">
+                        <i class="zmdi zmdi-chart"></i> <span>Report<br> Management</span>
+                    </a>
+                    <ul class="submenu-angle">
+                        <li><a href="invoice-report.html">By Invoice</a></li>
+                        <li><a href="customer-report.html">By Customers</a></li>
+                        <li><a href="product-report.html">By Products</a></li>
+                        <li><a href="inventory-transactions.html">Warehouse Transactions</a></li>
+                    </ul>
+                </li>
+
+                <!-- Suppliers -->
+                <li>
+                    <a href="javascript:void();" class="has-arrow">
+                        <i class="zmdi zmdi-accounts-alt"></i> <span>Suppliers</span>
+                    </a>
+                    <ul class="submenu-angle">
+                        <li><a href="suppliers-list.html">Suppliers List</a></li>
+                        <li><a href="add-supplier.html">Add Supplier</a></li>
+                        <li><a href="suppliers-report.html">Summary Report</a></li>
+                    </ul>
+                </li>
+
+                <!-- Customers -->
+                <li>
+                    <a href="javascript:void();" class="has-arrow">
+                        <i class="zmdi zmdi-accounts"></i> <span>Customers</span>
+                    </a>
+                    <ul class="submenu-angle">
+                        <li><a href="customers-list.html">Customers List</a></li>
+                        <li><a href="add-customer.html">Add Customer</a></li>
+                        <li><a href="customers-summary-report.html">Summary Report</a></li>
+                    </ul>
+                </li>
+
+                <!-- Procurement -->
+                <li>
+                    <a href="javascript:void();" class="has-arrow">
+                        <i class="fa-solid fa-cart-shopping"></i> <span>Procurement</span>
+                    </a>
+                    <ul class="submenu-angle">
+                        <li><a href="purchase-invoices-list.html">Purchase Orders</a></li>
+                        <li><a href="add-purchase-invoice.html">New Purchase</a></li>
+                        <li><a href="create-purchase-return.html">Purchase Return</a></li>
+                        <li><a href="purchase-return-list.html">Purchase Return List</a></li>
+                    </ul>
+                </li>
+
+                <!-- Sales Department -->
+                <li>
+                    <a href="javascript:void();" class="has-arrow">
+                        <i class="zmdi zmdi-trending-up"></i> <span>Sales Department</span>
+                    </a>
+                    <ul class="submenu-angle">
+                        <li><a href="sales-invoices-list.html">Sales Orders</a></li>
+                        <li><a href="add-sales-invoice.html">New Sale</a></li>
+                        <li><a href="create-sales-return.html">Sales Return</a></li>
+                        <li><a href="sales-return-list.html">Sales Return List</a></li>
+                    </ul>
+                </li>
+
+                <!-- Finances -->
+                <li>
+                    <a href="javascript:void();" class="has-arrow">
+                        <i class="zmdi zmdi-balance-wallet"></i> <span>Finances</span>
+                    </a>
+                    <ul class="submenu-angle">
+                        <li><a href="dismissal-notice.html">Dismissal notice</a></li>
+                        <li><a href="receipt.html">Receipt</a></li>
+                        <li><a href="cash-ledger.html">Secure Account Statement</a></li>
+                        <li><a href="payment-vouchers.html">Dismissal Notice List</a></li>
+                        <li><a href="receiving-vouchers.html">Receipt List</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
+
+
+
+        <!--Start topbar header-->
+        <header class="topbar-nav">
+            <nav class="navbar navbar-expand fixed-top">
+                <ul class="navbar-nav mr-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link toggle-menu" href="javascript:void();">
+                            <i class="icon-menu menu-icon"></i>
+                        </a>
+                    </li>
+
+                </ul>
+
+                <ul class="navbar-nav align-items-center right-nav-link">
+
+                    <li class="nav-item">
+                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown" href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 viewBox="0 0 640 640"
+                                 width="32"
+                                 height="32"
+                                 fill="#fff">
+                                <path d="M320 312C386.3 312 440 258.3 440 192C440 125.7 386.3 72 320 72C253.7 72 200 125.7 200 192C200 258.3 253.7 312 320 312zM290.3 368C191.8 368 112 447.8 112 546.3C112 562.7 125.3 576 141.7 576L498.3 576C514.7 576 528 562.7 528 546.3C528 447.8 448.2 368 349.7 368L290.3 368z" />
+                            </svg>
+
+
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <a href="profile.html">
+                            <li class="dropdown-item">
+                                <i class="zmdi zmdi-account mr-2"></i>
+                                Profile
+                            </li>
+                            </a>
+                            <li class="dropdown-divider"></li>
+                            <li class="dropdown-item"><i class="icon-power mr-2"></i> Logout</li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <!--End topbar header-->
+        <div class="clearfix"></div>
+
+        <div class="content-wrapper">
+            <div class="container-fluid">
+
+                <div class="row mt-3">
+                    <div class="col-lg-8 mx-auto">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-title">Add New Supplier</div>
+                                <hr>
+                                <form>
+                                    <!-- Supplier Name -->
+                                    <div class="form-group">
+                                        <label for="supplier-name">Name</label>
+                                        <svg class="asterisk" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="10" height="10" fill="white">
+                                            <path d="M320 64C337.7 64 352 78.3 352 96L352 264.6L496 181.5C511.3 172.7 530.9 177.9 539.7 193.2C548.5 208.5 543.3 228.1 528 236.9L384 320L528 403.1C543.3 411.9 548.6 431.5 539.7 446.8C530.8 462.1 511.3 467.4 496 458.5L352 375.4L352 544C352 561.7 337.7 576 320 576C302.3 576 288 561.7 288 544L288 375.4L144 458.5C128.7 467.3 109.1 462.1 100.3 446.8C91.5 431.5 96.7 412 112 403.1L256 320L112 236.9C96.7 228 91.5 208.5 100.3 193.1C109.1 177.7 128.7 172.6 144 181.4L288 264.6L288 96C288 78.3 302.3 64 320 64z" />
+                                        </svg>
+                                        <input type="text" class="form-control form-control-rounded w-100" id="supplier-name" placeholder="Enter Supplier Name">
+                                    </div>
+
+                                    <!-- Phone -->
+                                    <div class="form-group">
+                                        <label for="supplier-phone">Phone</label>
+                                        <svg class="asterisk" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="10" height="10" fill="white">
+                                            <path d="M320 64C337.7 64 352 78.3 352 96L352 264.6L496 181.5C511.3 172.7 530.9 177.9 539.7 193.2C548.5 208.5 543.3 228.1 528 236.9L384 320L528 403.1C543.3 411.9 548.6 431.5 539.7 446.8C530.8 462.1 511.3 467.4 496 458.5L352 375.4L352 544C352 561.7 337.7 576 320 576C302.3 576 288 561.7 288 544L288 375.4L144 458.5C128.7 467.3 109.1 462.1 100.3 446.8C91.5 431.5 96.7 412 112 403.1L256 320L112 236.9C96.7 228 91.5 208.5 100.3 193.1C109.1 177.7 128.7 172.6 144 181.4L288 264.6L288 96C288 78.3 302.3 64 320 64z" />
+                                        </svg>
+                                        <input type="text" class="form-control form-control-rounded w-100" id="supplier-phone" placeholder="Enter Phone Number">
+                                    </div>
+
+                                    <!-- Email -->
+                                    <div class="form-group">
+                                        <label for="supplier-email">Email</label>
+                                        <svg class="asterisk" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="10" height="10" fill="white">
+                                            <path d="M320 64C337.7 64 352 78.3 352 96L352 264.6L496 181.5C511.3 172.7 530.9 177.9 539.7 193.2C548.5 208.5 543.3 228.1 528 236.9L384 320L528 403.1C543.3 411.9 548.6 431.5 539.7 446.8C530.8 462.1 511.3 467.4 496 458.5L352 375.4L352 544C352 561.7 337.7 576 320 576C302.3 576 288 561.7 288 544L288 375.4L144 458.5C128.7 467.3 109.1 462.1 100.3 446.8C91.5 431.5 96.7 412 112 403.1L256 320L112 236.9C96.7 228 91.5 208.5 100.3 193.1C109.1 177.7 128.7 172.6 144 181.4L288 264.6L288 96C288 78.3 302.3 64 320 64z" />
+                                        </svg>
+                                        <input type="email" class="form-control form-control-rounded w-100" id="supplier-email" placeholder="Enter Email">
+                                    </div>
+
+                                    <!-- Checkbox to show balance fields -->
+                                    <div class="form-group form-check">
+                                        <input type="checkbox" class="form-check-input" id="show-balance">
+                                        <label class="form-check-label" for="show-balance">Has Opening Balance?</label>
+                                    </div>
+
+                                    <!-- Balance fields (hidden initially) -->
+                                    <div id="balance-fields" style="display:none;">
+                                        <div class="form-group">
+                                            <label for="supplier-balance">Balance</label>
+                                            <input type="number" class="form-control form-control-rounded w-100" id="supplier-balance" placeholder="Enter Balance">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="balance-type">Balance Type</label>
+                                            <select id="balance-type" class="form-control form-control-rounded custom-select w-100">
+                                                <option value="" selected disabled>Select Balance Type</option>
+                                                <option value="debit">Debit</option>
+                                                <option value="credit">Credit</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- Tax Number -->
+                                    <div class="form-group">
+                                        <label for="tax-number">Tax Number</label>
+                                        <input type="text" class="form-control form-control-rounded w-100" id="tax-number" placeholder="Enter Tax Number">
+                                    </div>
+
+                                    <!-- Address -->
+                                    <div class="form-group">
+                                        <label for="supplier-address">Address</label>
+                                        <input class="form-control form-control-rounded w-100" id="supplier-address" rows="3" placeholder="Enter Address"></input>
+                                    </div>
+
+                                    <!-- Submit Button -->
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-light btn-round px-5">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    // Toggle balance fields
+                    document.getElementById('show-balance').addEventListener('change', function() {
+                      const balanceFields = document.getElementById('balance-fields');
+                      balanceFields.style.display = this.checked ? 'block' : 'none';
+                    });
+                </script>
+
+
+
+                <!--start overlay-->
+                <div class="overlay toggle-menu"></div>
+                <!--end overlay-->
+
+            </div>
+            <!-- End container-fluid-->
+
+        </div><!--End content-wrapper-->
+        <!--Start Back To Top Button-->
+        <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
+        <!--End Back To Top Button-->
+        <!--Start footer-->
+        <footer class="footer">
+            <div class="container">
+                <div class="text-center">
+                    Copyright © 2018 Dashtreme Admin
+                </div>
+            </div>
+        </footer>
+        <!--End footer-->
+        
+
+    </div><!--End wrapper-->
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/assets/js/jquery.min.js"></script>
+    <script src="~/assets/js/popper.min.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+
+    <!-- simplebar js -->
+    <script src="~/assets/plugins/simplebar/js/simplebar.js"></script>
+    <!-- sidebar-menu js -->
+    <script src="~/assets/js/sidebar-menu.js"></script>
+
+    <!-- Custom scripts -->
+    <script src="~/assets/js/app-script.js"></script>
+
+    <script>
+          // safe init: runs after DOM ready
+          (function($){
+          $(function(){
+            // Add CSS for smooth arrow rotation
+            var style = document.createElement('style');
+            style.textContent = `
+              .sidebar-menu a.has-arrow .fa-arrow-right {
+                transition: transform 0.5s ease;
+                display: inline-block;
+              }
+              .sidebar-menu li.open a.has-arrow .fa-arrow-right {
+                transform: rotate(90deg);
+              }
+            `;
+            document.head.appendChild(style);
+
+            // Ensure all submenus are closed on page load
+            $('.sidebar-menu ul.submenu-angle').hide().attr('aria-expanded', 'false');
+            $('.sidebar-menu li').removeClass('open');
+
+            // click handler for sidebar links with submenus
+            $('.sidebar-menu').on('click', 'a.has-arrow', function(e){
+              e.preventDefault();
+
+              var $anchor = $(this);
+              var $submenu = $anchor.next('ul.submenu-angle');
+
+              // toggle this submenu
+              if (!$submenu.length) return;
+
+              // close other open submenus
+              $('.sidebar-menu ul.submenu-angle').not($submenu).slideUp(400).attr('aria-expanded', 'false');
+              $('.sidebar-menu li').not($anchor.parent()).removeClass('open');
+
+              // toggle current submenu
+              $submenu.slideToggle(400);
+              $anchor.parent().toggleClass('open');
+
+              // set aria-expanded for accessibility
+              var expanded = $anchor.parent().hasClass('open');
+              $submenu.attr('aria-expanded', expanded);
+            });
+          });
+        })(jQuery);
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Remove any existing bg-themeX class
+            document.body.className = document.body.className.replace(/bg-theme\d+/g, "");
+
+            // Add your chosen theme
+            document.body.classList.add("bg-theme2"); // <-- change 7 to your theme
+        });
+    </script>
+
+
+</body>
+</html>

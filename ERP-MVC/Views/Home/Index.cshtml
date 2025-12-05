@@ -1,8 +1,33 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="row">
+
+    <div class="col-lg-6">
+        <section class="home-page">
+            <div class="left-side">
+                <img src="assets/images/logo-icon.png" class="logo-icon home-page-logo" alt="logo icon">
+                <h5 class="logo-text home-title">Axis One</h5>
+
+            </div>
+
+        </section>
+    </div>
+    <div class="col-lg-6">
+        <section class="home-page">
+            <div class="right-side">
+                <h3 class="home-subtitle">Welcome to Axis One</h3>
+
+                <h3 class="home-paragraph">
+                    Our System centralizes your finance, sales, inventory, and operations into one
+                    seamless platform. Get real-time insights, automate tasks, and boost efficiency — all from a single,
+                    powerful dashboard.
+                </h3>
+            </div>
+        </section>
+
+
+    </div>
 </div>

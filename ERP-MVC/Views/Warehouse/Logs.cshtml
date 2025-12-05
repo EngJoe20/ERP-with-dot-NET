@@ -1,0 +1,93 @@
+﻿@using ERP_MVC.Models.DTOs.Warehouse
+@model IEnumerable<StockTransferLogDto>
+
+@{
+    ViewData["Title"] = "Transfer Logs";
+}
+
+<div class="col-12 mx-auto">
+    <div class="card shadow-sm border-0 bg-transparent">
+        <div class="card-body">
+
+            <div class="d-flex align-items-center justify-content-between mb-4">
+                <div>
+                    <h5 class="card-title fw-bold mb-1 text-white">
+                        <i class="fa-solid fa-clock-rotate-left text-secondary me-2"></i>Transfer History
+                    </h5>
+                    <p class="text-white-50 small mb-0">Audit log of all stock movements between warehouses</p>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table align-middle" style="background-color: transparent;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.2);">
+                            <th scope="col" class="text-white text-uppercase text-xs fw-bold ps-3">Date</th>
+                            <th scope="col" class="text-white text-uppercase text-xs fw-bold">From</th>
+                            <th scope="col" class="text-white text-uppercase text-xs fw-bold">To</th>
+                            <th scope="col" class="text-white text-uppercase text-xs fw-bold">Product Details</th>
+                            <th scope="col" class="text-white text-uppercase text-xs fw-bold text-end pe-4">Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            foreach (var log in Model)
+                            {
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+
+                                    <td class="ps-3 text-white">
+                                        <div class="d-flex flex-column">
+                                            <span class="fw-bold">@log.Date.ToString("MMM dd, yyyy")</span>
+                                            <span class="small text-white-50">@log.Date.ToString("hh:mm tt")</span>
+                                        </div>
+                                    </td>
+
+                                    <td class="text-white">
+                                        @log.FromWarehouse
+                                    </td>
+
+                                    <td class="text-white">
+                                        @log.ToWarehouse
+                                    </td>
+
+                                    <td class="text-white">
+                                        @{
+                                            // Build the string: Product - Variation - Package
+                                            var displayString = log.ProductName;
+
+                                            // Only add variation if it's real
+                                            if (!string.IsNullOrEmpty(log.VariationName) && log.VariationName != "string")
+                                            {
+                                                displayString += "-" + log.VariationName;
+                                            }
+
+                                            // Always add package
+                                            displayString += "-" + log.PackageType;
+                                        }
+                                        @displayString
+                                    </td>
+
+                                    <td class="text-end pe-4 text-white">
+                                        @log.Quantity.ToString("N2")
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="5" class="text-center py-5 text-white-50">
+                                    <div class="d-flex flex-column align-items-center">
+                                        <i class="fa-solid fa-clipboard-list fa-2x mb-2 opacity-50"></i>
+                                        <p class="mb-0">No transfer logs found.</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

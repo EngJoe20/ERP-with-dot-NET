@@ -1,0 +1,63 @@
+﻿@using ERP_MVC.Models.DTOs.Inventory.Product
+@model IEnumerable<ProductSummaryDto>
+
+@{
+    ViewData["Title"] = "Products List";
+}
+
+<div class="col-lg-8 mx-auto products-list">
+    <div class="card">
+        <div class="card-body">
+            <div class="row g-2 add-item-button">
+                <h5 class="card-title product-list-title">Products List</h5>
+
+                <a asp-controller="Product" asp-action="Create" class="add-pro btn btn-light px-5">
+                    <i class="fa-solid fa-plus"></i> Add Product
+                </a>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Variations Count</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <th scope="row">@item.Id</th>
+                                    <td>@item.Name</td>
+                                    <td>
+                                        <span class="badge bg-secondary">
+                                            @item.VariationCount Types
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="product-actions">
+                                            <a asp-controller="Product" asp-action="ProductDetails" asp-route-id="@item.Id" title="View Details">
+                                                <i class="fa-solid fa-eye text-primary"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="4" class="text-center">No products found.</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
