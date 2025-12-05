@@ -30,7 +30,7 @@ namespace ERP_MVC.Controllers.Sales
         public async Task<IActionResult> Index()
         {
             var returns = await _returnService.GetAllReturnsAsync();
-            return View(returns);
+            return View("~/Views/Sales/return/Index.cshtml", returns);
         }
 
         // GET: Return Details
@@ -50,7 +50,7 @@ namespace ERP_MVC.Controllers.Sales
         public async Task<IActionResult> Create()
         {
             await PopulateDropdowns();
-            return View(new CreateSalesReturnDto());
+            return View("~/Views/Sales/return/Create.cshtml", new CreateSalesReturnDto());
         }
 
         // POST: Create Return
@@ -60,7 +60,7 @@ namespace ERP_MVC.Controllers.Sales
             if (!ModelState.IsValid)
             {
                 await PopulateDropdowns();
-                return View(dto);
+                return View("~/Views/Sales/return/Create.cshtml", dto);
             }
 
             bool success = await _returnService.CreateReturnAsync(dto);
@@ -73,7 +73,7 @@ namespace ERP_MVC.Controllers.Sales
 
             await PopulateDropdowns();
             ModelState.AddModelError("", "Error creating sales return. Please try again.");
-            return View(dto);
+            return View("~/Views/Sales/return/Create.cshtml", dto);
         }
 
         // POST: Delete Return

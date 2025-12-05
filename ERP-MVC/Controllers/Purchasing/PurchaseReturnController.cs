@@ -24,7 +24,7 @@ namespace ERP_MVC.Controllers
         public async Task<IActionResult> Index()
         {
             var returns = await _purchaseReturnService.GetAllReturnsAsync();
-            return View(returns);
+            return View("~/Views/Purchasing/return/Index.cshtml", returns);
         }
 
         // GET: /PurchaseReturn/Create
@@ -38,7 +38,7 @@ namespace ERP_MVC.Controllers
                 Items = new List<PurchaseReturnItemDto>()
             };
 
-            return View(model);
+            return View("~/Views/Purchasing/invoice/Create.cshtml", model);
         }
 
         // POST: /PurchaseReturn/Create
@@ -65,7 +65,7 @@ namespace ERP_MVC.Controllers
 
             TempData["ErrorMessage"] = "Failed to create purchase return. Please try again.";
             await LoadDropdownsAsync();
-            return View(model);
+            return View("~/Views/Purchasing/invoice/Create.cshtml", model);
         }
 
         // GET: /PurchaseReturn/Details/5

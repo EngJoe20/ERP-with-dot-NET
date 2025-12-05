@@ -24,7 +24,7 @@ namespace ERP_MVC.Controllers
         public async Task<IActionResult> Index()
         {
             var invoices = await _purchaseInvoiceService.GetAllInvoicesAsync();
-            return View(invoices);
+             return View("~/Views/Purchasing/invoice/Index.cshtml", invoices);
         }
 
         // GET: /PurchaseInvoice/Create
@@ -38,7 +38,7 @@ namespace ERP_MVC.Controllers
                 Items = new List<PurchaseInvoiceItemDto>()
             };
 
-            return View(model);
+            return View("~/Views/Purchasing/invoice/Create.cshtml", model);
         }
 
         // POST: /PurchaseInvoice/Create
@@ -65,7 +65,7 @@ namespace ERP_MVC.Controllers
 
             TempData["ErrorMessage"] = "Failed to create purchase invoice. Please try again.";
             await LoadDropdownsAsync();
-            return View(model);
+            return View("~/Views/Purchasing/invoice/Create.cshtml", model);
         }
 
         // GET: /PurchaseInvoice/Details/5
@@ -79,7 +79,7 @@ namespace ERP_MVC.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            return View(invoice);
+            return View("~/Views/Purchasing/invoice/Details.cshtml", invoice);
         }
 
         // POST: /PurchaseInvoice/Delete/5

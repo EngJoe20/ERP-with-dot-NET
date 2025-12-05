@@ -30,7 +30,7 @@ namespace ERP_MVC.Controllers.Sales
         public async Task<IActionResult> Index()
         {
             var invoices = await _invoiceService.GetAllInvoicesAsync();
-            return View(invoices);
+            return View("~/Views/Sales/invoice/Index.cshtml", invoices);
         }
 
         // GET: Invoice Details
@@ -50,7 +50,7 @@ namespace ERP_MVC.Controllers.Sales
         public async Task<IActionResult> Create()
         {
             await PopulateDropdowns();
-            return View(new CreateSalesInvoiceDto());
+            return View("~/Views/Sales/invoice/Create.cshtml", new CreateSalesInvoiceDto());
         }
 
         // POST: Create Invoice
@@ -60,7 +60,7 @@ namespace ERP_MVC.Controllers.Sales
             if (!ModelState.IsValid)
             {
                 await PopulateDropdowns();
-                return View(dto);
+                return View("~/Views/Sales/invoice/Create.cshtml", dto);
             }
 
             bool success = await _invoiceService.CreateInvoiceAsync(dto);
@@ -73,7 +73,7 @@ namespace ERP_MVC.Controllers.Sales
 
             await PopulateDropdowns();
             ModelState.AddModelError("", "Error creating sales invoice. Please try again.");
-            return View(dto);
+            return View("~/Views/Sales/invoice/Create.cshtml", dto);
         }
 
         // POST: Delete Invoice
