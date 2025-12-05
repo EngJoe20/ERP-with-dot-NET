@@ -47,7 +47,7 @@ namespace ERP_API.Application.DTOs.Customers
         public CustomerTransactionType TransactionType { get; set; }
         public DateTime TransactionDate { get; set; }
         public decimal Amount { get; set; }
-        public TransactionDirection Direction { get; set; }
+        public CustomerTransactionDirection Direction { get; set; }
         public string? Description { get; set; }
     }
 

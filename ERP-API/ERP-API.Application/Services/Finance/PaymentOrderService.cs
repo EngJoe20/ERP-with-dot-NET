@@ -72,7 +72,7 @@ namespace ERP_API.Application.Services
                         CustomerTransactionType = CustomerTransactionType.Payment,
                         TransactionDate = date,
                         Amount = createDto.Amount,
-                        Direction = TransactionDirection.Out,
+                        Direction = CustomerTransactionDirection.Out,
                         Description = createDto.Description,
                         CreatedAt = date,
                         UpdatedAt = date
@@ -99,10 +99,10 @@ namespace ERP_API.Application.Services
                     var supplierTransaction = new SupplierTransaction
                     {
                         SupplierId = createDto.SupplierId.Value,
-                        TransactionType = "payment",
+                        SupplierTransactionType = SupplierTransactionType.Payment,
                         TransactionDate = date,
                         Amount = createDto.Amount,
-                        Direction = "out",
+                        Direction = SupplierTransactionDirection.Out,
                         Description = createDto.Description,
                         CreatedAt = date,
                         UpdatedAt = date

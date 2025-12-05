@@ -3,9 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ERP_API.DataAccess.Entities.Suppliers;
 
 namespace ERP_API.DataAccess.Entities.Suppliers
 {
@@ -20,18 +18,16 @@ namespace ERP_API.DataAccess.Entities.Suppliers
         public int SupplierId { get; set; }
 
         [Required]
-        [StringLength(50)]
-        public string TransactionType { get; set; } = string.Empty; // 'payment' or 'receipt'
+        public SupplierTransactionType SupplierTransactionType { get; set; } // Enum type
 
         [Required]
         public DateTime TransactionDate { get; set; } = DateTime.UtcNow;
 
+        [Required]
+        public SupplierTransactionDirection Direction { get; set; } // Enum type
+
         [Column(TypeName = "decimal(18,2)")]
         public decimal Amount { get; set; }
-
-        [Required]
-        [StringLength(10)]
-        public string Direction { get; set; } = string.Empty; // 'in' or 'out'
 
         [StringLength(500)]
         public string? Description { get; set; }
@@ -45,5 +41,19 @@ namespace ERP_API.DataAccess.Entities.Suppliers
         public virtual Supplier Supplier { get; set; } = null!;
 
         public virtual ICollection<MainSafeLedgerEntry> LedgerEntries { get; set; } = new List<MainSafeLedgerEntry>();
+    }
+
+    public enum SupplierTransactionType
+    {
+        Payment,
+        Receipt,
+        Sale,
+        Purchase
+    }
+
+    public enum SupplierTransactionDirection
+    {
+        In,
+        Out
     }
 }

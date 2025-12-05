@@ -1,11 +1,13 @@
 ﻿using ERP_API.Application.DTOs.Suppliers;
 using ERP_API.Application.Interfaces.Suppliers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ERP_API.API.Controllers.Suppliers
 {
     [ApiController]
     [Route("api/[controller]")]
+    //[Authorize]
     public class SupplierController : ControllerBase
     {
         private readonly ISupplierService _supplierService;
@@ -15,13 +17,15 @@ namespace ERP_API.API.Controllers.Suppliers
             _supplierService = supplierService;
         }
 
+        // ---------------- GET ALL ----------------
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var data = await _supplierService.GetAllSuppliersAsync();
-            return Ok(new { success = true, data });
+            var suppliers = await _supplierService.GetAllSuppliersAsync();
+            return Ok(new { success = true, data = suppliers });
         }
 
+        // ---------------- GET BY ID ----------------
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -32,8 +36,9 @@ namespace ERP_API.API.Controllers.Suppliers
             return Ok(new { success = true, data = supplier });
         }
 
+        // ---------------- GET WITH DETAILS ----------------
         [HttpGet("{id}/details")]
-        public async Task<IActionResult> GetDetails(int id)
+        public async Task<IActionResult> GetSupplierDetails(int id)
         {
             var details = await _supplierService.GetSupplierDetailsAsync(id);
             if (details == null)
@@ -42,13 +47,15 @@ namespace ERP_API.API.Controllers.Suppliers
             return Ok(new { success = true, data = details });
         }
 
+        // ---------------- GET TRANSACTIONS ONLY ----------------
         [HttpGet("{id}/transactions")]
         public async Task<IActionResult> GetTransactions(int id)
         {
-            var tx = await _supplierService.GetSupplierTransactionsAsync(id);
-            return Ok(new { success = true, data = tx });
+            var transactions = await _supplierService.GetSupplierTransactionsAsync(id);
+            return Ok(new { success = true, data = transactions });
         }
 
+        // ---------------- CREATE ----------------
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateSupplierDto dto)
         {
@@ -56,16 +63,18 @@ namespace ERP_API.API.Controllers.Suppliers
             return Ok(new { success = true, data = supplier });
         }
 
+        // ---------------- UPDATE ----------------
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] UpdateSupplierDto dto)
         {
-            var result = await _supplierService.UpdateSupplierAsync(id, dto);
-            if (result == null)
+            var supplier = await _supplierService.UpdateSupplierAsync(id, dto);
+            if (supplier == null)
                 return NotFound(new { success = false, message = "Supplier not found" });
 
-            return Ok(new { success = true, data = result });
+            return Ok(new { success = true, data = supplier });
         }
 
+        // ---------------- DELETE ----------------
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

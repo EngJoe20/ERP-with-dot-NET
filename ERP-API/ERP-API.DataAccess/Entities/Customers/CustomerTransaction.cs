@@ -23,7 +23,7 @@ namespace ERP_API.DataAccess.Entities.Customers
         public DateTime TransactionDate { get; set; } = DateTime.UtcNow;
 
         [Required]
-        public TransactionDirection Direction { get; set; } // Enum type
+        public CustomerTransactionDirection Direction { get; set; } // Enum type
 
         [Column(TypeName = "decimal(18,2)")]
         public decimal Amount { get; set; }
@@ -50,7 +50,7 @@ namespace ERP_API.DataAccess.Entities.Customers
         Purchase
     }
 
-    public enum TransactionDirection
+    public enum CustomerTransactionDirection
     {
         In,
         Out

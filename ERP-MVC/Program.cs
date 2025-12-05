@@ -2,6 +2,7 @@
 using ERP_MVC.Services.Inventory.Package; // For PackageTypeService
 using ERP_MVC.Services.Inventory.Product;  // For ProductService
 using ERP_MVC.Services.InventoryAdjustment;
+using ERP_MVC.Services.Suppliers;
 using ERP_MVC.Services.User;
 using ERP_MVC.Services.Warehouse;
 using Microsoft.AspNetCore.Authentication.Cookies;        // For WarehouseService   
@@ -36,6 +37,10 @@ namespace ERP_MVC
                 client.BaseAddress = new Uri(apiBaseUrl);
             });
             builder.Services.AddHttpClient<CustomerService>(client =>
+            {
+                client.BaseAddress = new Uri(apiBaseUrl);
+            });
+            builder.Services.AddHttpClient<SupplierService>(client =>
             {
                 client.BaseAddress = new Uri(apiBaseUrl);
             });

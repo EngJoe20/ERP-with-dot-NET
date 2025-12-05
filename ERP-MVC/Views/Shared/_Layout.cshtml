@@ -132,18 +132,6 @@
                     </ul>
                 </li>
 
-                <!-- Suppliers -->
-                <li>
-                    <a href="javascript:void();" class="has-arrow">
-                        <i class="zmdi zmdi-accounts-alt"></i> <span>Suppliers</span>
-                    </a>
-                    <ul class="submenu-angle">
-                        <li><a href="suppliers-list.html">Suppliers List</a></li>
-                        <li><a href="add-supplier.html">Add Supplier</a></li>
-                        <li><a href="suppliers-report.html">Summary Report</a></li>
-                    </ul>
-                </li>
-
                 <!-- Customers -->
                 <li>
                     <a href="javascript:void();" class="has-arrow">
@@ -158,6 +146,25 @@
                         <li>
                             <a asp-controller="Customer" asp-action="Create">
                                 Add Customer
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Suppliers -->
+                <li>
+                    <a href="javascript:void();" class="has-arrow">
+                        <i class="zmdi zmdi-accounts-alt"></i> <span>Suppliers</span>
+                    </a>
+                    <ul class="submenu-angle">
+                        <li>
+                            <a asp-controller="Supplier" asp-action="Index">
+                                Suppliers List
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-controller="Supplier" asp-action="Create">
+                                Add Supplier
                             </a>
                         </li>
                     </ul>

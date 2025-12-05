@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using ERP_API.DataAccess.Entities.Suppliers;
 
-namespace ERP_API.Application.DTOs.Suppliers
+namespace ERP_MVC.Models.DTOs.Suppliers
 {
     public class SupplierDto
     {
@@ -44,10 +43,10 @@ namespace ERP_API.Application.DTOs.Suppliers
     public class SupplierTransactionDto
     {
         public int Id { get; set; }
-        public SupplierTransactionType TransactionType { get; set; }
+        public string TransactionType { get; set; } = string.Empty; // 'Payment', 'Receipt', etc.
         public DateTime TransactionDate { get; set; }
         public decimal Amount { get; set; }
-        public SupplierTransactionDirection Direction { get; set; }
+        public string Direction { get; set; } = string.Empty; // 'In' or 'Out'
         public string? Description { get; set; }
     }
 

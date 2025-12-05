@@ -3,9 +3,11 @@ using ERP_API.Application.DTOs.Finance;
 using ERP_API.Application.DTOs.Suppliers;
 using ERP_API.Application.Interfaces.Customers;
 using ERP_API.Application.Interfaces.Finance;
+
 using ERP_API.Application.Interfaces.Suppliers;
 using ERP_API.DataAccess.Entities.Customers;
 using ERP_API.DataAccess.Entities.Finance;
+
 using ERP_API.DataAccess.Entities.Suppliers;
 using ERP_API.DataAccess.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -73,7 +75,7 @@ namespace ERP_API.Application.Services.Finance
                         CustomerTransactionType = CustomerTransactionType.Receipt,
                         TransactionDate = date,
                         Amount = createDto.Amount,
-                        Direction = TransactionDirection.In,
+                        Direction = CustomerTransactionDirection.In,
                         Description = createDto.Description,
                         CreatedAt = date,
                         UpdatedAt = date
@@ -100,10 +102,10 @@ namespace ERP_API.Application.Services.Finance
                     var supplierTransaction = new SupplierTransaction
                     {
                         SupplierId = createDto.SupplierId.Value,
-                        TransactionType = "receipt",
+                        SupplierTransactionType = SupplierTransactionType.Receipt,
                         TransactionDate = date,
                         Amount = createDto.Amount,
-                        Direction = "in",
+                        Direction = SupplierTransactionDirection.In,
                         Description = createDto.Description,
                         CreatedAt = date,
                         UpdatedAt = date

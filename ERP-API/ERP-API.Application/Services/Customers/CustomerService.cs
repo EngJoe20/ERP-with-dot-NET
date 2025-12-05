@@ -208,7 +208,7 @@ namespace ERP_API.Application.Services.Customers
 
             foreach (var t in customer.Transactions.OrderBy(t => t.TransactionDate))
             {
-                if (t.Direction == TransactionDirection.In)
+                if (t.Direction == CustomerTransactionDirection.In)
                     balance += t.Amount;
                 else
                     balance -= t.Amount;
