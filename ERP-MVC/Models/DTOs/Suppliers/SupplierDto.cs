@@ -43,10 +43,10 @@ namespace ERP_MVC.Models.DTOs.Suppliers
     public class SupplierTransactionDto
     {
         public int Id { get; set; }
-        public string TransactionType { get; set; } = string.Empty; // 'Payment', 'Receipt', etc.
+        public SupplierTransactionType TransactionType { get; set; }  // 'Payment', 'Receipt', etc.
         public DateTime TransactionDate { get; set; }
         public decimal Amount { get; set; }
-        public string Direction { get; set; } = string.Empty; // 'In' or 'Out'
+        public SupplierTransactionDirection Direction { get; set; }// 'In' or 'Out'
         public string? Description { get; set; }
     }
 
@@ -64,5 +64,19 @@ namespace ERP_MVC.Models.DTOs.Suppliers
         public DateTime UpdatedAt { get; set; }
 
         public List<SupplierTransactionDto> Transactions { get; set; } = new();
+    }
+
+    public enum SupplierTransactionType
+    {
+        Payment,
+        Receipt,
+        Sale,
+        Purchase
+    }
+
+    public enum SupplierTransactionDirection
+    {
+        In,
+        Out
     }
 }

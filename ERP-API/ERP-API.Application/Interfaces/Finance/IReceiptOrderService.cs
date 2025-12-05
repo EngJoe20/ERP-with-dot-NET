@@ -10,6 +10,7 @@ namespace ERP_API.Application.Interfaces.Finance
     public interface IReceiptOrderService
     {
         Task<IEnumerable<ReceiptOrderDto>> GetAllReceiptOrdersAsync();
-        Task<int> CreateReceiptOrderAsync(CreateReceiptOrderDto createDto, int userId);
+        Task<int> CreateReceiptOrderAsync(CreateReceiptOrderDto createDto, string? userId);
+
     }
 }

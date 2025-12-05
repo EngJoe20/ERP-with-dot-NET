@@ -202,11 +202,28 @@
                         <i class="zmdi zmdi-balance-wallet"></i> <span>Finances</span>
                     </a>
                     <ul class="submenu-angle">
-                        <li><a href="dismissal-notice.html">Dismissal notice</a></li>
-                        <li><a href="receipt.html">Receipt</a></li>
-                        <li><a href="cash-ledger.html">Secure Account Statement</a></li>
-                        <li><a href="payment-vouchers.html">Dismissal Notice List</a></li>
-                        <li><a href="receiving-vouchers.html">Receipt List</a></li>
+                            <li>
+                                <a asp-controller="ReceiptOrder" asp-action="Index">
+                                    Receipt List
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-controller="ReceiptOrder" asp-action="Create">
+                                    Create Receipt
+                                </a>
+                            </li>
+                        <li>
+                            <a asp-controller="PaymentOrder" asp-action="Index">
+                                Payment List
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-controller="PaymentOrder" asp-action="Create">
+                                Create Payment
+                            </a>
+                        </li>
+
+                        <li><a asp-controller="MainSafe" asp-action="Statement" class="active">Secure Account Statement</a></li>
                     </ul>
                 </li>
             </ul>

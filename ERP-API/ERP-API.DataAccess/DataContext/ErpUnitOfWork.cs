@@ -51,6 +51,9 @@ namespace ERP_API.DataAccess.DataContext
 
             private readonly Lazy<IBaseRepository<SupplierTransaction, int>> _supplierTransactions;
 
+            private readonly Lazy<IBaseRepository<ReceiptOrder, int>> _receiptOrder;
+            private readonly Lazy<IBaseRepository<PaymentOrder, int>> _paymentOrder;
+
             private readonly Lazy<ICustomerRepository> _customers;
             private readonly Lazy<ISupplierRepository> _suppliers;
     
@@ -106,12 +109,20 @@ namespace ERP_API.DataAccess.DataContext
                     new BaseRepository<SupplierTransaction, int>(_context));
 
 
+
+                _receiptOrder = new Lazy<IBaseRepository<ReceiptOrder, int>>(() =>
+                     new BaseRepository<ReceiptOrder, int>(_context));
+
+                _paymentOrder = new Lazy<IBaseRepository<PaymentOrder, int>>(() =>
+                    new BaseRepository<PaymentOrder,int>(_context));
+
                 _customers = new Lazy<ICustomerRepository>(() =>
                     new CustomerRepository(_context));
 
                 _suppliers = new Lazy<ISupplierRepository>(() =>
                    new SupplierRepository(_context));
 
+                
 
 
 
@@ -137,6 +148,8 @@ namespace ERP_API.DataAccess.DataContext
             public IBaseRepository<MainSafeLedgerEntry, int> MainSafeLedgerEntry => _mainSafeLedgerEntries.Value;
             public IBaseRepository<Expense, int> Expenses => _expenses.Value;
             public IBaseRepository<ProfitSource, int> ProfitSources => _profitSources.Value;
+            public IBaseRepository<ReceiptOrder, int> ReceiptOrder => _receiptOrder.Value;
+            public IBaseRepository<PaymentOrder, int> PaymentOrder => _paymentOrder.Value;
 
             public ICustomerRepository Customers => _customers.Value;
             public ISupplierRepository Suppliers => _suppliers.Value;

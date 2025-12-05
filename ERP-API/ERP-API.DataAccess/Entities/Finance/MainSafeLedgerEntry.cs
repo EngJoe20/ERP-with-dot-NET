@@ -43,12 +43,10 @@ namespace ERP_API.DataAccess.Entities.Finance
         [Required]
         public int ReferenceRecordId { get; set; }
 
-        [Required]
-        public string PerformedByUserId { get; set; } = string.Empty;
+        public string? PerformedByUserId { get; set; }
 
         [Required]
-        [StringLength(10)]
-        public string Direction { get; set; } = string.Empty; // 'in' or 'out'
+        public TransactionDirection Direction { get; set; }
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
@@ -58,13 +56,20 @@ namespace ERP_API.DataAccess.Entities.Finance
         [ForeignKey("MainSafeId")]
         public virtual MainSafe MainSafe { get; set; } = null!;
 
-        [ForeignKey("PerformedByUserId")]
-        public virtual AppUser PerformedByUser { get; set; } = null!;
+        [ForeignKey(nameof(PerformedByUserId))]
+        public AppUser? PerformedByUser { get; set; }
 
         // Polymorphic relationships (handled differently in EF Core)
         public virtual CustomerTransaction? CustomerTransaction { get; set; }
         public virtual SupplierTransaction? SupplierTransaction { get; set; }
         public virtual Expense? Expense { get; set; }
         public virtual ProfitSource? ProfitSource { get; set; }
+      
+    }
+
+    public enum TransactionDirection
+    {
+        In,
+        Out
     }
 }

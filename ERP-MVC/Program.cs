@@ -1,4 +1,5 @@
 ﻿using ERP_MVC.Services.Customers;
+using ERP_MVC.Services.Finance;
 using ERP_MVC.Services.Inventory.Package; // For PackageTypeService
 using ERP_MVC.Services.Inventory.Product;  // For ProductService
 using ERP_MVC.Services.InventoryAdjustment;
@@ -48,6 +49,29 @@ namespace ERP_MVC
             {
                 client.BaseAddress = new Uri(apiBaseUrl);
             });
+
+            builder.Services.AddHttpClient<ReceiptOrderService>(client =>
+            {
+                client.BaseAddress = new Uri(apiBaseUrl);
+            });
+
+            builder.Services.AddHttpClient<PaymentOrderService>(client =>
+            {
+                client.BaseAddress = new Uri(apiBaseUrl);
+            });
+
+            builder.Services.AddHttpClient<MainSafeService>(client =>
+            {
+                client.BaseAddress = new Uri(apiBaseUrl);
+            });
+
+            builder.Services.AddHttpClient<MainSafeLedgerEntryService>(client =>
+            {
+                client.BaseAddress = new Uri(apiBaseUrl);
+            });
+
+
+
 
             builder.Services.AddAuthentication(options =>
             {

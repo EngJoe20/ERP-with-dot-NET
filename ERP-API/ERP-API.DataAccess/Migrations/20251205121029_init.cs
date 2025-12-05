@@ -43,7 +43,6 @@ namespace ERP_API.DataAccess.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    myId = table.Column<int>(type: "int", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     BirthDate = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -443,8 +442,8 @@ namespace ERP_API.DataAccess.Migrations
                     BalanceAfterEntry = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     ReferenceTable = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     ReferenceRecordId = table.Column<int>(type: "int", nullable: false),
-                    PerformedByUserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Direction = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    PerformedByUserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    Direction = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CustomerTransactionId = table.Column<int>(type: "int", nullable: true),
@@ -459,8 +458,7 @@ namespace ERP_API.DataAccess.Migrations
                         name: "FK_MainSafeLedgerEntries_AspNetUsers_PerformedByUserId",
                         column: x => x.PerformedByUserId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_MainSafeLedgerEntries_CustomerTransactions_CustomerTransactionId",
                         column: x => x.CustomerTransactionId,
@@ -484,6 +482,82 @@ namespace ERP_API.DataAccess.Migrations
                         principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_MainSafeLedgerEntries_SupplierTransactions_SupplierTransactionId",
+                        column: x => x.SupplierTransactionId,
+                        principalTable: "SupplierTransactions",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PaymentOrder",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MainSafeId = table.Column<int>(type: "int", nullable: false),
+                    EntryTimestamp = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EntryDescription = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    DebitAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    BalanceAfterEntry = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Direction = table.Column<int>(type: "int", nullable: false),
+                    CustomerTransactionId = table.Column<int>(type: "int", nullable: true),
+                    SupplierTransactionId = table.Column<int>(type: "int", nullable: true),
+                    PerformedByUserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PaymentOrder", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_PaymentOrder_AspNetUsers_PerformedByUserId",
+                        column: x => x.PerformedByUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_PaymentOrder_CustomerTransactions_CustomerTransactionId",
+                        column: x => x.CustomerTransactionId,
+                        principalTable: "CustomerTransactions",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_PaymentOrder_SupplierTransactions_SupplierTransactionId",
+                        column: x => x.SupplierTransactionId,
+                        principalTable: "SupplierTransactions",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ReceiptOrder",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MainSafeId = table.Column<int>(type: "int", nullable: false),
+                    EntryTimestamp = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EntryDescription = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    CreditAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    BalanceAfterEntry = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Direction = table.Column<int>(type: "int", nullable: false),
+                    CustomerTransactionId = table.Column<int>(type: "int", nullable: true),
+                    SupplierTransactionId = table.Column<int>(type: "int", nullable: true),
+                    PerformedByUserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ReceiptOrder", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ReceiptOrder_AspNetUsers_PerformedByUserId",
+                        column: x => x.PerformedByUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_ReceiptOrder_CustomerTransactions_CustomerTransactionId",
+                        column: x => x.CustomerTransactionId,
+                        principalTable: "CustomerTransactions",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_ReceiptOrder_SupplierTransactions_SupplierTransactionId",
                         column: x => x.SupplierTransactionId,
                         principalTable: "SupplierTransactions",
                         principalColumn: "Id");
@@ -705,6 +779,21 @@ namespace ERP_API.DataAccess.Migrations
                 column: "SupplierTransactionId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_PaymentOrder_CustomerTransactionId",
+                table: "PaymentOrder",
+                column: "CustomerTransactionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PaymentOrder_PerformedByUserId",
+                table: "PaymentOrder",
+                column: "PerformedByUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PaymentOrder_SupplierTransactionId",
+                table: "PaymentOrder",
+                column: "SupplierTransactionId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ProductPackages_PackageTypeId",
                 table: "ProductPackages",
                 column: "PackageTypeId");
@@ -723,6 +812,21 @@ namespace ERP_API.DataAccess.Migrations
                 name: "IX_ProductVariations_ProductId",
                 table: "ProductVariations",
                 column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ReceiptOrder_CustomerTransactionId",
+                table: "ReceiptOrder",
+                column: "CustomerTransactionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ReceiptOrder_PerformedByUserId",
+                table: "ReceiptOrder",
+                column: "PerformedByUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ReceiptOrder_SupplierTransactionId",
+                table: "ReceiptOrder",
+                column: "SupplierTransactionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_StockTransferLogs_FromWarehouseId",
@@ -783,6 +887,12 @@ namespace ERP_API.DataAccess.Migrations
                 name: "MainSafeLedgerEntries");
 
             migrationBuilder.DropTable(
+                name: "PaymentOrder");
+
+            migrationBuilder.DropTable(
+                name: "ReceiptOrder");
+
+            migrationBuilder.DropTable(
                 name: "StockTransferLogs");
 
             migrationBuilder.DropTable(
@@ -795,12 +905,6 @@ namespace ERP_API.DataAccess.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
-                name: "CustomerTransactions");
-
-            migrationBuilder.DropTable(
                 name: "Expenses");
 
             migrationBuilder.DropTable(
@@ -808,6 +912,12 @@ namespace ERP_API.DataAccess.Migrations
 
             migrationBuilder.DropTable(
                 name: "ProfitSources");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "CustomerTransactions");
 
             migrationBuilder.DropTable(
                 name: "SupplierTransactions");

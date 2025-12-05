@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ERP_API.DataAccess.Entities.Finance;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace ERP_API.Application.DTOs.Finance
         public string? Description { get; set; }
         public string? ExpenseName { get; set; }
         public string? SourceName { get; set; }
+        // REMOVED: PerformedByUserId - this should come from authentication, not from client
     }
 
     public class ReceiptOrderDto
@@ -25,10 +27,15 @@ namespace ERP_API.Application.DTOs.Finance
         public string? EntryDescription { get; set; }
         public decimal CreditAmount { get; set; }
         public decimal BalanceAfterEntry { get; set; }
-        public string Direction { get; set; } = string.Empty;
+        public TransactionDirection Direction { get; set; }
         public string? CustomerName { get; set; }
         public string? SupplierName { get; set; }
         public string PerformedByUserName { get; set; } = string.Empty;
         public DateTime CreatedAt { get; set; }
+    }
+    public enum TransactionDirection
+    {
+        In,
+        Out
     }
 }

@@ -1,6 +1,6 @@
-﻿@model IEnumerable<ERP_MVC.Models.DTOs.Customers.CustomerDto>
+﻿@model IEnumerable<ERP_MVC.Models.DTOs.Suppliers.SupplierDto>
 @{
-    ViewData["Title"] = "Customers List";
+    ViewData["Title"] = "suppliers List";
 }
 
 <div class="row mt-3">
@@ -9,7 +9,7 @@
             <div class="card-body">
                 <div class="row g-2 mb-3">
                     <div class="col-md-6">
-                        <h5 class="card-title">Customers List</h5>
+                        <h5 class="card-title">suppliers List</h5>
                     </div>
                     <div class="col-md-6 text-right">
                         <a asp-controller="Supplier" asp-action="Create" class="btn btn-light px-4">
@@ -42,23 +42,23 @@
             @if (Model != null && Model.Any())
             {
                 int i = 1;
-                foreach (var Supplier in Model)
+                foreach (var supplier in Model)
                 {
                     <tr>
                         <th scope="row">@i</th>
-                        <td>@Supplier.CustomerName</td>
-                        <td>@( (Supplier.TotalBalance + Supplier.OpeningBalance).ToString("N2") )</td>
-                        <td>@(Supplier.Description ?? "—")</td>
-                        <td>@Supplier.CreatedAt.ToString("yyyy-MM-dd")</td>
+                            <td>@supplier.SupplierName</td>
+                            <td>@( (supplier.TotalBalance + supplier.OpeningBalance).ToString("N2") )</td>
+                            <td>@(supplier.Description ?? "—")</td>
+                            <td>@supplier.CreatedAt.ToString("yyyy-MM-dd")</td>
                         <td>
                             <div class="product-actions">
-                                <a asp-action="Details" asp-route-id="@Supplier.Id">
+                                <a asp-action="Details" asp-route-id="@supplier.Id">
                                     <i class="fa-solid fa-eye"></i>
                                 </a>
-                                <a asp-action="Edit" asp-route-id="@Supplier.Id">
+                                <a asp-action="Edit" asp-route-id="@supplier.Id">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </a>
-                                <button type="button" onclick="confirmDelete(@Supplier.Id, '@Supplier.CustomerName')" class="btn btn-link p-0">
+                                <button type="button" onclick="confirmDelete(@supplier.Id, '@supplier.SupplierName')" class="btn btn-link p-0">
                                     <i class="fa-solid fa-trash text-danger"></i>
                                 </button>
 
@@ -71,7 +71,7 @@
             else
             {
                 <tr>
-                    <td colspan="6" class="text-center">No customers found</td>
+                    <td colspan="6" class="text-center">No suppliers found</td>
                 </tr>
             }
         </tbody>
@@ -94,7 +94,7 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                Are you sure you want to delete Supplier <strong id="customerName"></strong>?
+                Are you sure you want to delete Supplier <strong id="supplierName"></strong>?
             </div>
             <div class="modal-footer">
                 <form id="deleteForm" method="post">
@@ -115,7 +115,7 @@
             </div>
             <div class="modal-body">
                 Are you sure you want to delete Supplier
-                <strong id="customerName" class="text-warning"></strong>?
+                <strong id="supplierName" class="text-warning"></strong>?
             </div>
             <div class="modal-footer border-0">
                 <form id="deleteForm" method="post" class="d-inline">
@@ -132,7 +132,7 @@
 @section Scripts {
     <script>
         function confirmDelete(id, name) {
-            document.getElementById("customerName").innerText = name;
+            document.getElementById("supplierName").innerText = name;
             document.getElementById("deleteForm").action = "/Supplier/Delete/" + id;
             $("#deleteModal").modal("show");
         }

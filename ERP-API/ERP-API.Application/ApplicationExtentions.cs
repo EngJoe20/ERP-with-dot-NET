@@ -36,10 +36,19 @@ namespace ERP_API.Application
             services.AddScoped<IInventoryAdjustmentService, InventoryAdjustmentService>();
 
             services.AddScoped<IMainSafeService, MainSafeService>();
+
+
+            services.AddScoped<IMainSafeLedgerEntryService, MainSafeLedgerEntryService>();
+
             services.AddScoped<IPaymentOrderService, PaymentOrderService>();
             services.AddScoped<IReceiptOrderService, ReceiptOrderService>();
+
+
             services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<ISupplierService, SupplierService>();
+
+
+
 
             services.AddScoped<IUserManagementService, UserManagementService>();
 

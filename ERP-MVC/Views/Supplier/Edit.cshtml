@@ -11,7 +11,7 @@
                 <hr />
                 <form asp-controller="Supplier" asp-action="Edit" asp-route-id="@Model.Id" method="post">
                     @Html.AntiForgeryToken()
-                    <input asp-for="Id" type="hidden" /> <!-- hidden field -->
+                    <input asp-for="Id" type="hidden" /> 
 
                     <div class="form-group">
                         <label for="SupplierName">Supplier Name</label>

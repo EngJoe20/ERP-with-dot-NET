@@ -9,7 +9,6 @@ using System.Security.Claims;
 
 namespace ERP_API.API.Controllers
 {
-
     [ApiController]
     [Route("api/[controller]")]
     //[Authorize]
@@ -76,7 +75,7 @@ namespace ERP_API.API.Controllers
                 var validTables = new[] { "customertransactions", "suppliertransactions", "profitsources", "expenses" };
                 if (!validTables.Contains(createDto.ReferenceTable.ToLower()))
                 {
-                    return BadRequest(new { success = false, message = "Invaild reference" });
+                    return BadRequest(new { success = false, message = "Invalid reference" });
                 }
 
                 // Validate customer/supplier ID based on transaction type
@@ -87,10 +86,12 @@ namespace ERP_API.API.Controllers
 
                 if (createDto.ReferenceTable.ToLower() == "suppliertransactions" && !createDto.SupplierId.HasValue)
                 {
-                    return BadRequest(new { success = false, message = "Please choose Suppler" });
+                    return BadRequest(new { success = false, message = "Please choose Supplier" });
                 }
 
-                var userId = GetCurrentUserId();
+                // Get userId from claims (will be null if not authenticated)
+                string? userId = GetCurrentUserId();
+
                 var id = await _receiptOrderService.CreateReceiptOrderAsync(createDto, userId);
 
                 return Ok(new { success = true, message = "Receipt order created successfully", id });
@@ -105,10 +106,11 @@ namespace ERP_API.API.Controllers
             }
         }
 
-        private int GetCurrentUserId()
+        private string? GetCurrentUserId()
         {
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            return int.Parse(userIdClaim ?? "0");
+            // Return null if empty or whitespace
+            return string.IsNullOrWhiteSpace(userIdClaim) ? null : userIdClaim;
         }
     }
 }

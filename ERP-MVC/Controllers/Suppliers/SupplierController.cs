@@ -59,6 +59,8 @@ namespace ERP_MVC.Controllers.Suppliers
             return View(supplier);
         }
 
+
+
         // GET: Edit Supplier Form
         [HttpGet]
         public async Task<IActionResult> Edit(int id)

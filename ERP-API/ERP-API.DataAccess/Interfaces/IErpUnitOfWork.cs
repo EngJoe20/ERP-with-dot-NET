@@ -43,7 +43,8 @@ namespace ERP_API.DataAccess.Interfaces
         //IBaseRepository<Supplier, int> Suppliers { get; }
         IBaseRepository<SupplierTransaction, int> SupplierTransactions { get; }
 
-
+        IBaseRepository<ReceiptOrder, int> ReceiptOrder { get; }
+        IBaseRepository<PaymentOrder, int> PaymentOrder { get; }
         ICustomerRepository Customers { get; }
         ISupplierRepository Suppliers { get; }
 

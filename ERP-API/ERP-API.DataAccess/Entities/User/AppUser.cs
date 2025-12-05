@@ -11,7 +11,6 @@ namespace ERP_API.DataAccess.Entities.User
     public class AppUser : IdentityUser
     {
        
-        public int myId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime? BirthDate { get; set; }

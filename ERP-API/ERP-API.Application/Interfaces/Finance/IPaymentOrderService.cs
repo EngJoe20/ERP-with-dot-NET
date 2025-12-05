@@ -10,6 +10,7 @@ namespace ERP_API.Application.Interfaces.Finance
     public interface IPaymentOrderService
     {
         Task<IEnumerable<PaymentOrderDto>> GetAllPaymentOrdersAsync();
-        Task<int> CreatePaymentOrderAsync(CreatePaymentOrderDto createDto, int userId);
+        Task<int> CreatePaymentOrderAsync(CreatePaymentOrderDto createDto, string? userId);
+       
     }
 }

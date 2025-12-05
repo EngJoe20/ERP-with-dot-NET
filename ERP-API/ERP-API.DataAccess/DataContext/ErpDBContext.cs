@@ -37,6 +37,7 @@ namespace ERP_API.DataAccess.DataContext
         public DbSet<AppUserPermission> AppUserPermissions { get; set; }
 
 
+
         //EngJoe
         public DbSet<MainSafe> MainSafes { get; set; }
         public DbSet<MainSafeLedgerEntry> MainSafeLedgerEntries { get; set; }
@@ -47,6 +48,8 @@ namespace ERP_API.DataAccess.DataContext
         public DbSet<Expense> Expenses { get; set; }
         public DbSet<ProfitSource> ProfitSources { get; set; }
 
+        public DbSet<ReceiptOrder> ReceiptOrder { get; set; }
+        public DbSet<PaymentOrder> PaymentOrder { get; set; }
 
 
 

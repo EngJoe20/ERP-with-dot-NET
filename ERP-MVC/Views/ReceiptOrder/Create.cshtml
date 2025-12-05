@@ -1,0 +1,221 @@
+﻿@model ERP_MVC.Models.ViewModels.Finance.CreateReceiptOrderViewModel
+@{
+    ViewData["Title"] = "Create Receipt Order";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row mt-3">
+    <div class="col-lg-8 mx-auto">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">Receipt Order</div>
+                <hr>
+
+                @if (TempData["ErrorMessage"] != null)
+                {
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        @TempData["ErrorMessage"]
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                }
+
+                <form asp-action="Create" method="post">
+                    @Html.AntiForgeryToken()
+
+                    <input type="hidden" asp-for="PerformedByUserId" value="@User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value" />
+
+
+                    <!-- Receipt Type -->
+                    <div class="form-group">
+                        <label asp-for="ReferenceTable">Receipt Type <span class="text-danger">*</span></label>
+                        <select asp-for="ReferenceTable" class="form-control form-control-rounded" id="receiptType">
+                            <option value="" selected disabled>Select Receipt Type</option>
+                            <option value="customertransactions">From Customer</option>
+                            <option value="suppliertransactions">From Supplier</option>
+                            <option value="profitsources">Profit Source</option>
+                            <option value="expenses">Expense</option>
+                        </select>
+                        <span asp-validation-for="ReferenceTable" class="text-danger"></span>
+                    </div>
+
+                    <!-- Customer Selection (shown when type is customertransactions) -->
+                    <div class="form-group" id="customerGroup" style="display: none;">
+                        <label asp-for="CustomerId">Customer <span class="text-danger">*</span></label>
+                        <select asp-for="CustomerId" class="form-control form-control-rounded">
+                            <option value="">Select Customer</option>
+                            @foreach (var customer in Model.Customers)
+                            {
+                                <option value="@customer.Id">@customer.CustomerName</option>
+                            }
+                        </select>
+                        <span asp-validation-for="CustomerId" class="text-danger"></span>
+                    </div>
+
+                    <!-- Supplier Selection (shown when type is suppliertransactions) -->
+                    <div class="form-group" id="supplierGroup" style="display: none;">
+                        <label asp-for="SupplierId">Supplier <span class="text-danger">*</span></label>
+                        <select asp-for="SupplierId" class="form-control form-control-rounded">
+                            <option value="">Select Supplier</option>
+                            @foreach (var supplier in Model.Suppliers)
+                            {
+                                <option value="@supplier.Id">@supplier.SupplierName</option>
+                            }
+                        </select>
+                        <span asp-validation-for="SupplierId" class="text-danger"></span>
+                    </div>
+
+                    <!-- Source Name (shown when type is profitsources) -->
+                    <div class="form-group" id="sourceNameGroup" style="display: none;">
+                        <label asp-for="SourceName">Profit Source Name <span class="text-danger">*</span></label>
+                        <input asp-for="SourceName" class="form-control form-control-rounded" placeholder="Enter source name" />
+                        <span asp-validation-for="SourceName" class="text-danger"></span>
+                    </div>
+
+                    <!-- Expense Name (shown when type is expenses) -->
+                    <div class="form-group" id="expenseNameGroup" style="display: none;">
+                        <label asp-for="ExpenseName">Expense Name <span class="text-danger">*</span></label>
+                        <input asp-for="ExpenseName" class="form-control form-control-rounded" placeholder="Enter expense name" />
+                        <span asp-validation-for="ExpenseName" class="text-danger"></span>
+                    </div>
+
+                    <!-- Amount -->
+                    <div class="form-group">
+                        <label asp-for="Amount">Amount <span class="text-danger">*</span></label>
+                        <input asp-for="Amount" type="number" step="0.01" class="form-control form-control-rounded" placeholder="Enter Amount" />
+                        <span asp-validation-for="Amount" class="text-danger"></span>
+                    </div>
+
+                    <!-- Description -->
+                    <div class="form-group">
+                        <label asp-for="Description">Description</label>
+                        <textarea asp-for="Description" rows="3" class="form-control form-control-rounded" placeholder="Enter Description"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+
+                    <!-- Submit -->
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-light btn-round px-4">
+                            <i class="fa fa-save mr-2"></i>Save Receipt
+                        </button>
+                        <a asp-action="Index" class="btn btn-secondary btn-round px-4">
+                            <i class="fa fa-times mr-2"></i>Cancel
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+               // Replace the entire Scripts section in Create.cshtml with this:
+
+        $(document).ready(function() {
+            // Handle receipt type change
+            $('#receiptType').on('change', function() {
+                var selectedType = $(this).val();
+
+                // Hide all conditional fields
+                $('#customerGroup, #supplierGroup, #sourceNameGroup, #expenseNameGroup').hide();
+
+                // Clear values
+                $('#CustomerId, #SupplierId, #SourceName, #ExpenseName').val('');
+
+                // Show relevant field based on selection
+                if (selectedType === 'customertransactions') {
+                    $('#customerGroup').show();
+                } else if (selectedType === 'suppliertransactions') {
+                    $('#supplierGroup').show();
+                } else if (selectedType === 'profitsources') {
+                    $('#sourceNameGroup').show();
+                } else if (selectedType === 'expenses') {
+                    $('#expenseNameGroup').show();
+                }
+            });
+
+            // Trigger change on page load if value exists
+            if ($('#receiptType').val()) {
+                $('#receiptType').trigger('change');
+            }
+
+            // AJAX Form Submission
+            $('form').on('submit', function(e) {
+                e.preventDefault();
+
+                // Get form values
+                var formData = {
+                    referenceTable: $('#receiptType').val(),
+                    customerId: $('#CustomerId').val() ? parseInt($('#CustomerId').val()) : null,
+                    supplierId: $('#SupplierId').val() ? parseInt($('#SupplierId').val()) : null,
+                    amount: parseFloat($('#Amount').val()),
+                    description: $('#Description').val(),
+                    expenseName: $('#ExpenseName').val(),
+                    sourceName: $('#SourceName').val()
+                };
+
+                // Validate
+                if (!formData.referenceTable) {
+                    alert('Please select receipt type');
+                    return;
+                }
+
+                if (formData.referenceTable === 'customertransactions' && !formData.customerId) {
+                    alert('Please select a customer');
+                    return;
+                }
+
+                if (formData.referenceTable === 'suppliertransactions' && !formData.supplierId) {
+                    alert('Please select a supplier');
+                    return;
+                }
+
+                if (!formData.amount || formData.amount <= 0) {
+                    alert('Please enter a valid amount');
+                    return;
+                }
+
+                // Show loading
+                var submitBtn = $('button[type="submit"]');
+                var originalText = submitBtn.html();
+                submitBtn.prop('disabled', true).html('<i class="fa fa-spinner fa-spin mr-2"></i>Saving...');
+
+                // Send AJAX request
+                $.ajax({
+                    url: '@Url.Action("Create", "ReceiptOrder")',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(formData),
+                    headers: {
+                        'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            // Show success message
+                            alert('Receipt order created successfully!');
+                            // Redirect to index
+                            window.location.href = '@Url.Action("Index", "ReceiptOrder")';
+                        } else {
+                            alert('Error: ' + (response.message || 'Failed to create receipt order'));
+                            submitBtn.prop('disabled', false).html(originalText);
+                        }
+                    },
+                    error: function(xhr) {
+                        var errorMsg = 'An error occurred';
+                        if (xhr.responseJSON && xhr.responseJSON.message) {
+                            errorMsg = xhr.responseJSON.message;
+                        }
+                        alert('Error: ' + errorMsg);
+                        submitBtn.prop('disabled', false).html(originalText);
+                    }
+                });
+            });
+        });
+    </script>
+}

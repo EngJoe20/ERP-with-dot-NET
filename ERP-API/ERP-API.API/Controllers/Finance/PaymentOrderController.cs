@@ -1,5 +1,4 @@
 ﻿using ERP_API.Application.DTOs.Finance;
-using ERP_API.Application.Interfaces;
 using ERP_API.Application.Interfaces.Customers;
 using ERP_API.Application.Interfaces.Finance;
 using ERP_API.Application.Interfaces.Suppliers;
@@ -55,6 +54,7 @@ namespace ERP_API.API.Controllers
             {
                 var customers = await _customerService.GetAllCustomersAsync();
                 var suppliers = await _supplierService.GetAllSuppliersAsync();
+
                 return Ok(new { success = true, data = new { customers, suppliers } });
             }
             catch (Exception ex)
@@ -71,14 +71,12 @@ namespace ERP_API.API.Controllers
         {
             try
             {
-                // Validate reference table
                 var validTables = new[] { "customertransactions", "suppliertransactions", "profitsources", "expenses" };
                 if (!validTables.Contains(createDto.ReferenceTable.ToLower()))
                 {
-                    return BadRequest(new { success = false, message = "Invailed reference" });
+                    return BadRequest(new { success = false, message = "Invalid reference" });
                 }
 
-                // Validate customer/supplier ID based on transaction type
                 if (createDto.ReferenceTable.ToLower() == "customertransactions" && !createDto.CustomerId.HasValue)
                 {
                     return BadRequest(new { success = false, message = "Please choose customer" });
@@ -86,10 +84,12 @@ namespace ERP_API.API.Controllers
 
                 if (createDto.ReferenceTable.ToLower() == "suppliertransactions" && !createDto.SupplierId.HasValue)
                 {
-                    return BadRequest(new { success = false, message = "Please choose suppler" });
+                    return BadRequest(new { success = false, message = "Please choose supplier" });
                 }
 
-                var userId = GetCurrentUserId();
+                // authenticated user id
+                string? userId = GetCurrentUserId();
+
                 var id = await _paymentOrderService.CreatePaymentOrderAsync(createDto, userId);
 
                 return Ok(new { success = true, message = "Payment order created successfully", id });
@@ -104,10 +104,10 @@ namespace ERP_API.API.Controllers
             }
         }
 
-        private int GetCurrentUserId()
+        private string? GetCurrentUserId()
         {
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            return int.Parse(userIdClaim ?? "0");
+            return string.IsNullOrWhiteSpace(userIdClaim) ? null : userIdClaim;
         }
     }
 }
