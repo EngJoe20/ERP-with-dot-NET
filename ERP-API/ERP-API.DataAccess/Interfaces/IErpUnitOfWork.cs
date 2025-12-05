@@ -2,6 +2,8 @@
 using ERP_API.DataAccess.Entities.Finance;
 using ERP_API.DataAccess.Entities.Inventory;
 using ERP_API.DataAccess.Entities.InventoryAdjustment;
+using ERP_API.DataAccess.Entities.Purchasing;
+using ERP_API.DataAccess.Entities.Sales;
 using ERP_API.DataAccess.Entities.Suppliers;
 using ERP_API.DataAccess.Entities.User;
 using ERP_API.DataAccess.Entities.Warehouse;
@@ -47,6 +49,20 @@ namespace ERP_API.DataAccess.Interfaces
         IBaseRepository<PaymentOrder, int> PaymentOrder { get; }
         ICustomerRepository Customers { get; }
         ISupplierRepository Suppliers { get; }
+
+
+        // Purchasing and sales
+        IBaseRepository<PurchaseInvoice, int> PurchaseInvoices { get; }
+        IBaseRepository<PurchaseInvoiceItem, int> PurchaseInvoiceItems { get; }
+        IBaseRepository<PurchaseReturn, int> PurchaseReturns { get; }
+        IBaseRepository<PurchaseReturnItem, int> PurchaseReturnItems { get; }
+
+
+        IBaseRepository<SalesInvoice, int> SalesInvoices { get; }
+        IBaseRepository<SalesInvoiceItem, int> SalesInvoiceItems { get; }
+        IBaseRepository<SalesReturn, int> SalesReturns { get; }
+        IBaseRepository<SalesReturnItem, int> SalesReturnItems { get; }
+
 
         public ITokenManager TokenManager { get; }
 

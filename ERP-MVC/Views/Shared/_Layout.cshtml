@@ -176,10 +176,10 @@
                         <i class="fa-solid fa-cart-shopping"></i> <span>Procurement</span>
                     </a>
                     <ul class="submenu-angle">
-                        <li><a href="purchase-invoices-list.html">Purchase Orders</a></li>
-                        <li><a href="add-purchase-invoice.html">New Purchase</a></li>
-                        <li><a href="create-purchase-return.html">Purchase Return</a></li>
-                        <li><a href="purchase-return-list.html">Purchase Return List</a></li>
+                        <li><a asp-controller="PurchaseInvoice" asp-action="Index">Purchase Orders</a></li>
+                        <li><a asp-controller="PurchaseInvoice" asp-action="Create">New Purchase</a></li>
+                        <li><a asp-controller="PurchaseReturn" asp-action="Create">Purchase Return</a></li>
+                        <li><a asp-controller="PurchaseReturn" asp-action="Index">Purchase Return List</a></li>
                     </ul>
                 </li>
 
@@ -189,10 +189,10 @@
                         <i class="zmdi zmdi-trending-up"></i> <span>Sales Department</span>
                     </a>
                     <ul class="submenu-angle">
-                        <li><a href="sales-invoices-list.html">Sales Orders</a></li>
-                        <li><a href="add-sales-invoice.html">New Sale</a></li>
-                        <li><a href="create-sales-return.html">Sales Return</a></li>
-                        <li><a href="sales-return-list.html">Sales Return List</a></li>
+                        <li><a asp-controller="SalesInvoice" asp-action="Index">Sales Orders</a></li>
+                        <li><a asp-controller="SalesInvoice" asp-action="Create">New Sale</a></li>
+                        <li><a asp-controller="SalesReturn" asp-action="Create">Sales Return</a></li>
+                        <li><a asp-controller="SalesReturn" asp-action="Index">Sales Return List</a></li>
                     </ul>
                 </li>
 

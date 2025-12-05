@@ -1,0 +1,235 @@
+﻿@using ERP_MVC.Models.DTOs.Purchasing
+@model CreatePurchaseReturnDto
+
+@{
+    ViewData["Title"] = "Create Purchase Return";
+}
+
+<div class="container-fluid">
+    <div class="row mt-3">
+        <div class="col-lg-10 mx-auto">
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-4">
+                    <div class="card-title d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0 text-primary font-weight-bold">Create Purchase Return</h5>
+                        <a asp-action="Index" class="btn btn-sm btn-outline-secondary">Cancel</a>
+                    </div>
+                    <hr>
+
+                    <form asp-action="Create" method="post" id="return-form">
+                        @Html.AntiForgeryToken()
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <h6 class="text-uppercase text-body text-xs font-weight-bolder mb-3">Return Information</h6>
+
+                        <div class="row">
+                            <div class="col-md-6 form-group mb-3">
+                                <label asp-for="SupplierId" class="form-label fw-bold">
+                                    Supplier <span class="text-danger">*</span>
+                                </label>
+                                @{
+                                    var supplierList = ViewBag.SupplierList as IEnumerable<SelectListItem>;
+                                }
+                                <select asp-for="SupplierId" class="form-control form-control-rounded" required>
+                                    <option value="">-- Select Supplier --</option>
+                                    @if (supplierList != null)
+                                    {
+                                        foreach (var item in supplierList)
+                                        {
+                                            <option value="@item.Value">@item.Text</option>
+                                        }
+                                    }
+                                </select>
+                                <span asp-validation-for="SupplierId" class="text-danger small"></span>
+                            </div>
+
+                            <div class="col-md-6 form-group mb-3">
+                                <label asp-for="ReturnDate" class="form-label fw-bold">
+                                    Return Date <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="ReturnDate" type="date" class="form-control form-control-rounded" required />
+                                <span asp-validation-for="ReturnDate" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 form-group mb-3">
+                                <label asp-for="Reason" class="form-label">Reason (Optional)</label>
+                                <textarea asp-for="Reason" class="form-control form-control-rounded" rows="3"
+                                          placeholder="Enter reason for return"></textarea>
+                            </div>
+                        </div>
+
+                        <h6 class="text-uppercase text-body text-xs font-weight-bolder mb-3 mt-4">Returned Items</h6>
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="items-table">
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Quantity</th>
+                                        <th>Unit Count</th>
+                                        <th>Unit Price</th>
+                                        <th>Total</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="items-body">
+                                    <tr class="item-row" data-index="0">
+                                        <td>
+                                            @{
+                                                var productList = ViewBag.ProductList as IEnumerable<SelectListItem>;
+                                            }
+                                            <select name="Items[0].ProductPackageId" class="form-control form-control-rounded product-select" required>
+                                                <option value="">Select Product</option>
+                                                @if (productList != null)
+                                                {
+                                                    foreach (var item in productList)
+                                                    {
+                                                        <option value="@item.Value">@item.Text</option>
+                                                    }
+                                                }
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="number" name="Items[0].Quantity"
+                                                   class="form-control form-control-rounded quantity"
+                                                   value="1" min="1" required />
+                                        </td>
+                                        <td>
+                                            <input type="number" name="Items[0].UnitCount"
+                                                   class="form-control form-control-rounded units"
+                                                   value="1" min="1" required />
+                                        </td>
+                                        <td>
+                                            <input type="number" name="Items[0].UnitPrice"
+                                                   class="form-control form-control-rounded price"
+                                                   value="0" step="0.01" min="0" required />
+                                        </td>
+                                        <td>
+                                            <input type="number" class="form-control form-control-rounded total"
+                                                   value="0" readonly />
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger btn-sm remove-row">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <button type="button" class="btn btn-light btn-round px-3 mt-2" id="add-item">
+                            <i class="fa fa-plus"></i> Add Item
+                        </button>
+
+                        <h6 class="text-uppercase text-body text-xs font-weight-bolder mb-3 mt-4">Total</h6>
+
+                        <div class="row">
+                            <div class="col-md-6 form-group mb-3">
+                                <label class="form-label fw-bold">Total Return Amount</label>
+                                <input type="number" id="total-amount-display" class="form-control form-control-rounded"
+                                       value="0.00" readonly />
+                            </div>
+                        </div>
+
+                        <div class="form-group mt-4 text-end">
+                            <button type="submit" class="btn btn-light btn-round px-5 add-item-submit shadow-sm">
+                                <i class="fa-solid fa-check me-2"></i> Submit Return
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let rowIndex = 1;
+
+            // Add Item Row
+            document.getElementById('add-item').addEventListener('click', function() {
+                const tbody = document.getElementById('items-body');
+                const firstRow = tbody.querySelector('.item-row');
+                const newRow = firstRow.cloneNode(true);
+
+                // Update indices
+                newRow.setAttribute('data-index', rowIndex);
+                newRow.querySelectorAll('input, select').forEach(function(input) {
+                    const name = input.getAttribute('name');
+                    if (name) {
+                        input.setAttribute('name', name.replace(/
+    $$
+    \d+
+    $$/, '[' + rowIndex + ']'));
+                    }
+                    if (input.classList.contains('quantity') || input.classList.contains('units')) {
+                        input.value = 1;
+                    } else if (input.classList.contains('price') || input.classList.contains('total')) {
+                        input.value = 0;
+                    }
+                });
+
+                // Reset select
+                const select = newRow.querySelector('.product-select');
+                if (select) {
+                    select.selectedIndex = 0;
+                }
+
+                tbody.appendChild(newRow);
+                rowIndex++;
+            });
+
+            // Remove Row
+            document.getElementById('items-body').addEventListener('click', function(e) {
+                if (e.target.closest('.remove-row')) {
+                    const tbody = document.getElementById('items-body');
+                    if (tbody.querySelectorAll('.item-row').length > 1) {
+                        e.target.closest('.item-row').remove();
+                        updateTotal();
+                    } else {
+                        alert('You must have at least one item!');
+                    }
+                }
+            });
+
+            // Calculate Total
+            function updateTotal() {
+                let totalAmount = 0;
+
+                document.querySelectorAll('.item-row').forEach(function(row) {
+                    const quantity = parseFloat(row.querySelector('.quantity').value) || 0;
+                    const units = parseFloat(row.querySelector('.units').value) || 0;
+                    const price = parseFloat(row.querySelector('.price').value) || 0;
+                    const rowTotal = quantity * units * price;
+
+                    row.querySelector('.total').value = rowTotal.toFixed(2);
+                    totalAmount += rowTotal;
+                });
+
+                document.getElementById('total-amount-display').value = totalAmount.toFixed(2);
+            }
+
+            // Listen to input changes
+            document.getElementById('items-body').addEventListener('input', updateTotal);
+        });
+</script>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                title: 'Success!',
+                text: '@TempData["SuccessMessage"]',
+                icon: 'success',
+                confirmButtonColor: '#10B981',
+                timer: 3000
+            });
+        });
+    </script>
+}

@@ -47,8 +47,10 @@ namespace ERP_API.DataAccess.Entities.Suppliers
     {
         Payment,
         Receipt,
-        Sale,
-        Purchase
+        SalesInvoice,
+        PurchaseInvoice,
+        PurchaseReturn,
+        SalesReturn,
     }
 
     public enum SupplierTransactionDirection

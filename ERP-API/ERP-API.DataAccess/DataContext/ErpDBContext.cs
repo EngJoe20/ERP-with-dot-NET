@@ -2,6 +2,8 @@
 using ERP_API.DataAccess.Entities.Finance;
 using ERP_API.DataAccess.Entities.Inventory;
 using ERP_API.DataAccess.Entities.InventoryAdjustment;
+using ERP_API.DataAccess.Entities.Purchasing;
+using ERP_API.DataAccess.Entities.Sales;
 using ERP_API.DataAccess.Entities.Suppliers;
 using ERP_API.DataAccess.Entities.User;
 using ERP_API.DataAccess.Entities.Warehouse;
@@ -51,6 +53,19 @@ namespace ERP_API.DataAccess.DataContext
         public DbSet<ReceiptOrder> ReceiptOrder { get; set; }
         public DbSet<PaymentOrder> PaymentOrder { get; set; }
 
+
+
+        public DbSet<PurchaseInvoice> PurchaseInvoices { get; set; }
+        public DbSet<PurchaseInvoiceItem> PurchaseInvoiceItems { get; set; }
+        public DbSet<PurchaseReturn> PurchaseReturns { get; set; }
+        public DbSet<PurchaseReturnItem> PurchaseReturnItems { get; set; }
+
+
+        //Sales
+        public DbSet<SalesInvoice> SalesInvoices { get; set; }
+        public DbSet<SalesInvoiceItem> SalesInvoiceItems { get; set; }
+        public DbSet<SalesReturn> SalesReturns { get; set; }
+        public DbSet<SalesReturnItem> SalesReturnItems { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

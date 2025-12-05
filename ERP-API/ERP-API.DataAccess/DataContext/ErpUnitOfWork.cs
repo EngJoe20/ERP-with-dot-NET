@@ -2,6 +2,8 @@
 using ERP_API.DataAccess.Entities.Finance;
 using ERP_API.DataAccess.Entities.Inventory;
 using ERP_API.DataAccess.Entities.InventoryAdjustment;
+using ERP_API.DataAccess.Entities.Purchasing;
+using ERP_API.DataAccess.Entities.Sales;
 using ERP_API.DataAccess.Entities.Suppliers;
 using ERP_API.DataAccess.Entities.User;
 using ERP_API.DataAccess.Entities.Warehouse;
@@ -56,7 +58,19 @@ namespace ERP_API.DataAccess.DataContext
 
             private readonly Lazy<ICustomerRepository> _customers;
             private readonly Lazy<ISupplierRepository> _suppliers;
-    
+
+
+
+            // AFNAN
+            //purchasing and sales
+            private IBaseRepository<PurchaseInvoice, int>? _purchaseInvoices;
+            private IBaseRepository<PurchaseInvoiceItem, int>? _purchaseInvoiceItems;
+            private IBaseRepository<PurchaseReturn, int>? _purchaseReturns;
+            private IBaseRepository<PurchaseReturnItem, int>? _purchaseReturnItems;
+            private IBaseRepository<SalesInvoice, int>? _salesInvoices;
+            private IBaseRepository<SalesInvoiceItem, int>? _salesInvoiceItems;
+            private IBaseRepository<SalesReturn, int>? _salesReturns;
+            private IBaseRepository<SalesReturnItem, int>? _salesReturnItems;
 
 
             // 2. Constructor: Inject Context and Initialize Lazies
@@ -104,7 +118,7 @@ namespace ERP_API.DataAccess.DataContext
                     new BaseRepository<ProfitSource, int>(_context));
                 _customerTransactions = new Lazy<IBaseRepository<CustomerTransaction, int>>(() =>
                 new BaseRepository<CustomerTransaction, int>(_context));
-     
+
                 _supplierTransactions = new Lazy<IBaseRepository<SupplierTransaction, int>>(() =>
                     new BaseRepository<SupplierTransaction, int>(_context));
 
@@ -114,23 +128,42 @@ namespace ERP_API.DataAccess.DataContext
                      new BaseRepository<ReceiptOrder, int>(_context));
 
                 _paymentOrder = new Lazy<IBaseRepository<PaymentOrder, int>>(() =>
-                    new BaseRepository<PaymentOrder,int>(_context));
+                    new BaseRepository<PaymentOrder, int>(_context));
 
                 _customers = new Lazy<ICustomerRepository>(() =>
                     new CustomerRepository(_context));
 
                 _suppliers = new Lazy<ISupplierRepository>(() =>
                    new SupplierRepository(_context));
-
-                
-
-
-
-
-
-
-
             }
+
+
+
+
+
+            public IBaseRepository<PurchaseInvoice, int> PurchaseInvoices =>
+            _purchaseInvoices ??= new BaseRepository<PurchaseInvoice, int>(_context);
+            public IBaseRepository<PurchaseInvoiceItem, int> PurchaseInvoiceItems =>
+                _purchaseInvoiceItems ??= new BaseRepository<PurchaseInvoiceItem, int>(_context);
+            public IBaseRepository<PurchaseReturn, int> PurchaseReturns =>
+                _purchaseReturns ??= new BaseRepository<PurchaseReturn, int>(_context);
+            public IBaseRepository<PurchaseReturnItem, int> PurchaseReturnItems =>
+                _purchaseReturnItems ??= new BaseRepository<PurchaseReturnItem, int>(_context);
+
+            //Sales
+            public IBaseRepository<SalesInvoice, int> SalesInvoices =>
+                _salesInvoices ??= new BaseRepository<SalesInvoice, int>(_context);
+            public IBaseRepository<SalesInvoiceItem, int> SalesInvoiceItems =>
+                _salesInvoiceItems ??= new BaseRepository<SalesInvoiceItem, int>(_context);
+            public IBaseRepository<SalesReturn, int> SalesReturns =>
+                _salesReturns ??= new BaseRepository<SalesReturn, int>(_context);
+            public IBaseRepository<SalesReturnItem, int> SalesReturnItems =>
+                _salesReturnItems ??= new BaseRepository<SalesReturnItem, int>(_context);
+
+
+
+
+            
 
             // 3. Public Properties return the .Value
             public IBaseRepository<Product, int> Products => _products.Value;

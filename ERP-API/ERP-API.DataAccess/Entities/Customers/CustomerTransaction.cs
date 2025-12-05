@@ -46,8 +46,11 @@ namespace ERP_API.DataAccess.Entities.Customers
     {
         Payment,
         Receipt,
-        Sale,
-        Purchase
+        SalesInvoice,
+        PurchaseInvoice,
+        PurchaseReturn,
+        SalesReturn,
+
     }
 
     public enum CustomerTransactionDirection
