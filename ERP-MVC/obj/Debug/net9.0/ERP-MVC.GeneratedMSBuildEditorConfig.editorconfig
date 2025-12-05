@@ -1,14 +1,22 @@
 is_global = true
 build_property.TargetFramework = net9.0
-build_property.TargetFrameworkIdentifier = .NETCoreApp
-build_property.TargetFrameworkVersion = v9.0
+build_property.TargetFramework = net9.0
+build_property.TargetPlatformMinVersion = 
 build_property.TargetPlatformMinVersion = 
 build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
 build_property.PlatformNeutralAssembly = 
 build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.TargetFrameworkIdentifier = .NETCoreApp
+build_property.TargetFrameworkVersion = v9.0
 build_property.RootNamespace = ERP_MVC
 build_property.RootNamespace = ERP_MVC
 build_property.ProjectDir = C:\Users\afnan\source\repos\DEPI-Project\ERP-MVC\
@@ -130,20 +138,44 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxQcm9kdWN0c0xpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/afnan/source/repos/DEPI-Project/ERP-MVC/Views/Purchasing/AddPurchaseInvoice.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHVyY2hhc2luZ1xBZGRQdXJjaGFzZUludm9pY2UuY3NodG1s
+[C:/Users/afnan/source/repos/DEPI-Project/ERP-MVC/Views/Purchasing/invoice/AddPurchaseInvoice.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHVyY2hhc2luZ1xpbnZvaWNlXEFkZFB1cmNoYXNlSW52b2ljZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/afnan/source/repos/DEPI-Project/ERP-MVC/Views/Purchasing/AddPurchaseReturn.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHVyY2hhc2luZ1xBZGRQdXJjaGFzZVJldHVybi5jc2h0bWw=
+[C:/Users/afnan/source/repos/DEPI-Project/ERP-MVC/Views/Purchasing/invoice/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHVyY2hhc2luZ1xpbnZvaWNlXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/afnan/source/repos/DEPI-Project/ERP-MVC/Views/Purchasing/PurchaseInvoicesList.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHVyY2hhc2luZ1xQdXJjaGFzZUludm9pY2VzTGlzdC5jc2h0bWw=
+[C:/Users/afnan/source/repos/DEPI-Project/ERP-MVC/Views/Purchasing/invoice/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHVyY2hhc2luZ1xpbnZvaWNlXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/afnan/source/repos/DEPI-Project/ERP-MVC/Views/Purchasing/PurchaseReturnList.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHVyY2hhc2luZ1xQdXJjaGFzZVJldHVybkxpc3QuY3NodG1s
+[C:/Users/afnan/source/repos/DEPI-Project/ERP-MVC/Views/Purchasing/invoice/index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHVyY2hhc2luZ1xpbnZvaWNlXGluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afnan/source/repos/DEPI-Project/ERP-MVC/Views/Purchasing/invoice/PurchaseInvoicesList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHVyY2hhc2luZ1xpbnZvaWNlXFB1cmNoYXNlSW52b2ljZXNMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afnan/source/repos/DEPI-Project/ERP-MVC/Views/Purchasing/return/AddPurchaseReturn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHVyY2hhc2luZ1xyZXR1cm5cQWRkUHVyY2hhc2VSZXR1cm4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afnan/source/repos/DEPI-Project/ERP-MVC/Views/Purchasing/return/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHVyY2hhc2luZ1xyZXR1cm5cQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afnan/source/repos/DEPI-Project/ERP-MVC/Views/Purchasing/return/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHVyY2hhc2luZ1xyZXR1cm5cRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afnan/source/repos/DEPI-Project/ERP-MVC/Views/Purchasing/return/index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHVyY2hhc2luZ1xyZXR1cm5caW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afnan/source/repos/DEPI-Project/ERP-MVC/Views/Purchasing/return/PurchaseReturnList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHVyY2hhc2luZ1xyZXR1cm5cUHVyY2hhc2VSZXR1cm5MaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/afnan/source/repos/DEPI-Project/ERP-MVC/Views/Reports/CustomerReport.cshtml]
@@ -166,20 +198,40 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0c1xTdXBwbGllcnNTdW1tYXJ5UmVwb3J0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/afnan/source/repos/DEPI-Project/ERP-MVC/Views/Sales/AddSalesInvoice.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZXNcQWRkU2FsZXNJbnZvaWNlLmNzaHRtbA==
+[C:/Users/afnan/source/repos/DEPI-Project/ERP-MVC/Views/Sales/Invoice/AddSalesInvoice.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZXNcSW52b2ljZVxBZGRTYWxlc0ludm9pY2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/afnan/source/repos/DEPI-Project/ERP-MVC/Views/Sales/AddSalesReturn.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZXNcQWRkU2FsZXNSZXR1cm4uY3NodG1s
+[C:/Users/afnan/source/repos/DEPI-Project/ERP-MVC/Views/Sales/Invoice/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZXNcSW52b2ljZVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/afnan/source/repos/DEPI-Project/ERP-MVC/Views/Sales/SalesInvoicesList.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZXNcU2FsZXNJbnZvaWNlc0xpc3QuY3NodG1s
+[C:/Users/afnan/source/repos/DEPI-Project/ERP-MVC/Views/Sales/Invoice/index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZXNcSW52b2ljZVxpbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/afnan/source/repos/DEPI-Project/ERP-MVC/Views/Sales/SalesReturnList.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZXNcU2FsZXNSZXR1cm5MaXN0LmNzaHRtbA==
+[C:/Users/afnan/source/repos/DEPI-Project/ERP-MVC/Views/Sales/Invoice/SalesInvoicesList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZXNcSW52b2ljZVxTYWxlc0ludm9pY2VzTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afnan/source/repos/DEPI-Project/ERP-MVC/Views/Sales/Return/AddSalesReturn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZXNcUmV0dXJuXEFkZFNhbGVzUmV0dXJuLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afnan/source/repos/DEPI-Project/ERP-MVC/Views/Sales/Return/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZXNcUmV0dXJuXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afnan/source/repos/DEPI-Project/ERP-MVC/Views/Sales/Return/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZXNcUmV0dXJuXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afnan/source/repos/DEPI-Project/ERP-MVC/Views/Sales/Return/index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZXNcUmV0dXJuXGluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/afnan/source/repos/DEPI-Project/ERP-MVC/Views/Sales/Return/SalesReturnList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZXNcUmV0dXJuXFNhbGVzUmV0dXJuTGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/afnan/source/repos/DEPI-Project/ERP-MVC/Views/Shared/Error.cshtml]

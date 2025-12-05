@@ -8,9 +8,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Views\Sales\Invoice\Details.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Controllers\Inventory\Package\" />
     <Folder Include="Models\ViewModels\Inventory\Packages\" />
     <Folder Include="Models\ViewModels\Inventory\Product\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Sales\Invoice\Details.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

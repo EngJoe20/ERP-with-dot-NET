@@ -1,0 +1,132 @@
+﻿@using ERP_MVC.Models.DTOs.Purchasing
+@model PurchaseReturnResponseDto
+
+@{
+    ViewData["Title"] = "Purchase Return Details";
+}
+
+<div class="container-fluid">
+    <div class="row mt-3">
+        <div class="col-lg-10 mx-auto">
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-4">
+                    <div class="card-title d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0 text-primary font-weight-bold">Purchase Return Details</h5>
+                        <a asp-action="Index" class="btn btn-sm btn-outline-secondary">Back to List</a>
+                    </div>
+                    <hr>
+
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <div class="info-group mb-3">
+                                <label class="text-muted small">Return ID</label>
+                                <p class="fw-bold">#@Model.Id</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-group mb-3">
+                                <label class="text-muted small">Return Date</label>
+                                <p class="fw-bold">@Model.ReturnDate.ToString("yyyy-MM-dd")</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <div class="info-group mb-3">
+                                <label class="text-muted small">Supplier</label>
+                                <p class="fw-bold">@Model.SupplierName</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-group mb-3">
+                                <label class="text-muted small">Total Amount</label>
+                                <p class="fw-bold text-danger">@Model.TotalAmount.ToString("N2")</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    @if (!string.IsNullOrEmpty(Model.Reason))
+                    {
+                        <div class="row mb-4">
+                            <div class="col-md-12">
+                                <div class="info-group mb-3">
+                                    <label class="text-muted small">Reason for Return</label>
+                                    <p class="fw-bold">@Model.Reason</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <h6 class="text-uppercase text-body text-xs font-weight-bolder mb-3 mt-4">Returned Items</h6>
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Product Code</th>
+                                    <th>Product Name</th>
+                                    <th>Quantity</th>
+                                    <th>Unit Count</th>
+                                    <th>Unit Price</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.Items != null && Model.Items.Any())
+                                {
+                                    int counter = 1;
+                                    @foreach (var item in Model.Items)
+                                    {
+                                        <tr>
+                                            <td>@counter</td>
+                                            <td>@item.ProductCode</td>
+                                            <td>@item.ProductName</td>
+                                            <td>@item.Quantity</td>
+                                            <td>@item.UnitCount</td>
+                                            <td>@item.UnitPrice.ToString("N2")</td>
+                                            <td>@item.Total.ToString("N2")</td>
+                                        </tr>
+                                        counter++;
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td colspan="7" class="text-center">No items found.</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col-md-12">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <label class="text-muted mb-0">Grand Total</label>
+                                        <h4 class="text-danger mb-0">@Model.TotalAmount.ToString("N2")</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .info-group label {
+        font-size: 0.85rem;
+        margin-bottom: 0.25rem;
+        display: block;
+    }
+    .info-group p {
+        margin-bottom: 0;
+        font-size: 1rem;
+    }
+</style>
